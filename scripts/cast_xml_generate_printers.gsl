@@ -1,0 +1,1245 @@
+.function header(gentype,original_file)
+.  if (my.gentype = 'definition')
+>#ifndef __$(my.GENTYPE:C)_$(my.ORIGINAL_FILE:C)__
+>#define __$(my.GENTYPE:C)_$(my.ORIGINAL_FILE:C)__
+>
+>
+>#include "$(my.original_file:)"
+>
+>
+>#ifdef __cplusplus
+>
+>
+>// C++ overloads, methods, and so on
+>#include <map>
+>#include <string>
+>#include <iostream>
+>#include <utility>
+>#include <sstream>
+>#include <stdint.h>
+>
+>
+.  else
+>#ifndef __$(my.GENTYPE:C)_$(my.ORIGINAL_FILE:C)__
+>#define __$(my.GENTYPE:C)_$(my.ORIGINAL_FILE:C)__
+>
+>
+>#ifdef __cplusplus
+>
+>
+.output_file = file.basename(my.original_file)
+.output_file += ".generated.h"
+>#include "$(output_file:)"
+>#include <stdio.h>
+>#include <string.h>
+>#include "jsonxx.h"
+.  endif
+.endfunction
+.
+.function footer(gentype,original_file)
+>#endif // ___cplusplus
+>
+>
+>#endif // __$(my.GENTYPE:C)_$(my.ORIGINAL_FILE:C)__
+.endfunction
+.
+.
+.function struct_stream_map_functions(gentype,class,root)
+.  if name(my.class) = 'Struct'
+.    ftype = my.class->Union?
+.    if defined(ftype)
+.      struct_settings = root->settings->Struct(name = my.class.name)?
+.      if !defined(struct_settings)
+.        abort "Failed to load settings for union-field in structure $(my.class.name:)"
+.      endif
+.    endif
+   if (my.gentype = 'definition')
+>// Generated stream-operators for: $(my.class.name:)
+>std::ostream & operator<<(std::ostream & out, const $(my.class.name:) & $(my.class.name:c));
+>std::string toString(const $(my.class.name:) & $(my.class.name:c));
+.  else 
+>
+>// Generated default printers for struct: $(my.class.name:)
+>std::ostream & operator<<(std::ostream & out, const $(my.class.name:) & $(my.class.name:c)) {
+.[gsl].shuffle = 1
+.  for my.class.Field as f
+.    typeobject = f->$(f.resolved_type?)(id?'' = f.type)?
+
+.    union_field = struct_settings->Union(field = f.name)?
+.    if defined(union_field)
+>    // $(f.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>    if($(my.class.name:c).$(union_field.type:) == $(c.TOKEN)) {
+>      out << "$(f.name:).$(c.union_member:):" << " "       << $(my.class.name:c).$(f.name:).$(c.union_member:) << "$(last()?? '' ? ', ')"; 
+>    }
+.      endfor
+.    elsif typeobject.container?'not-vector' = 'vector' | typeobject.container?'not-list' = 'list'
+>    out << "$(f.name:):" << " [ ";
+>    for ($(typeobject.container_const_iterator:) it=$(my.class.name:c).$(f.name:).begin(); it != $(my.class.name:c).$(f.name:).end(); ++it)
+>    {
+>      out << *it;
+>      if(it != $(my.class.name:c).$(f.name:).end())
+>        out << ",";
+>    }
+>    out << " ] " << "$(last()?? '' ? ', ')";
+.    elsif f.container?'not-pair' = 'pair'
+>    out << "$(f.name:):" << " first[" << $(my.class.name:c).$(f.name:).first << "] ";
+>    out                  << " second[" << $(my.class.name:c).$(f.name:).second << "]";
+>    out << "$(last()?? '' ? ', ')";
+.    else
+>    out << "$(f.name:):" << " "       << $(my.class.name:c).$(f.name:) << "$(last()?? '' ? ', ')";
+.    endif
+.  endfor
+.[gsl].shuffle = 2
+>  return out;
+>}
+>
+>
+>std::string toString(const $(my.class.name:) & $(my.class.name:c)) {
+>    std::stringstream out;
+>    std::string ret = "";
+>    out << $(my.class.name:c);
+>    ret = out.str();
+>    return ret;
+>}
+>
+>
+.  endif
+.  endif
+.endfunction
+.
+.
+.function struct_compare_functions(gentype,class,root)
+.  if name(my.class) = 'Struct'
+.    ftype = my.class->Union?
+.    struct_settings = root->settings->Struct(name = my.class.name)?
+.    if defined(ftype)
+.      if !defined(struct_settings)
+.        abort "Failed to load settings for union-field in structure $(my.class.name:)"
+.      endif
+.    endif
+.  
+>// struct: $(my.class.name:) compare-functions due to union existance...
+>// Found Struct->settings.... $(defined(struct_settings))
+.  if (my.gentype = 'definition')
+>// Generated default compare definitions for struct: $(my.class.name:)
+>bool operator< ($(my.class.name:) lhs, $(my.class.name:) rhs);
+>bool operator<=($(my.class.name:) lhs, $(my.class.name:) rhs);
+>bool operator> ($(my.class.name:) lhs, $(my.class.name:) rhs);
+>bool operator>=($(my.class.name:) lhs, $(my.class.name:) rhs);
+>bool operator==($(my.class.name:) lhs, $(my.class.name:) rhs);
+>bool operator!=($(my.class.name:) lhs, $(my.class.name:) rhs);
+.    for struct_settings.CompareFunction as cp
+>
+>// Generate CompareFunction $(cp.name:)
+>// $(cp.desc:)
+>struct $(my.class.name:)$(cp.name:) {
+>    $(my.class.name:) rhs;
+>    explicit $(my.class.name:)$(cp.name:)($(my.class.name:) rhs) : rhs(rhs) { }
+>    inline bool operator()(const $(my.class.name:) & lhs) const 
+>    {
+.[gsl].shuffle = 1
+.  for my.class.Field as a
+.    is_key = cp->KeyField(name = a.name)?
+.    if !defined(is_key)
+.      next
+.    endif
+.    union_field = struct_settings->Union(field = a.name)?
+.    if defined(union_field)
+>    // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>    if(lhs.$(union_field.type:) == $(c.TOKEN)) {
+>      if (lhs.$(a.name:).$(c.union_member:) != rhs.$(a.name:).$(c.union_member:)) return false;
+>    }
+.      endfor
+.    else
+.      if a.resolved_type?'unresolved-type' = 'ArrayType'
+.        at_type = a->ArrayType?
+>    // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
+>    for(int af = $(at_type.min); af <= $(at_type.max); af++)
+>    {
+>      if (lhs.$(a.name:)[af] != rhs.$(a.name:)[af]) return false;
+>    }
+.      else
+.        typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
+.        if typeobject.parent_value_type?'ns' = 'char'
+>    if (lhs.$(a.name:) == NULL && rhs.$(a.name:) != NULL) return false;
+>    if (lhs.$(a.name:) != NULL && rhs.$(a.name:) == NULL) return false;
+>    if (strcmp(lhs.$(a.name:),lhs.$(a.name:)) != 0) return false;
+.        else
+>    if (lhs.$(a.name:) != rhs.$(a.name:)) return false;
+.        endif
+.      endif
+.    endif
+.  endfor
+.[gsl].shuffle = 2
+>    return true;
+>    }
+>};
+>
+>
+.    endfor
+.  else
+>// Generated default compare implementation for struct: $(my.class.name:)
+>bool operator<($(my.class.name:) lhs, $(my.class.name:) rhs) {
+.[gsl].shuffle = 1
+.-----------------------------------------------------------------------------
+.- Construct the c-struct-initstring = { .field = default_value, .... }
+.-----------------------------------------------------------------------------
+.  my.class.c_struct_init = " = {"
+.-----------------------------------------------------------------------------
+.  for my.class.Field as a
+.    union_field = struct_settings->Union(field = a.name)?
+.    if defined(union_field)
+>    // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>    if(lhs.$(union_field.type:) == $(c.TOKEN)) {
+>      if (lhs.$(a.name:).$(c.union_member:) < rhs.$(a.name:).$(c.union_member:)) return true;
+>      if (lhs.$(a.name:).$(c.union_member:) > rhs.$(a.name:).$(c.union_member:)) return false;
+>    }
+.      endfor
+.    else
+.      typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
+>    // Type of field $(a.type) / $(a.name?'no-name') resolved_type: $(a.resolved_type?'resolved-type')
+.[gsl].shuffle = 2
+.      my.class.c_struct_init += " .$(a.name:) = $(a.default_value?'UNKNOWN')$(last(a)??''?',')"
+.[gsl].shuffle = 1
+.      if a.resolved_type?'unresolved-type' = 'ArrayType'
+.        at_type = a->ArrayType?
+>    // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
+>    for(int af = $(at_type.min); af <= $(at_type.max); af++)
+>    {
+>      if (lhs.$(a.name:)[af] < rhs.$(a.name:)[af]) return true;
+>      if (lhs.$(a.name:)[af] > rhs.$(a.name:)[af]) return false;
+>    }
+.      elsif typeobject.parent_value_type?'ns' = 'char'
+>    // Char / String compare....
+>    int $(a.name:)_compare = strcmp(lhs.$(a.name:),rhs.$(a.name:));
+>    if ($(a.name:)_compare < 0) return true;
+>    if ($(a.name:)_compare > 0) return false;
+.      else
+>    if (lhs.$(a.name:) < rhs.$(a.name:)) return true;
+>    if (lhs.$(a.name:) > rhs.$(a.name:)) return false;
+.      endif
+.    endif
+.  endfor
+.  my.class.c_struct_init += " }"
+.[gsl].shuffle = 2
+>    return false;
+>}
+>bool operator<=($(my.class.name:) lhs, $(my.class.name:) rhs) {
+>    if ((lhs < rhs) || (lhs == rhs)){
+>        return true;
+>    } else {
+>        return false;
+>    }
+>}
+>bool operator>($(my.class.name:) lhs, $(my.class.name:) rhs) {
+>    return !(lhs <= rhs);
+>}
+>bool operator>=($(my.class.name:) lhs, $(my.class.name:) rhs) {
+>    return !(lhs < rhs);
+>}
+>bool operator==($(my.class.name:) lhs, $(my.class.name:) rhs){
+.[gsl].shuffle = 1
+.  for my.class.Field as a
+.    union_field = struct_settings->Union(field = a.name)?
+.    if defined(union_field)
+>    // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>    if(lhs.$(union_field.type:) == $(c.TOKEN)) {
+>      if (lhs.$(a.name:).$(c.union_member:) != rhs.$(a.name:).$(c.union_member:)) return false;
+>    }
+.      endfor
+.    else
+.      if a.resolved_type?'unresolved-type' = 'ArrayType'
+.        at_type = a->ArrayType?
+>    // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
+>    for(int af = $(at_type.min); af <= $(at_type.max); af++)
+>    {
+>      if (lhs.$(a.name:)[af] != rhs.$(a.name:)[af]) return false;
+>    }
+.      else
+.        typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
+.        if typeobject.parent_value_type?'ns' = 'char'
+>    if (lhs.$(a.name:) == NULL && rhs.$(a.name:) != NULL) return false;
+>    if (lhs.$(a.name:) != NULL && rhs.$(a.name:) == NULL) return false;
+>    if (strcmp(lhs.$(a.name:),lhs.$(a.name:)) != 0) return false;
+.        else
+>    if (lhs.$(a.name:) != rhs.$(a.name:)) return false;
+.        endif
+.      endif
+.    endif
+.  endfor
+.[gsl].shuffle = 2
+>    return true;
+>}
+>bool operator!=($(my.class.name:) lhs, $(my.class.name:) rhs) {
+>    return !(lhs == rhs);
+>}
+>
+>
+.  endif
+.  endif
+.endfunction
+.
+.
+.function render_fundamental_to_json(scope,json_object,field_object,type_object,input_variable,comment)
+.  if !defined(my.type_object.json_type)
+.    abort "[$(my.scope)] field $(my.field_object.name?'no-name-set':) type $(name(my.type_object)) in line $(my.type_object.location?'no-location') has no json_type!"
+.  endif
+>  // render_fundamental_to_json: scope:$(my.scope:)  object_name: $(name(my.type_object)) json_type:$(my.type_object.json_type) comment: $(my.comment?'')
+.  if my.type_object.json_type?'Impossible' = 'Object'
+.    if my.type_object.name?'unknown' = 'in_addr'
+>  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
+     else
+>  jsonxx::Object $(my.scope:)_$(my.field_object.name:)_object;
+.      if    my.scope = 'MapKey'
+>  // For the Map-key we do not prefix a &
+>  if($(my.scope:)_$(my.field_object.name:)_object.parse(toJsonString($(my.input_variable:))) != 1)
+.      else
+>  if($(my.scope:)_$(my.field_object.name:)_object.parse(toJsonString(&$(my.input_variable:))) != 1)
+.      endif
+>    return "BROKEN $(my.field_object.name:)_object"; // rftj:$(my.comment?'')
+.      if    my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << $(my.scope:)_$(my.field_object.name:)_object;
+.      elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << $(my.scope:)_$(my.field_object.name:)_object;
+.      else
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.scope:)_$(my.field_object.name:)_object;
+.      endif
+.    endif
+.  elsif my.type_object.json_type = 'String'
+.    if my.scope = 'Array'
+>  $(my.json_object:)          << $(my.input_variable:);
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << $(my.input_variable:);
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << $(my.input_variable:);
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:)          << $(my.input_variable:);
+.    elsif name(my.type_object) = 'Enumeration' | my.type_object.parent_type?'' = 'Enumeration'
+>  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.input_variable:);
+.    endif
+.  elsif my.type_object.json_type = 'Number'
+.    if my.scope = 'Array'
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    endif
+.  elsif my.type_object.json_type = 'Boolean'
+.    if my.scope = 'Array'
+>  $(my.json_object:)          << ($(my.type_object.name:))$(my.input_variable:);
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << ($(my.type_object.name:))$(my.input_variable:);
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << ($(my.type_object.name:))$(my.input_variable:);
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:) << $(my.input_variable:);
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << ($(my.type_object.name:))$(my.input_variable:);
+.    endif
+.  elsif my.type_object.json_type = 'Enumeration'
+.    if my.scope = 'Array'
+>  $(my.json_object:)          << toString($(my.input_variable:));
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << toString($(my.input_variable:));
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << toString($(my.input_variable:));
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:)          << toString($(my.input_variable:));
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
+.    endif
+.  else
+>  // Else-render_fundamental_to_json-branch...
+.    if my.scope = 'Array'
+>  $(my.json_object:) << ($(my.type_object.name:))$(my.input_variable:); // Array-else....
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << $(my.input_variable:);
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << $(my.input_variable:);
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:) << $(my.input_variable:); // VectorList-else....
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << ($(my.type_object.name:))$(my.input_variable:); // ??Scope??-else....
+.    endif
+.  endif
+.endfunction
+.
+.
+.function struct_json_functions(gentype,class,root)
+.  if name(my.class) = 'Struct'
+.    ftype = my.class->Union?
+.    if defined(ftype)
+.      struct_settings = root->settings->Struct(name = my.class.name)?
+.      if !defined(struct_settings)
+.        abort "Failed to load settings for union-field in structure $(my.class.name:)"
+.      endif
+.    endif
+.  if (my.gentype = 'definition')
+>// Generated toJsonString / fromJsonString definition for struct: $(my.class.name:)
+>std::string toJsonString($(my.class.name:) *input);
+>int32_t fromJson($(my.class.name:) *output, std::string jsondata);
+.  else
+>// Generated toJsonString / fromJsonString implementation for struct: $(my.class.name:)
+>std::string toJsonString($(my.class.name:) *input) {
+.[gsl].shuffle = 1
+>  jsonxx::Object jsono;
+.  for my.class.Field as a
+.    union_field = struct_settings->Union(field = a.name)?
+.    typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
+>  // $(name(typeobject)?) name: [$(typeobject.name?'no-name')] json_type: $(typeobject.json_type?'not-set') json_type_cast: $(typeobject.json_type_cast?'not-set')
+.-   IF the typeobject is not in the field then it was not copied over....
+.    if !defined(typeobject)
+.      typeobject = root->GCC_XML->$(a.resolved_type?)(id?'' = a.type)?
+.    endif
+.- ------------------------------------union_field defined -------------------------------------------------
+.    if defined(union_field)
+>  // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>  if(input->$(union_field.type:) == $(c.TOKEN)) {
+>     jsonxx::Object $(a.name:)_object;
+>     if($(a.name:)_object.parse(toJsonString(&input->$(a.name:).$(c.union_member:))) != 1)
+>       return "BROKEN_$(a.name:).$(c.union_member:)";
+>     jsono << "$(a.name:).$(c.union_member:)" << $(a.name:)_object;
+>  }
+.      endfor
+.- ------------------------------------resolved-type: ArrayType -------------------------------------------------
+.    elsif a.resolved_type?'unresolved-type' = 'ArrayType'
+.      at_type = a->ArrayType?
+.      array_element_type = at_type->$(at_type.parent_type)(id?'' = at_type.type)
+>  jsonxx::Array jsona_$(a.name:);
+>  // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
+>  for(int af = $(at_type.min); af <= $(at_type.max); af++)
+>  {
+.[gsl].shuffle = 1
+.     render_fundamental_to_json("Array","  jsona_$(a.name:)",a,array_element_type,"input->$(a.name:)[af]",array_element_type.json_type)
+.[gsl].shuffle = 2
+>  }
+>  jsono << "$(a.name:)" << jsona_$(a.name:);
+.- ------------------------------------resolved-type: Class ----------------------------------------------------
+.    elsif a.resolved_type = 'Class'
+.      if defined(typeobject.container) # See container-preparations in Struct/Field/Class-type
+.        if typeobject.container?'not-vector' = 'vector' | typeobject.container?'not-list' = 'list'
+.-       ------------------------------------ vector | list ---------------------------------------
+>  // $(a.name:) is of type: $(name(typeobject)) trying to resolve type $(typeobject.parent_type:)
+.        container_entity_type_object = typeobject->$(typeobject.parent_type:)
+>  // Found $(name(container_entity_type_object))
+>  jsonxx::Array jsona_$(a.name:);
+>  for ($(typeobject.container_iterator:) it=input->$(a.name:).begin(); it != input->$(a.name:).end(); ++it)
+>  {
+.    render_fundamental_to_json("VectorList","  jsona_$(a.name:)",a,container_entity_type_object,"*it",container_entity_type_object.json_type?'not-set-for-struct')
+>  }
+>  jsono << "$(a.name:)" << jsona_$(a.name:);
+.        elsif typeobject.container?'not-map' = 'map'
+.-       ------------------------------------ map -------------------------------------------------
+>  jsonxx::Array jsonm_$(a.name:);
+>  // Map implementation key  : $(typeobject.container_key_fundamental_type:)
+>  // Map implementation value: $(typeobject.container_value_fundamental_type:)
+>  for ($(typeobject.container_iterator:) it=input->$(a.name:).begin(); it != input->$(a.name:).end(); ++it)
+>  {
+>    jsonxx::Object jsonm_$(a.name:)_entry;
+.  key_type_object = typeobject->$(typeobject.container_key_parent_type)(id = typeobject.container_key_type_id)
+.  render_fundamental_to_json("MapKey","  jsonm_$(a.name:)_entry",a,key_type_object,"($(key_type_object.name:)*)&it->first",key_type_object.json_type?'not-set-for-struct')
+.  val_type_object = typeobject->$(typeobject.container_val_parent_type)(id = typeobject.container_val_type_id)
+.  render_fundamental_to_json("MapVal","  jsonm_$(a.name:)_entry",a,val_type_object,"it->second",val_type_object.json_type?'not-set-for-struct')
+>    jsonm_$(a.name:) << jsonm_$(a.name:)_entry;
+>  }
+>  jsono << "$(a.name:)" << jsonm_$(a.name:);
+.        else
+.-       ------------------------------------ ??? -------------------------------------------------
+>  // Line 305: Not defined for container_type: $(a.container_type?'unknown')
+.        endif
+.      else
+.        render_fundamental_to_json("$(a.name:)","jsono",a,typeobject,"input->$(a.name:)",typeobject.json_type?'not-set-for-struct')
+.      endif
+.- ------------------------------------container: pair -----------------------------------------------------------
+.    elsif a.resolved_type = 'Struct' & a.container?'not-pair' = 'pair'
+>  // Pair handling Field->Struct->Field.first && Field.second
+>  jsonxx::Object $(a.name:)_pair_object;
+.        pair_struct = a->Struct(id = a.type)
+.        first_field = pair_struct->Field(name = "first")
+.        first_type  = first_field->$(first_field.resolved_type)
+.        second_field = pair_struct->Field(name = "second")
+.        second_type  = second_field->$(second_field.resolved_type)
+.        render_fundamental_to_json("$(a.name:)","$(a.name:)_pair_object",first_field,first_type,"input->$(a.name:).first",first_type.json_type)
+.        render_fundamental_to_json("$(a.name:)","$(a.name:)_pair_object",second_field,second_type,"input->$(a.name:).second",second_type.json_type)
+>  jsono << "$(a.name:)" << $(a.name:)_pair_object;
+.- ------------------------------------resolved-type: Class ----------------------------------------------------
+.    else
+.      render_fundamental_to_json("$(a.name:)","jsono",a,typeobject,"input->$(a.name:)",typeobject.json_type?'Not-Set-For-Fundamental??')
+.    endif
+.- ----------------------------------------------------------------------------------------
+.  endfor
+.[gsl].shuffle = 2
+>  return jsono.json();
+>}
+>
+>
+>int32_t fromJson($(my.class.name:) *output, std::string jsondata) {
+>  jsonxx::Object json;
+>  if(!json.parse(jsondata))
+>  {
+>    return -2048;
+>  }
+.  for my.class.Field as a 
+>  // Return the negative-bitindex $(index(a)) of the $(a.name:)-field on error
+.    union_field = struct_settings->Union(field = a.name)?
+.    if defined(union_field)
+>    // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
+.      for union_field.Choice as c
+>  if(output->$(union_field.type:) == $(c.TOKEN)) {
+>    if(json.has<jsonxx::Object>("$(a.name:).$(c.union_member:)"))
+>    {
+>      if(fromJson(&output->$(a.name:).$(c.union_member:), json.get<jsonxx::Object>("$(a.name:).$(c.union_member:)").json()) != 0)
+>      {
+>        return -$(index(a));
+>      }
+>    }
+>  }
+.      endfor
+.- For all non-union types....
+.  else
+.    typeobject = a->$(a.resolved_type)(id?'' = a.type)?
+>  // Type is: $(a.type) ->  [$(typeobject.name?'oopsie')] -> typeOf: $(name(typeobject)) -> parent_type $(typeobject.parent_type?'unknown')
+.  if typeobject.container?'not-vector' = 'vector' | typeobject.container?'not-list' = 'list'
+>  // $(typeobject.container)-container implementation...
+>  if(json.has<jsonxx::Array>("$(a.name:)"))
+>  {
+>    jsonxx::Array $(a.name:)_array = json.get<jsonxx::Array>("$(a.name:)");
+>    for(int af = 0; af < $(a.name:)_array.size(); af++)
+>    {
+.      if typeobject.container_type = 'char *'
+>      $(typeobject.container_type:) $(a.name:)_af = strdup($(a.name:)_array.get<jsonxx::$(a.json_type:)>(af).c_str());
+.      elsif typeobject.container_type = 'char' | json_type = 'String'
+>      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::$(a.json_type:)>(af);
+.      elsif typeobject.container_fundamental_type = 'basic_string<char>'
+>      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::String>(af);
+.      elsif typeobject.container_type = 'unsigned short'
+>      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::Number>(af);
+.      elsif typeobject.container_type = 'in_addr'
+>      $(typeobject.container_type:) $(a.name:)_af;
+>      std::string $(name:c)_str = $(a.name:)_array.get<jsonxx::String>(af);
+>      int cc = inet_pton(AF_INET, $(name:c)_str.c_str(), &$(a.name:)_af);
+>      if(cc == 0) // Error
+>      {
+>        return -$(index(a));
+>      }
+.      else
+>      // Hum - should this be dependant on Type?
+>      $(typeobject.container_type:) $(a.name:)_af;
+.      
+.      element_type_object = typeobject->$(typeobject.parent_type)(id = typeobject.type)?
+.        if element_type_object.json_type?'not-Object' = 'Object'
+>      if(fromJson(&$(a.name:)_af, $(a.name:)_array.get<jsonxx::Object>(af).json()) != 0)
+>      {
+>        return -$(index(a));
+>      }
+.        elsif a.resolved_type?'not-Enumeration' = 'Enumeration'
+>      if(fromString($(a.name:)_array.get<jsonxx::String>(af),&$(a.name:)_af) != 0)
+>      {
+>        return -$(index(a));
+>      }
+.        else
+>      // Not object nor Enumeration - .....
+.        endif
+.      endif
+>      output->$(a.name:).push_back($(a.name:)_af);
+>    }
+>  }
+.  elsif a.container?'not-pair' = 'pair'
+>  // Pair-implementation deserializes into an Object.
+>  if(json.has<jsonxx::Object>("$(a.name:)"))
+>  {
+>    jsonxx::Object $(a.name:)_object = json.get<jsonxx::Object>("$(a.name:)");
+.    pair_struct = a->Struct(id = a.type)
+.    first_field = pair_struct->Field(name = "first")
+.    first_type  = first_field->$(first_field.resolved_type)
+.    second_field = pair_struct->Field(name = "second")
+.    second_type  = second_field->$(second_field.resolved_type)
+>
+>    // First  is of type $(first_type.name:)  $(name(first_type):)  json_type: $(first_type.json_type:)
+>    // Second is of type $(second_type.name:) $(name(second_type):) json_type: $(second_type.json_type:)
+>    $(first_type.name:) $(a.name:)_first = $(a.name:)_object.get<jsonxx::$(first_type.json_type:)>("first");
+>    $(second_type.name:) $(a.name:)_second;
+>    if(fromJson(&$(a.name:)_second, $(a.name:)_object.get<jsonxx::$(second_type.json_type:)>("second").json()) != 0)
+>    {
+>      return -$(index(a));
+>    }
+>    output->$(a.name:) = std::make_pair($(a.name:)_first,$(a.name:)_second);
+>  }
+.  elsif typeobject.container?'not-map' = 'map'
+>  // Map-implementation deserializes from Array with Object key- and val-attributes.
+>  if(json.has<jsonxx::Array>("$(a.name:)"))
+>  {
+>    jsonxx::Array $(a.name:)_map_array = json.get<jsonxx::Array>("$(a.name:)");
+>    for(int af = 0; af < $(a.name:)_map_array.size(); af++)
+>    {
+>      jsonxx::Object $(a.name:)_map_array_entry = $(a.name:)_map_array.get<jsonxx::Object>(af);
+.-     ------------ read key-attribute ---------------------------------------------------------
+.      key_type_object = typeobject->$(typeobject.container_key_parent_type)(id = typeobject.container_key_type_id)
+>      $(key_type_object.name:) map_key;
+.      val_type_object = typeobject->$(typeobject.container_val_parent_type)(id = typeobject.container_val_type_id)
+>      $(val_type_object.name:) map_val;
+>      if($(a.name:)_map_array_entry.has<jsonxx::$(key_type_object.json_type:)>("key"))
+>      {
+.      if key_type_object.json_type = 'Object'
+>        if(fromJson(&map_key, $(a.name:)_map_array_entry.get<jsonxx::$(key_type_object.json_type:)>("key").json()) != 0)
+>        {
+>          return -$(index(a));
+>        }
+.      else
+>        map_key = $(a.name:)_map_array_entry.get<jsonxx::$(key_type_object.json_type:)>("key");
+.      endif
+>      }
+.-     ------------ read val-attribute ---------------------------------------------------------
+>      if($(a.name:)_map_array_entry.has<jsonxx::$(val_type_object.json_type:)>("val"))
+>      {
+.      if val_type_object.json_type = 'Object'
+>        if(fromJson(&map_val, $(a.name:)_map_array_entry.get<jsonxx::$(val_type_object.json_type:)>("val").json()) != 0)
+>        {
+>          return -$(index(a));
+>        }
+.      else
+>        map_val = $(a.name:)_map_array_entry.get<jsonxx::$(val_type_object.json_type:)>("val");
+.      endif
+>      }
+>      output->$(a.name:)[map_key] = map_val;
+>    }
+>  }
+.  elsif typeobject.name?'unknown' = 'in_addr'
+>  if(json.has<jsonxx::String>("$(a.name:)"))
+>  {
+>    std::string $(name:c)_str = json.get<jsonxx::String>("$(a.name:)");
+>    int cc = inet_pton(AF_INET, $(name:c)_str.c_str(), &output->$(a.name:));
+>    if(cc == 0) // Error
+>      return -$(index(a));
+>  }
+.  elsif typeobject.name?'unknown' = 'unsigned int'
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (unsigned int)json.get<jsonxx::Number>("$(a.name:)");
+>  }
+.  elsif typeobject.name?'unknown' = 'int'
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
+>  }
+.  elsif typeobject.name?'unknown' = 'float'
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (float)json.get<jsonxx::Number>("$(a.name:)");
+>  }
+.  elsif typeobject.name?'unknown' = 'long int'
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (long)json.get<jsonxx::Number>("$(a.name:)");
+>  }
+.  elsif regexp.match("string",typeobject.name?'')
+>  if(json.has<jsonxx::String>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = json.get<jsonxx::String>("$(a.name:)");
+>    //return -$(index(a));
+>  }
+.  elsif typeobject.name?'not-bool' = 'bool'
+>  if(json.has<jsonxx::Boolean>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = json.get<jsonxx::Boolean>("$(a.name:)");
+>    //return -$(index(a));
+>  }
+.  elsif name(typeobject) = 'ArrayType'
+>  if(json.has<jsonxx::Array>("$(a.name:)"))
+>  {
+.    at_type = a->ArrayType?
+>    // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
+>    if(json.get<jsonxx::Array>("$(a.name:)").size() != $(at_type.max)+1)
+>      return  -$(index(a));
+>    for(int af = $(at_type.min); af <= $(at_type.max); af++)
+>    {
+>      output->$(a.name:)[af] = json.get<jsonxx::Array>("$(a.name:)").get<jsonxx::Number>(af);
+>    }
+>  }
+.  elsif typeobject.parent_type?'unknown' = 'FundamentalType'
+.    if regexp.match("uint8_t|uint16_t|uint32_t|uint64_t|int8_t|int16_t|int32_t|int64_t|uInt8|uInt16|uInt32|Int|int|unsigned",typeobject.name?)
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
+>    //return -$(index(a));
+>  }
+.    else
+>    // Type $(typeobject.name?'oopsie') not implemented yet.
+.    endif
+.  elsif typeobject.parent_type?'unknown' = 'Typedef'
+.    if regexp.match("uInt8|uInt16|uInt32|Int|float|unsigned int",typeobject.name?'')
+>  if(json.has<jsonxx::Number>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
+>    //return -$(index(a));
+>  }
+.    else
+>    // Type $(typeobject.name?'oopsie') not implemented yet.
+.    endif
+.  elsif typeobject.parent_type?'unknown' = 'Struct'
+>  if(json.has<jsonxx::Object>("$(a.name:)"))
+>  {
+>    if(fromJson(&output->$(a.name:), json.get<jsonxx::Object>("$(a.name:)").json()) != 0)
+>    {
+>      return -$(index(a));
+>    }
+>  }
+.  elsif name(typeobject)?'unknown' = 'Enumeration' | typeobject.parent_type?'' = 'Enumeration'
+>  if(json.has<jsonxx::String>("$(a.name:)"))
+>  {
+>    if(fromString(json.get<jsonxx::String>("$(a.name:)"),&output->$(a.name:)) == false)
+>    {
+>      return -$(index(a));
+>    }
+>  }
+.  elsif typeobject.parent_value_type?'not-char' = 'char'
+>  if(json.has<jsonxx::String>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = strdup(json.get<jsonxx::String>("$(a.name:)").c_str());
+>  }
+
+.  endif
+.  endif
+.  endfor
+>  return 0;
+>}
+.  endif
+.  endif
+.endfunction
+.
+.
+.function enum_str_from_to_functions(gentype,type)
+.  my.typename = name(my.type)
+.  if my.typename = 'Enumeration'
+.  if my.gentype = 'definition'
+>// Generated default toString,fromString,stream definitions for enumeration: $(my.type.name:)
+>std::string toString($(my.type.name:) enumval, int32_t shortname = 0);
+>bool fromString(std::string stringvalue, $(my.type.name:Pascal) *enum_ptr);
+>std::ostream & operator<<(std::ostream & out, const $(my.type.name:Pascal) $(my.type.name:c));
+.  else
+.  my.type.prefix_count = 100
+.  my.type.prefix_string = ''
+.  my.type.prefix_string_first = my.type->EnumValue.name
+.  for my.type.EnumValue as ev
+.    ev.short_name = ev.name
+.    ev.parts = string.cntch(ev.name,'_')
+.    if(my.type.prefix_count >= ev.parts)
+.      my.type.prefix_count = ev.parts
+.    endif
+.  endfor
+.  while my.type.prefix_count > 0
+.    my.type.prefix              = string.prefix(my.type.prefix_string_first,'_')+'_'
+.    my.type.prefix_string_first = string.defix(my.type.prefix_string_first,my.type.prefix)
+.    my.type.prefix_string += my.type.prefix
+.    for my.type.EnumValue as ev
+--      $(ev.name) prefixed -> $(string.prefixed(ev.name,my.type.prefix_string)) with [$(my.type.prefix_string)]
+.       new_name = string.defix(ev.name,my.type.prefix_string)
+.       if string.length(new_name) > 0
+.         ev.short_name = new_name
+.       else
+.         my.type.prefix_count = 0
+.       endif
+.    endfor
+.    my.type.prefix_count  -= 1 
+.  endwhile
+>//Generated default toString,fromString,stream implementations for enumeration: $(my.type.name:)
+>std::string toString($(my.type.name:) enumval, int32_t shortname)
+>{
+.[gsl].shuffle = 1
+.  for my.type.EnumValue as ev
+>  if(enumval == $(ev.name:)){
+>    return shortname == 0 ? "$(ev.name:)" : "$(ev.short_name)";
+>  }
+.  endfor
+.[gsl].shuffle = 2
+>  return shortname == 0 ? "??????" : "???";
+>} // toString for $(my.type.name:)
+>
+>
+>bool fromString(std::string svalue, $(my.type.name:Pascal) *enum_ptr)
+>{
+.  default_enum = my.type->EnumValue
+.[gsl].shuffle = 1
+.  for my.type.EnumValue as ev
+>  if(svalue == "$(ev.name:)"     ||        svalue == "$(ev.short_name)") {
+>    *enum_ptr = $(ev.name:); return true;
+>  }
+.  endfor
+.[gsl].shuffle = 2
+>  return false;
+>} // $(my.type.name:Pascal)_fromString
+>
+>
+>std::ostream & operator<<(std::ostream & out, const $(my.type.name:Pascal) $(my.type.name:c))
+>{
+>  out << toString($(my.type.name:c));
+>  return out;
+>} // $(my.type.name:Pascal) stream-operator
+>
+>
+.  endif
+.  endif
+.endfunction
+.
+.
+.function test_structure(structure)
+. my.output_file = file.basename(switches.file)
+>#include "$(my.output_file:).generated.h"
+>#include <gtest/gtest.h>
+>
+>
+.namespaces(e,"open")
+>TEST($(my.structure.name:), compareAB){
+>  $(my.structure.name:) a$(my.structure.c_struct_init?' = {}':);
+>  $(my.structure.name:) b$(my.structure.c_struct_init?' = {}':);
+>  EXPECT_EQ(a,b);
+>  std::cout << "JSON-b: " << toJsonString(&b) << std::endl;
+>  $(my.structure.name:) c;
+>  EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
+>  std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
+>  EXPECT_EQ(c,b);
+>  EXPECT_EQ(c,a);
+>}
+.namespaces(e,"close")
+
+>
+.endfunction
+.
+.
+.function namespaces(element,type)
+.  my.context = my.element.context?""
+.  my.namespace_object = root->GCC_XML->Namespace(id = my.context)?
+.  if my.type = "open" & my.context <> "_1"
+.- >//namespace->type -> $(my.type)
+.    if defined(my.namespace_object) 
+.- >//namespace->context -> has namespace_object $(my.namespace_object.name)
+.      namespaces(my.namespace_object,my.type)
+>namespace $(my.namespace_object.name:) {
+.    endif
+.  endif
+.  if my.type = "close" & my.context <> "_1"
+.    if defined(my.namespace_object) 
+>} // End of namespace $(my.namespace_object.name:)
+.      namespaces(my.namespace_object,my.type)
+.    endif
+.  endif
+.endfunction
+.
+.
+.function resolve_by_name(datanode,name)
+.    my.type_f = my.datanode->FundamentalType(name = my.name)?
+.    my.type_t = my.datanode->Typedef        (name = my.name)?
+.    my.type_e = my.datanode->Enumeration    (name = my.name)?
+.    my.type_s = my.datanode->Struct         (name = my.name)?
+.    if    defined(my.type_f) 
+.      return my.type_f
+.    elsif defined(my.type_t) 
+.      return my.type_t
+.    elsif defined(my.type_e) 
+.      return my.type_e
+.    elsif defined(my.type_s) 
+.      return my.type_s
+.    endif
+.endfunction
+.
+.
+.- -----------------------------------------------------------------------------
+.-  START OF SCRIPTS
+.- -----------------------------------------------------------------------------
+.template 0
+.  echo "Read definition settings for file: $(filename:)...."
+.  settings_file="$(filename:).settings.xml"
+.  if !file.exists (settings_file)
+.    echo "  WARNING: File $(settings_file:) Could not be found in PATH... - IGNORING"
+.  else
+.    echo "  LOADING: File $(settings_file:)..."
+.    settings = XML.load_file(settings_file)
+.    echo "    Loaded $(count(settings.))-Settings..."
+.    copy settings to root before GCC_XML
+.  endif
+.endtemplate
+.- CLEAN UP Structures - moving internal components inside to make sure where
+.- handle internal structs (inside unions) differently.
+.- -----------------------------------------------------------------------------
+.echo "  Cleaning up..."
+.for Function as f
+. delete f
+.endfor
+.for Method as m
+. delete m
+.endfor
+.for OperatorMethod as m
+. delete m
+.endfor
+.for Constructor as c
+. delete c
+.endfor
+.for Destructor as d
+. delete d
+.endfor
+.for Field as f
+.  for root->GCC_XML. as t where t.id?'' = f.type 
+.    f.resolved_type = name(t)
+.  endfor
+.endfor
+.echo "  Handling Enumerations..."
+.for Enumeration as e
+.  e.default_value = e->EnumValue.name
+.  e.json_type = 'String'
+.  e.from_json_function = 'toString'
+.endfor
+.echo "  Handling PointerTypes..."
+.for PointerType as pt
+.  for root->GCC_XML. as tt where tt.id?'' = pt.type
+.      pt.parent_value_type = tt.name?'Unknown-Parent-Value-Type'
+.      if tt.name?'unknown-type' = 'char'
+.        pt.default_value = 'NULL'
+.        pt.json_type = 'String'
+.      endif
+.  endfor
+.endfor
+.echo "  Handling FundamentalTypes..."
+.- root.save("$(filename:)-624.xml")
+.- echo diag.used()
+.for FundamentalType as ft
+.  ft.json_type_cast = '($(ft.name:))'
+.  if regexp.match('.*[uU]?[Ii]nt.*', '$(ft.name)')?'' = '-1'
+.    ft.json_type = 'Number'
+.    ft.default_value = '0'
+.    if regexp.match('.*unsigned.*','$(ft.name)')
+.      ft.json_type_cast = '(unsigned int)'
+.    else
+.      ft.json_type_cast = '(int)'
+.    endif
+.-    echo "Seems that $(ft.name) might be initialized with $(ft.default_value) ??"
+.  elsif regexp.match('.*string.*', '$(ft.name)')?'' = '-1'
+.    ft.json_type = 'String'
+.    ft.default_value = '""'
+.-    echo "Seems that $(t.name) might be initialized with $(ft.default_value) ??"
+.  elsif regexp.match('.*char.*', '$(ft.name)')?'' = '-1'
+.    ft.json_type = 'String'
+.    ft.default_value = "0"
+.  elsif regexp.match('.*double.*|.*float.*', '$(ft.name)')?'' = '-1'
+.    ft.json_type = 'Number'
+.    ft.default_value = "0.0"
+.  elsif name="bool"
+.    ft.json_type = 'Boolean'
+.    ft.default_value = "false"
+.  endif
+.endfor
+.echo "  Handling Typedefs..."
+.- root.save("$(filename:)-643.xml")
+.for Typedef as t
+.  for root->GCC_XML. as tt where tt.id?'' = t.type
+.      t.parent_type = name(tt)
+.      if regexp.match('in_addr', '$(t.name)')?'' = '-1'
+.        t.json_type      = 'String'
+.        t.default_value  = '{ 0 }'
+.      elsif regexp.match('.*string.*', '$(t.name)')?'' = '-1'
+.        t.json_type_cast = tt.json_type_cast?''
+.        t.json_type      = 'String'
+.        t.default_value  = '""'
+.      elsif t.parent_type = 'Enumeration'
+.        t.json_type_cast     = tt.json_type_cast?
+.        t.json_type          = tt.json_type?
+.        t.default_value      = tt.default_value?
+.        t.from_json_function = tt.from_json_function?
+.      elsif t.parent_type = 'Struct'
+.        t.json_type = 'Object'
+.        t.default_value  = tt.default_value?
+.      else
+.        t.json_type_cast = tt.json_type_cast?
+.        t.json_type      = tt.json_type?
+.        t.default_value  = tt.default_value?
+.      endif
+.  endfor
+.endfor
+.echo "  Handling ArrayTypes..."
+.- root.save("$(filename:)-663.xml")
+.for ArrayType as at
+.  for root->GCC_XML. as tt where tt.id?'' = at.type
+.      copy tt to at
+.      at.parent_type = name(tt)
+.      at.parent_value_type = tt.name?'Unknown-Parent-Value-Type'
+.      if max?0 > min?100
+.       at.default_value = '{ '
+.       iter = min 
+.       while iter <= max 
+.          at.default_value += "$(tt.default_value?'0')"
+.          iter += 1
+.          if(iter <= max)
+.          at.default_value += ','
+.          endif
+.        endwhile
+.        at.default_value += ' }'
+.      endif
+.  endfor
+.endfor
+.echo "  Handling Unions..."
+.- root.save("$(filename:)-683.xml")
+.- echo diag.used()
+.for Union as s
+.  for root->GCC_XML. as f where f.context?'' = s.id
+.    move f to s
+.-   echo " Moving $(name(f):) ofType:$(f.type?'') -> $(f.name?'<undefined>':) into Union (s.idame:)..."
+.  endfor
+.endfor
+.echo "  Handling Structs..."
+.for Struct as s
+.  s.json_type = 'Object'
+.  for root->GCC_XML. as f where f.context?'' = s.id
+.    copy f to s
+.-   echo " Copying $(name(f):) ofType:$(f.type?'') -> $(f.name?'<undefined>':) into $(s.name:)..."
+.  endfor
+.  if s.name = 'in_addr'
+.    s.json_type = 'InAddr'
+.    s.default_value = '{ 0 }'
+.  elsif name = 'char'
+.    s.default_value = "{ '\0' }"
+.  else
+.   s.default_value = '{ }'
+.  endif
+.endfor
+.echo "  Handling Struct / Fields..."
+.root.save("$(filename:)-706.xml")
+.for Class as c
+.  if string.prefixed(c.name?'no-t-name',"vector<")
+.    c.container = 'vector'
+.  elsif string.prefixed(c.name?'no-t-name',"list<")
+.    c.container = 'list'
+.  elsif string.prefixed(c.name?'no-t-name',"map<")
+.    c.container = 'map'
+.  else
+.-    echo "No handling for Class of type $(c.name?'WhatNoName??') yet...."
+.  endif
+.- ------------------------------------------------------------------------
+.  if c.container?'not-vector' = 'vector' | c.container?'not-list' = 'list'
+.    c.container_prefix   = string.prefix(c.name?'no-t-name',",")
+.    c.container_type     = string.defix(c.container_prefix,"$(c.container:)<")
+.    c.container_iterator = "std::$(c.container_prefix:) >::iterator"
+.    c.container_const_iterator = "std::$(c.container_prefix:) >::const_iterator"
+.    c.container_fundamental_type = c.container_type
+.    if regexp.match ("::([^:]+)$", c.container_type, last_type)
+.-      echo "Found $(last_type:)-type from container_type: $(c.container_type:)"
+.      c.container_fundamental_type = last_type 
+.    endif
+.    container_object_type = resolve_by_name(root->GCC_XML,c.container_fundamental_type)?
+.    if defined(container_object_type)
+.      copy container_object_type to c
+.      c.parent_type = name(container_object_type)
+.      c.type = container_object_type.id
+.    else
+.-     What to do for vectors and lists of type vector<std::basic_string<char>, std::allocator<std::basic_string<char> > >
+.-     <FundamentalType id="_4042" name="char" size="8" align="8" json_type_cast="(char)" json_type="String" default_value="0"/>
+.      if c.container_type = 'std::basic_string<char>'
+.        new c.FundamentalType
+.          FundamentalType.id = "_internal"
+.          FundamentalType.json_type = "String"
+.          FundamentalType.json_type_cast = "(std::string)"
+.          FundamentalType.default_value = '""'
+.        endnew
+.        c.parent_type = 'FundamentalType'
+.        c.type ="_internal"
+.        echo "Created a new Fundamental-String-type for Class $(c.name)..."
+.      elsif c.container_type = 'unsigned short'
+.        uint16_t_object = root->GCC_XML->Typedef(name = 'uint16_t')
+.        if !defined(uint16_t_object)
+.          abort "Unable to map 'unsigned short' to 'uint16_t - Missing typedef definition...."
+.        else
+.          copy uint16_t_object to c
+.          c.parent_type = 'Typedef'
+.          c.type = uint16_t_object.id           
+.        endif
+.      else
+.        echo "What to do for vectors and lists of type $(c.name?'WhatNoName??')"
+.      endif
+.    endif
+.  elsif c.container?'not-map' = 'map'
+.    c.container_prefix      = string.prefix(c.name?'no-t-name',",")
+.    c.container_key_type    = string.defix(c.container_prefix,"$(c.container:)<")
+.    c.map_rest              = string.defix(c.name,"$(c.container:)<$(c.container_key_type:), ")
+.    c.container_value_type  = string.prefix(c.map_rest?'no-t-name',",")
+.
+.    c.container_iterator       = "std::map<$(c.container_key_type:), $(c.container_value_type:) >::iterator"
+.    c.container_const_iterator = "std::map<$(c.container_key_type:), $(c.container_value_type:) >::const_iterator"
+.
+.    c.container_key_fundamental_type = c.container_key_type 
+.    c.container_value_fundamental_type = c.container_value_type 
+.
+.    if regexp.match ("::([^:]+)$", c.container_key_type, last_type)
+.      echo "Found $(last_type:)-type from container_key_type: $(c.container_key_type:)"
+.      c.container_key_fundamental_type = last_type 
+.    endif
+.    if regexp.match ("::([^:]+)$", c.container_value_type, last_type)
+.      echo "Found $(last_type:)-type from container_value_type: $(c.container_value_type:)"
+.      c.container_value_fundamental_type = last_type 
+.    endif
+.    echo "What to do for maps: $(c.name?'WhatNoName??')"
+.    echo "container_key_type        : $(c.container_key_type?'WhatNo-container_key_type??')"
+.    echo "container_value_type      : $(c.container_value_type?'WhatNo-container_value_type??')"
+.    echo "container_iterator        : $(c.container_iterator?'WhatNo-container_iterator??')"
+.    echo "container_const_iterator  : $(c.container_const_iterator?'WhatNo-container_const_iterator??')"
+.    echo "container_key_fundamental_type  : $(c.container_key_fundamental_type?'WhatNo-container_key_fundamental_type??')"
+.    echo "container_value_fundamental_type: $(c.container_value_fundamental_type?'WhatNo-container_value_fundamental_type??')"
+.    key_type = resolve_by_name(root->GCC_XML,c.container_key_fundamental_type)?
+.    if !defined(key_type)
+.      abort "(c.container_key_fundamental_type) could not be found as f,t,e,s"
+.    endif
+.    val_type = resolve_by_name(root->GCC_XML,c.container_value_fundamental_type)?
+.    if !defined(val_type)
+.      abort "(c.container_value_fundamental_type) could not be found as f,t,e,s"
+.    endif
+.    copy key_type to c
+.    c.container_key_parent_type = name(key_type)
+.    c.container_key_type_id     = key_type.id
+.    copy val_type to c
+.    c.container_val_parent_type = name(val_type)
+.    c.container_val_type_id     = val_type.id
+.    echo "Resolved both key- and value-types for std::map..."
+.  else
+.-    echo "What to do for Class $(c.name?'WhatNoName??')"
+.  endif
+.endfor
+.root.save("$(filename:)-923.xml")
+.for Struct as s
+.  s.json_type = 'Object'
+.  for Field as f
+.    for root->GCC_XML. as t where t.id?'' = f.type 
+.        f.resolved_type = name(t)
+.        if f.resolved_type = 'Class'
+.          if f.container?'not-vector' = 'vector' | f.container?'not-list' = 'list'
+.            element_type = root->GCC_XML->$(t.parent_type)(id = t.type)?
+.            if defined(element_type)
+.              copy element_type to t
+.            elsif f.container_type = 'std::basic_string<char>'
+.              f.container_fundamental_type = 'std::string'
+.              f.default_value = '""'
+.              t.json_type     = 'String'
+.              f.json_type     = 'String'
+.              f.json_typecast = '(std::string)'
+.              echo "Found $(f.container:) of std::string"
+.            endif
+.          elsif f.container?'not-map' = 'map'
+.            echo "TODO IMPLEMENT map-container..."
+.          endif
+.        elsif f.resolved_type = 'Struct'
+.          if string.prefixed(t.name?'no-t-name',"pair<")
+.-           echo "Found pair: Setting container-type...."
+.            f.container = 'pair'
+.            f.container_type = 'pair'
+.            f.json_type = 'Object'
+.            t.json_type = 'Object'
+.            for t.Field as pair_field
+.              pair_type = root->GCC_XML->$(pair_field.resolved_type)(id = pair_field.type)
+.              if defined(pair_Type)
+.                copy pair_type to pair_field
+.              endif
+.            endfor
+.          else
+.            copy t to f 
+.          endif
+.        else
+.-          echo "No special treatment Field.type: for $(f.resolved_type:).. YET"
+.        endif
+.-       echo "$(name(t)) $(f.type)"
+.        f.default_value = t.default_value?'{}'
+.-       ALWAYS copy the type since it might be used multiple types...
+.        copy t to f
+.    endfor
+.  endfor
+.endfor
+.- -----------------------------------------------------------------------------
+.- CLEANED UP Structures - run the render-functions
+.- -----------------------------------------------------------------------------
+.root.save("$(filename:)-cleaned.xml")
+.file_id = ""
+.if defined(switches.file)
+.  echo "Analyzing file $(switches.file:) in $(filename:)..."
+.  file_item = root->GCC_XML->File(name = switches.file)
+.  if defined(file_item)
+.    echo "  File $(switches.file:) has id: $(file_item.id) - generating h,cpp..."
+.    file_id = file_item.id
+.  endif
+.else
+.  abort "Passed $(switches.file:) could not be found in $(filename:) as File-element..."
+.endif
+.
+.output_file = file.basename(switches.file)
+.----------------------------------------------------------------
+.- Generate the h-file
+.----------------------------------------------------------------
+.if defined(switches.type)
+.output "$(output_file:).generated.h"
+.gentype = "definition"
+.header(gentype,switches.file)
+.for . as e where string.locate(switches.type, name(e))?-1 >= 0
+.  if file_id = e.file
+.    if e.name?"" <> ""
+.      namespaces(e,"open")
+.      enum_str_from_to_functions(gentype,e)
+.      struct_stream_map_functions(gentype,e,root)
+.      struct_compare_functions(gentype,e,root)
+.      struct_json_functions(gentype,e,root)
+.      namespaces(e,"close")
+.    endif
+.  endif
+.endfor
+.footer(gentype,switches.file)
+.----------------------------------------------------------------
+.- Generate the cpp-file
+.----------------------------------------------------------------
+.output "$(output_file:).generated.cpp"
+.gentype = "implementation"
+.header(gentype,switches.file)
+.for . as e where string.locate(switches.type, name(e))?-1 >= 0
+.  if file_id = e.file
+.    if e.name?"" <> ""
+.      additional_settings = root->settings->$(name(e))(name = e.name)?
+.      if additional_settings.ignore?'false' = 'true'
+.        echo "  Skipping Helper-function generation of $(name(e)) -> $(e.name:)...."
+.      else
+.      namespaces(e,"open")
+.      enum_str_from_to_functions(gentype,e)
+.      struct_stream_map_functions(gentype,e,root)
+.      struct_compare_functions(gentype,e,root)
+.      struct_json_functions(gentype,e,root)
+.      namespaces(e,"close")
+.      endif
+.    endif
+.  endif
+.endfor
+.footer(gentype,switches.file)
+.endif
+.----------------------------------------------------------------
+.- Generate the test-cases
+.----------------------------------------------------------------
+.  output_test = file.basename(switches.file)
+.  output "$(output_test:)_test.cpp"
+.  for . as e where string.locate(switches.type, name(e))?-1 >= 0
+.    if file_id = e.file
+.      if e.name?"" <> ""
+.        if name(e) = "Struct"
+.          additional_settings = root->settings->$(name(e))(name = e.name)?
+.          if additional_settings.ignore?'false' = 'true'
+.            echo "  Skipping Testcase-generation of $(name(e)) -> $(e.name:)...."
+.          else
+.            test_structure(e)
+.          endif
+.        endif
+.      endif
+.    endif
+.  endfor
+
+.root.save("$(filename:)-hiera.xml")
