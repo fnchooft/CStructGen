@@ -26,7 +26,8 @@ install:
 
   # Need to see if pkg-config is configured and what version
   - sudo apt-get install libgtest-dev
-
+  - sudo apt-get install autoconf
+  
 script:
   - chmod +x autogen.sh
   - ./autogen.sh --prefix $PWD/install
