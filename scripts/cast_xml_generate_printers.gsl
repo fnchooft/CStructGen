@@ -129,6 +129,7 @@
 >bool operator>=($(my.class.name:) lhs, $(my.class.name:) rhs);
 >bool operator==($(my.class.name:) lhs, $(my.class.name:) rhs);
 >bool operator!=($(my.class.name:) lhs, $(my.class.name:) rhs);
+.   if defined(struct_settings)
 .    for struct_settings.CompareFunction as cp
 >
 >// Generate CompareFunction $(cp.name:)
@@ -179,6 +180,7 @@
 >
 >
 .    endfor
+.   endif # only if we have struct_settings....
 .  else
 >// Generated default compare implementation for struct: $(my.class.name:)
 >bool operator<($(my.class.name:) lhs, $(my.class.name:) rhs) {
@@ -309,21 +311,7 @@
 >  $(my.json_object:) << "$(my.field_object.name:)" << $(my.scope:)_$(my.field_object.name:)_object;
 .      endif
 .    endif
-.  elsif my.type_object.json_type = 'String'
-.    if my.scope = 'Array'
->  $(my.json_object:)          << $(my.input_variable:);
-.    elsif my.scope = 'MapKey'
->  $(my.json_object:) << "key" << $(my.input_variable:);
-.    elsif my.scope = 'MapVal'
->  $(my.json_object:) << "val" << $(my.input_variable:);
-.    elsif my.scope = 'VectorList'
->  $(my.json_object:)          << $(my.input_variable:);
-.    elsif name(my.type_object) = 'Enumeration' | my.type_object.parent_type?'' = 'Enumeration'
->  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
-.    else
->  $(my.json_object:) << "$(my.field_object.name:)" << $(my.input_variable:);
-.    endif
-.  elsif my.type_object.json_type = 'Number'
+.  elsif my.type_object.json_type = 'Number' | my.type_object.json_type = 'String'
 .    if my.scope = 'Array'
 >  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'MapKey'
@@ -332,22 +320,24 @@
 >  $(my.json_object:) << "val" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'VectorList'
 >  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif name(my.type_object) = 'Enumeration' | my.type_object.parent_type?'' = 'Enumeration'
+>  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
 .    else
 >  $(my.json_object:) << "$(my.field_object.name:)" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    endif
 .  elsif my.type_object.json_type = 'Boolean'
 .    if my.scope = 'Array'
->  $(my.json_object:)          << ($(my.type_object.name:))$(my.input_variable:);
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'MapKey'
->  $(my.json_object:) << "key" << ($(my.type_object.name:))$(my.input_variable:);
+>  $(my.json_object:) << "key" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'MapVal'
->  $(my.json_object:) << "val" << ($(my.type_object.name:))$(my.input_variable:);
+>  $(my.json_object:) << "val" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'VectorList'
->  $(my.json_object:) << $(my.input_variable:);
+>  $(my.json_object:) << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    else
->  $(my.json_object:) << "$(my.field_object.name:)" << ($(my.type_object.name:))$(my.input_variable:);
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    endif
-.  elsif my.type_object.json_type = 'Enumeration'
+.  elsif my.type_object.json_type = 'Enumeration' | my.type_object.json_type = 'InAddr' 
 .    if my.scope = 'Array'
 >  $(my.json_object:)          << toString($(my.input_variable:));
 .    elsif my.scope = 'MapKey'
@@ -358,6 +348,18 @@
 >  $(my.json_object:)          << toString($(my.input_variable:));
 .    else
 >  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
+.    endif
+.  elsif my.type_object.json_type_cast = '(signed char)'
+.    if my.scope = 'Array'
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'MapKey'
+>  $(my.json_object:) << "key" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'MapVal'
+>  $(my.json_object:) << "val" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    elsif my.scope = 'VectorList'
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.    else
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    endif
 .  else
 >  // Else-render_fundamental_to_json-branch...
@@ -370,13 +372,22 @@
 .    elsif my.scope = 'VectorList'
 >  $(my.json_object:) << $(my.input_variable:); // VectorList-else....
 .    else
->  $(my.json_object:) << "$(my.field_object.name:)" << ($(my.type_object.name:))$(my.input_variable:); // ??Scope??-else....
+>  $(my.json_object:) << "$(my.field_object.name:)" << $(my.type_object.json_type_cast?'')$(my.input_variable:); // ??Scope??-else....
 .    endif
 .  endif
 .endfunction
 .
+.function struct_json_header_functions(class,root)
+>// Generated toJsonString / fromJsonString definition for struct: $(my.class.name:)
+>std::string toJsonString($(my.class.name:) *input);
+>int32_t fromJson($(my.class.name:) *output, std::string jsondata);
+.endfunction
+.
 .
 .function struct_json_functions(gentype,class,root)
+.  if (my.gentype = 'definition')
+.struct_json_header_functions(my.class,my.root)
+.  else
 .  if name(my.class) = 'Struct'
 .    ftype = my.class->Union?
 .    if defined(ftype)
@@ -385,11 +396,6 @@
 .        abort "Failed to load settings for union-field in structure $(my.class.name:)"
 .      endif
 .    endif
-.  if (my.gentype = 'definition')
->// Generated toJsonString / fromJsonString definition for struct: $(my.class.name:)
->std::string toJsonString($(my.class.name:) *input);
->int32_t fromJson($(my.class.name:) *output, std::string jsondata);
-.  else
 >// Generated toJsonString / fromJsonString implementation for struct: $(my.class.name:)
 >std::string toJsonString($(my.class.name:) *input) {
 .[gsl].shuffle = 1
@@ -401,6 +407,9 @@
 .-   IF the typeobject is not in the field then it was not copied over....
 .    if !defined(typeobject)
 .      typeobject = root->GCC_XML->$(a.resolved_type?)(id?'' = a.type)?
+.    endif
+.    if !defined(typeobject)
+.      abort "No typeobject?? $(a.name)"
 .    endif
 .- ------------------------------------union_field defined -------------------------------------------------
 .    if defined(union_field)
@@ -431,7 +440,7 @@
 .      if defined(typeobject.container) # See container-preparations in Struct/Field/Class-type
 .        if typeobject.container?'not-vector' = 'vector' | typeobject.container?'not-list' = 'list'
 .-       ------------------------------------ vector | list ---------------------------------------
->  // $(a.name:) is of type: $(name(typeobject)) trying to resolve type $(typeobject.parent_type:)
+>  // $(a.name:) is of type: $(name(typeobject?'no-typeobject')) trying to resolve type $(typeobject.parent_type?'no-typeobject':)
 .        container_entity_type_object = typeobject->$(typeobject.parent_type:)
 >  // Found $(name(container_entity_type_object))
 >  jsonxx::Array jsona_$(a.name:);
@@ -476,6 +485,7 @@
 >  jsono << "$(a.name:)" << $(a.name:)_pair_object;
 .- ------------------------------------resolved-type: Class ----------------------------------------------------
 .    else
+>  // In the else branch....
 .      render_fundamental_to_json("$(a.name:)","jsono",a,typeobject,"input->$(a.name:)",typeobject.json_type?'Not-Set-For-Fundamental??')
 .    endif
 .- ----------------------------------------------------------------------------------------
@@ -518,15 +528,8 @@
 >    jsonxx::Array $(a.name:)_array = json.get<jsonxx::Array>("$(a.name:)");
 >    for(int af = 0; af < $(a.name:)_array.size(); af++)
 >    {
-.      if typeobject.container_type = 'char *'
->      $(typeobject.container_type:) $(a.name:)_af = strdup($(a.name:)_array.get<jsonxx::$(a.json_type:)>(af).c_str());
-.      elsif typeobject.container_type = 'char' | json_type = 'String'
->      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::$(a.json_type:)>(af);
-.      elsif typeobject.container_fundamental_type = 'basic_string<char>'
->      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::String>(af);
-.      elsif typeobject.container_type = 'unsigned short'
->      $(typeobject.container_type:) $(a.name:)_af = $(a.name:)_array.get<jsonxx::Number>(af);
-.      elsif typeobject.container_type = 'in_addr'
+.      if typeobject.container_type = 'in_addr'
+.-     ----------------------------------------------------------------------------------
 >      $(typeobject.container_type:) $(a.name:)_af;
 >      std::string $(name:c)_str = $(a.name:)_array.get<jsonxx::String>(af);
 >      int cc = inet_pton(AF_INET, $(name:c)_str.c_str(), &$(a.name:)_af);
@@ -534,10 +537,9 @@
 >      {
 >        return -$(index(a));
 >      }
-.      else
->      // Hum - should this be dependant on Type?
+.      elsif a.resolved_type = 'Class'
+.-     ----------------------------------------------------------------------------------
 >      $(typeobject.container_type:) $(a.name:)_af;
-.      
 .      element_type_object = typeobject->$(typeobject.parent_type)(id = typeobject.type)?
 .        if element_type_object.json_type?'not-Object' = 'Object'
 >      if(fromJson(&$(a.name:)_af, $(a.name:)_array.get<jsonxx::Object>(af).json()) != 0)
@@ -550,7 +552,7 @@
 >        return -$(index(a));
 >      }
 .        else
->      // Not object nor Enumeration - .....
+>      $(a.name:)_af = $(element_type_object.json_type_cast?'':)$(a.name:)_array.get<jsonxx::$(element_type_object.json_type:)>(af);
 .        endif
 .      endif
 >      output->$(a.name:).push_back($(a.name:)_af);
@@ -624,38 +626,6 @@
 >    if(cc == 0) // Error
 >      return -$(index(a));
 >  }
-.  elsif typeobject.name?'unknown' = 'unsigned int'
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (unsigned int)json.get<jsonxx::Number>("$(a.name:)");
->  }
-.  elsif typeobject.name?'unknown' = 'int'
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
->  }
-.  elsif typeobject.name?'unknown' = 'float'
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (float)json.get<jsonxx::Number>("$(a.name:)");
->  }
-.  elsif typeobject.name?'unknown' = 'long int'
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (long)json.get<jsonxx::Number>("$(a.name:)");
->  }
-.  elsif regexp.match("string",typeobject.name?'')
->  if(json.has<jsonxx::String>("$(a.name:)"))
->  {
->    output->$(a.name:) = json.get<jsonxx::String>("$(a.name:)");
->    //return -$(index(a));
->  }
-.  elsif typeobject.name?'not-bool' = 'bool'
->  if(json.has<jsonxx::Boolean>("$(a.name:)"))
->  {
->    output->$(a.name:) = json.get<jsonxx::Boolean>("$(a.name:)");
->    //return -$(index(a));
->  }
 .  elsif name(typeobject) = 'ArrayType'
 >  if(json.has<jsonxx::Array>("$(a.name:)"))
 >  {
@@ -668,26 +638,6 @@
 >      output->$(a.name:)[af] = json.get<jsonxx::Array>("$(a.name:)").get<jsonxx::Number>(af);
 >    }
 >  }
-.  elsif typeobject.parent_type?'unknown' = 'FundamentalType'
-.    if regexp.match("uint8_t|uint16_t|uint32_t|uint64_t|int8_t|int16_t|int32_t|int64_t|uInt8|uInt16|uInt32|Int|int|unsigned",typeobject.name?)
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
->    //return -$(index(a));
->  }
-.    else
->    // Type $(typeobject.name?'oopsie') not implemented yet.
-.    endif
-.  elsif typeobject.parent_type?'unknown' = 'Typedef'
-.    if regexp.match("uInt8|uInt16|uInt32|Int|float|unsigned int",typeobject.name?'')
->  if(json.has<jsonxx::Number>("$(a.name:)"))
->  {
->    output->$(a.name:) = (int)json.get<jsonxx::Number>("$(a.name:)");
->    //return -$(index(a));
->  }
-.    else
->    // Type $(typeobject.name?'oopsie') not implemented yet.
-.    endif
 .  elsif typeobject.parent_type?'unknown' = 'Struct'
 >  if(json.has<jsonxx::Object>("$(a.name:)"))
 >  {
@@ -709,7 +659,12 @@
 >  {
 >    output->$(a.name:) = strdup(json.get<jsonxx::String>("$(a.name:)").c_str());
 >  }
-
+.  else
+>  // Line 663: Else case json_type: $(typeobject.json_type?'NotSet':) json_type_cast: $(typeobject.json_type_cast?'NotSet':)
+>  if(json.has<jsonxx::$(typeobject.json_type:)>("$(a.name:)"))
+>  {
+>    output->$(a.name:) = $(typeobject.json_type_cast?'':)json.get<jsonxx::$(typeobject.json_type:)>("$(a.name:)");
+>  }
 .  endif
 .  endif
 .  endfor
@@ -802,15 +757,23 @@
 >
 .namespaces(e,"open")
 >TEST($(my.structure.name:), compareAB){
+.if switches.cstandard?'C99' = 'C99'
 >  $(my.structure.name:) a$(my.structure.c_struct_init?' = {}':);
 >  $(my.structure.name:) b$(my.structure.c_struct_init?' = {}':);
+.else
+>  $(my.structure.name:) a = $(my.structure.name:)();
+>  $(my.structure.name:) b = $(my.structure.name:)();
+.endif
 >  EXPECT_EQ(a,b);
+.if switches.cstandard?'C99' = 'C99'
+>  $(my.structure.name:) c$(my.structure.c_struct_init?' = {}':);
+.else
+>  $(my.structure.name:) c = $(my.structure.name:)();
+.endif
 >  std::cout << "JSON-b: " << toJsonString(&b) << std::endl;
->  $(my.structure.name:) c;
 >  EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
 >  std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
 >  EXPECT_EQ(c,b);
->  EXPECT_EQ(c,a);
 >}
 .namespaces(e,"close")
 
@@ -873,7 +836,129 @@
 .- CLEAN UP Structures - moving internal components inside to make sure where
 .- handle internal structs (inside unions) differently.
 .- -----------------------------------------------------------------------------
-.echo "  Cleaning up..."
+.c_standards = "C99|C11|C14"
+.c_standard  = "C99"
+.if defined(switches.cstandard)
+.  c_standard = switches.cstandard
+.  if !regexp.match("$(C_STANDARDS:)","$(C_STANDARD:)")
+.    abort "cstandards supported are $(c_standards:) - Passed standard: $(c_standard:) is not supported!"
+.  endif
+.else
+.  echo "Defaulting to c-standard:  $(c_standard:)"
+.endif
+.- -----------------------------------------------------------------------------
+.echo "  Cleaning up definition file..."
+.- -----------------------------------------------------------------------------
+.---- http://en.cppreference.com/w/cpp/language/types -- will factor this out in a seperate-file
+.- -------------------------------------------------------------------------------------------
+.new TypeMapping 
+.  TypeMapping.type = 'unsigned long'
+.  TypeMapping.new_type = 'uint64_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned long)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'in_addr'
+.  TypeMapping.new_type = 'in_addr'
+.  TypeMapping.default  = '{ 0 }'
+.  TypeMapping.jsonxx_type  = 'String'
+.  TypeMapping.jsonxx_type_cast = '(std::string)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'float'
+.  TypeMapping.new_type = 'float'
+.  TypeMapping.default  = '0.0f'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(float)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'double'
+.  TypeMapping.new_type = 'double'
+.  TypeMapping.default  = '0.0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(double)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'long'
+.  TypeMapping.new_type = 'int64_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(long long)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'unsigned int'
+.  TypeMapping.new_type = 'uint32_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'int'
+.  TypeMapping.new_type = 'int32_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'unsigned short'
+.  TypeMapping.new_type = 'uint16_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'short'
+.  TypeMapping.new_type = 'int16_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(signed int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'unsigned char'
+.  TypeMapping.new_type = 'uint8_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'signed char'
+.  TypeMapping.new_type = 'int8_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(signed int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'char'
+.  TypeMapping.new_type = 'char'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned int)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'bool'
+.  TypeMapping.new_type = 'bool'
+.  TypeMapping.default  = 'false'
+.  TypeMapping.jsonxx_type  = 'Boolean'
+.  TypeMapping.jsonxx_type_cast = '(bool)'
+.endnew
+.new TypeMapping 
+.-  TypeMapping.type = 'std::basic_string&lt;char&gt;'
+.  TypeMapping.type = 'std::basic_string<char>'
+.  TypeMapping.new_type = 'std::string'
+.  TypeMapping.default  = '""'
+.  TypeMapping.jsonxx_type  = 'String'
+.  TypeMapping.jsonxx_type_cast = '(std::string)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'std::string'
+.  TypeMapping.new_type = 'string'
+.  TypeMapping.default  = '""'
+.  TypeMapping.jsonxx_type  = 'String'
+.  TypeMapping.jsonxx_type_cast = '(std::string)'
+.endnew
+
+.- -------------------------------------------------------------------------------------------
 .for Function as f
 . delete f
 .endfor
@@ -889,30 +974,48 @@
 .for Destructor as d
 . delete d
 .endfor
-.for Field as f
-.  for root->GCC_XML. as t where t.id?'' = f.type 
-.    f.resolved_type = name(t)
-.  endfor
+.- -------------------------------------------------------------------------------------------
+.for . as element where defined(id)
+.  new root->GCC_XML.Id2Type
+.   Id2Type.eid    = element.id
+.   Id2Type.ename  = name(element)
+.  endnew
+.endfor
+.- -------------------------------------------------------------------------------------------
+.for Class as c
+.  if    string.prefixed(c.name?'no-t-name',"vector<")
+.    c.container = 'vector'
+.  elsif string.prefixed(c.name?'no-t-name',"list<")
+.    c.container = 'list'
+.  elsif string.prefixed(c.name?'no-t-name',"map<")
+.    c.container = 'map'
+.  else
+.-    echo "No handling for Class of type $(c.name?'WhatNoName??') yet...."
+.  endif
+.  if defined(c.container)
+.    for root->GCC_XML.TypeMapping as tm
+.-      if string.match(c.name, tm.type)
+.      if regexp.match (".*<$(tm.type)[,>].*", c.name)
+.        echo "Adjusting types for vector,list $(c.name) -> converting [$(tm.type)] to [$(tm.new_type)]"
+.        c.name = string.replace(c.name,"<$(tm.type)|<$(tm.new_type)")
+.      else
+.-        echo "Hum.... why not $(c.container) of type $(c.name).... for old_type: "
+.      endif
+.    endfor
+.  else
+.-    echo "What to do for Class $(c.name?'WhatNoName??')"
+.  endif
 .endfor
 .echo "  Handling Enumerations..."
+.- -------------------------------------------------------------------------------------------
 .for Enumeration as e
 .  e.default_value = e->EnumValue.name
 .  e.json_type = 'String'
 .  e.from_json_function = 'toString'
+.  e.json_type_cast = '(std::string)'
 .endfor
-.echo "  Handling PointerTypes..."
-.for PointerType as pt
-.  for root->GCC_XML. as tt where tt.id?'' = pt.type
-.      pt.parent_value_type = tt.name?'Unknown-Parent-Value-Type'
-.      if tt.name?'unknown-type' = 'char'
-.        pt.default_value = 'NULL'
-.        pt.json_type = 'String'
-.      endif
-.  endfor
-.endfor
+.- -------------------------------------------------------------------------------------------
 .echo "  Handling FundamentalTypes..."
-.- root.save("$(filename:)-624.xml")
-.- echo diag.used()
 .for FundamentalType as ft
 .  ft.json_type_cast = '($(ft.name:))'
 .  if regexp.match('.*[uU]?[Ii]nt.*', '$(ft.name)')?'' = '-1'
@@ -940,32 +1043,37 @@
 .  endif
 .endfor
 .echo "  Handling Typedefs..."
-.- root.save("$(filename:)-643.xml")
+.- -------------------------------------------------------------------------------------------
 .for Typedef as t
-.  for root->GCC_XML. as tt where tt.id?'' = t.type
-.      t.parent_type = name(tt)
-.      if regexp.match('in_addr', '$(t.name)')?'' = '-1'
-.        t.json_type      = 'String'
-.        t.default_value  = '{ 0 }'
-.      elsif regexp.match('.*string.*', '$(t.name)')?'' = '-1'
-.        t.json_type_cast = tt.json_type_cast?''
-.        t.json_type      = 'String'
-.        t.default_value  = '""'
-.      elsif t.parent_type = 'Enumeration'
-.        t.json_type_cast     = tt.json_type_cast?
-.        t.json_type          = tt.json_type?
-.        t.default_value      = tt.default_value?
-.        t.from_json_function = tt.from_json_function?
-.      elsif t.parent_type = 'Struct'
-.        t.json_type = 'Object'
-.        t.default_value  = tt.default_value?
-.      else
-.        t.json_type_cast = tt.json_type_cast?
-.        t.json_type      = tt.json_type?
-.        t.default_value  = tt.default_value?
-.      endif
-.  endfor
+.  tt = root->GCC_XML->Id2Type(eid = t.type)?
+.  if defined(tt)
+.    t.parent_type = tt.ename
+.    type_mapping_object = root->GCC_XML->TypeMapping(new_type = t.name)?
+.    if defined(type_mapping_object)
+.      echo "TypeMapping found: $(type_mapping_object.type:) -> $(type_mapping_object.new_type)"
+.      t.json_type_cast  = type_mapping_object.jsonxx_type_cast
+.      t.json_type       = type_mapping_object.jsonxx_type
+.      t.default_value   = type_mapping_object.default
+.    elsif t.parent_type = 'Enumeration'
+.      et = root->GCC_XML->Enumeration(id = t.type)
+.      t.json_type_cast     = et.json_type_cast?
+.      t.json_type          = et.json_type?
+.      t.default_value      = et.default_value?
+.      t.from_json_function = et.from_json_function?
+.    elsif t.parent_type = 'Struct'
+.      st = root->GCC_XML->Struct(id = t.type)
+.      t.json_type = 'Object'
+.      t.default_value  = st.default_value?
+.    else
+.-      t.json_type_cast = tt.json_type_cast?
+.-      t.json_type      = tt.json_type?
+.-      t.default_value  = tt.default_value?
+.    endif
+.  else
+.    echo "Could not find type for Typedef $(t.name:)"
+.  endif
 .endfor
+.- -------------------------------------------------------------------------------------------
 .echo "  Handling ArrayTypes..."
 .- root.save("$(filename:)-663.xml")
 .for ArrayType as at
@@ -987,15 +1095,15 @@
 .      endif
 .  endfor
 .endfor
+.- -------------------------------------------------------------------------------------------
 .echo "  Handling Unions..."
-.- root.save("$(filename:)-683.xml")
-.- echo diag.used()
 .for Union as s
 .  for root->GCC_XML. as f where f.context?'' = s.id
 .    move f to s
 .-   echo " Moving $(name(f):) ofType:$(f.type?'') -> $(f.name?'<undefined>':) into Union (s.idame:)..."
 .  endfor
 .endfor
+.- -------------------------------------------------------------------------------------------
 .echo "  Handling Structs..."
 .for Struct as s
 .  s.json_type = 'Object'
@@ -1012,8 +1120,9 @@
 .   s.default_value = '{ }'
 .  endif
 .endfor
+.- -------------------------------------------------------------------------------------------
 .echo "  Handling Struct / Fields..."
-.root.save("$(filename:)-706.xml")
+.- root.save("$(filename:)-706.xml")
 .for Class as c
 .  if string.prefixed(c.name?'no-t-name',"vector<")
 .    c.container = 'vector'
@@ -1113,9 +1222,11 @@
 .  endif
 .endfor
 .root.save("$(filename:)-923.xml")
+.- -------------------------------------------------------------------------------------------
 .for Struct as s
 .  s.json_type = 'Object'
 .  for Field as f
+.-   echo "$(f.name) .... handling ....."
 .    for root->GCC_XML. as t where t.id?'' = f.type 
 .        f.resolved_type = name(t)
 .        if f.resolved_type = 'Class'
@@ -1142,6 +1253,8 @@
 .            f.json_type = 'Object'
 .            t.json_type = 'Object'
 .            for t.Field as pair_field
+.              pair_type_to_element_object = root->GCC_XML->Id2Type(eid = pair_field.type)
+.              pair_field.resolved_type = pair_type_to_element_object.ename
 .              pair_type = root->GCC_XML->$(pair_field.resolved_type)(id = pair_field.type)
 .              if defined(pair_Type)
 .                copy pair_type to pair_field

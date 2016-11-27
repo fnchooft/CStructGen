@@ -1,4 +1,4 @@
-# Code-generator for C-Structs based on CASTXML gccxml-output
+# Code-generator for C/C++-Structs based on CASTXML gccxml-output
 
 In the case existing C-Structs are used in a project, the need occurs to
 have compare-operators, toString-functions and maybe the occasional

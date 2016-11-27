@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: StructGen
+Description: Code-generator for C/C++-Structs based on CASTXML gccxml-output
+Version: @PACKAGE_VERSION@
+URL: @PACKAGE_URL@
+Libs: -L${libdir} -l@PACKAGE_NAME@-@PACKAGE_VERSION@
+Cflags: -I${includedir}/@PACKAGE_NAME@-@PACKAGE_VERSION@
+Requires: @PACKAGE_REQUIRES@
