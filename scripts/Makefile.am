@@ -1,0 +1,1 @@
+bin_SCRIPTS = gen.sh cast_xml_generate_printers.gsl remove_attributes.xslt
