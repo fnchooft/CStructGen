@@ -28,6 +28,7 @@ install:
   - sudo apt-get install libgtest-dev
 
 script:
+  - chmod +x autogen.sh
   - ./autogen.sh --prefix $PWD/install
   - make
 
