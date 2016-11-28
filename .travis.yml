@@ -30,7 +30,7 @@ install:
   - sudo apt-get install autoconf
   # Not needed per se, but could be used to make a more minimal,readable xml
   - sudo apt-get install xsltproc
-  - sudo apt-get install castxml
+  # - sudo apt-get install castxml
 
 script:
   # Creating build-enviroment

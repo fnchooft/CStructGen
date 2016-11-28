@@ -11,7 +11,7 @@ fi
 
 AC_CHECK_PROGS([CASTXML_TOOL], [castxml])
 if test -z "$CASTXML_TOOL";
-   then AC_MSG_ERROR([castxml not found - install it with apt-get install castxml or by following the instructions under: https://github.com/fnchooft/CastXML])
+   then AC_MSG_WARN([castxml not found - install it with apt-get install castxml or by following the instructions under: https://github.com/fnchooft/CastXML])
 fi
 
 AC_CHECK_PROGS([XSLTPROC], [xsltproc])
