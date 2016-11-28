@@ -18,7 +18,7 @@ AC_CHECK_PROGS([XSLTPROC], [xsltproc])
 
 # From https://nerdland.net/2009/07/detecting-c-libraries-with-autotools
 AC_CHECK_LIB([gtest_main], [main], 
-  [HAVE_GTEST=1] [GTEST_LIBS="$TEST_LIBS -lgtest_main"], 
+  [HAVE_GTEST=1] [GTEST_LIBS="$TEST_LIBS -lgtest -lpthread -lgtest_main"], 
   AC_MSG_WARN([libgtest is not installed.]))
 
 if test -z "$HAVE_GTEST";
