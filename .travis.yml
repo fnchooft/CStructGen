@@ -11,10 +11,13 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgtest-dev
   - "cd /usr/src/gtest && sudo cmake . && sudo cmake --build . && sudo mv libg* /usr/local/lib/ ; cd -"
+  
+  # Install 
+  - wget https://midas3.kitware.com/midas/download/bitstream/460535/castxml-linux.tar.gz
+  - tar -xzvf castxml-linux.tar.gz
+  - export PATH=$PATH:$PWD/castxml/bin
 
 install: 
-  # - sudo apt-get install libboost1.54-all-dev
-
   # Always install valgrind
   - sudo apt-get install valgrind
 
