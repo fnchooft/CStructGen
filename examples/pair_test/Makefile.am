@@ -1,11 +1,8 @@
 check_PROGRAMS = Pair_test
 TESTS = Pair_test
 
-GTESTLIB=$(shell pkg-config gtest-1.6.0 --libs)
-GTESTFLAGS=$(shell pkg-config gtest-1.6.0 --cflags)
-
-Pair_test_CXXFLAGS= $(GTESTFLAGS)
-Pair_test_LDFLAGS= $(GTESTLIB) -lgtest_main
+Pair_test_CXXFLAGS= $(GTEST_CFLAGS)
+Pair_test_LDFLAGS= $(GTEST_LIBS) -lgtest_main
 Pair_test_SOURCES=Pair.generated.cpp Pair_test.cpp jsonxx.cc
 
 generate_xml:
