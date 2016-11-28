@@ -48,6 +48,10 @@ script:
   - cd ../..
   - ./autogen.sh --prefix $BD
   - make
+  - cd examples/pair_test
+  - make generate_code
+  - make check
+  - cd ../..
 
 after_script:
   - make check

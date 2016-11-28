@@ -21,12 +21,6 @@ TEST(SPair, compareAB){
   SPair a = SPair();
   SPair b = SPair();
   EXPECT_EQ(a,b);
-  b.an_int = 12345;
-  SPairSecond bbs;
-  bbs.astring = "Abcdefgh";
-  bbs.pairtype = 3;
-  b.apair = std::make_pair(true, bbs);
-  
   SPair c = SPair();
   std::cout << "JSON-b: " << toJsonString(&b) << std::endl;
   EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
