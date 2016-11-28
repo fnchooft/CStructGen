@@ -5,7 +5,6 @@ language: cpp
 
 compiler:
   - gcc
-  - clang
 
 before_install:
   # https://github.com/easylogging/easyloggingpp/blob/master/.travis.yml - as per..
