@@ -1315,12 +1315,17 @@
 .for . as e where string.locate(switches.type, name(e))?-1 >= 0
 .  if file_id = e.file
 .    if e.name?"" <> ""
+.      additional_settings = root->settings->$(name(e))(name = e.name)?
+.      if additional_settings.ignore?'false' = 'true'
+.        echo "  Skipping Helper-function generation of $(name(e)) -> $(e.name:)...."
+.      else
 .      namespaces(e,"open")
 .      enum_str_from_to_functions(gentype,e)
 .      struct_stream_map_functions(gentype,e,root)
 .      struct_compare_functions(gentype,e,root)
 .      struct_json_functions(gentype,e,root)
 .      namespaces(e,"close")
+.      endif
 .    endif
 .  endif
 .endfor

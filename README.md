@@ -1,3 +1,5 @@
+(https://travis-ci.org/fnchooft/CStructGen.svg?branch=master)
+
 # Code-generator for C/C++-Structs based on CASTXML gccxml-output
 
 In the case existing C-Structs are used in a project, the need occurs to
