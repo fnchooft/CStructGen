@@ -27,6 +27,7 @@
 >#ifdef __cplusplus
 >
 >
+>
 .output_file = file.basename(my.original_file)
 .output_file += ".generated.h"
 >#include "$(output_file:)"
@@ -137,7 +138,7 @@
 >struct $(my.class.name:)$(cp.name:) {
 >    $(my.class.name:) rhs;
 >    explicit $(my.class.name:)$(cp.name:)($(my.class.name:) rhs) : rhs(rhs) { }
->    inline bool operator()(const $(my.class.name:) & lhs) const 
+>    inline bool operator()(const $(my.class.name:) & lhs) const
 >    {
 .[gsl].shuffle = 1
 .  for my.class.Field as a
@@ -145,6 +146,11 @@
 .    if !defined(is_key)
 .      next
 .    endif
+.    sub_key_variable = ''
+.    if defined(is_key->SubKeyField)
+.      sub_key_variable = '.' + is_key->SubKeyField.name
+.    endif
+.    field_to_compare = "$(a.name:)$(sub_key_variable:)"
 .    union_field = struct_settings->Union(field = a.name)?
 .    if defined(union_field)
 >    // $(a.name:) --> based on the value of $(union_field.type:) part of union $(union_field.field)
@@ -164,11 +170,11 @@
 .      else
 .        typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
 .        if typeobject.parent_value_type?'ns' = 'char'
->    if (lhs.$(a.name:) == NULL && rhs.$(a.name:) != NULL) return false;
->    if (lhs.$(a.name:) != NULL && rhs.$(a.name:) == NULL) return false;
->    if (strcmp(lhs.$(a.name:),lhs.$(a.name:)) != 0) return false;
+>    if (lhs.$(field_to_compare:) == NULL && rhs.$(field_to_compare:) != NULL) return false;
+>    if (lhs.$(field_to_compare:) != NULL && rhs.$(field_to_compare:) == NULL) return false;
+>    if (strcmp(lhs.$(field_to_compare:),lhs.$(field_to_compare:)) != 0) return false;
 .        else
->    if (lhs.$(a.name:) != rhs.$(a.name:)) return false;
+>    if (lhs.$(field_to_compare:) != rhs.$(field_to_compare:)) return false;
 .        endif
 .      endif
 .    endif
@@ -319,7 +325,11 @@
 .    elsif my.scope = 'MapVal'
 >  $(my.json_object:) << "val" << $(my.type_object.json_type_cast?'')$(my.input_variable:);
 .    elsif my.scope = 'VectorList'
+.      if name(my.type_object) = 'Enumeration'
+>  $(my.json_object:)          << $(my.type_object.json_type_cast?'')toString($(my.input_variable:));
+.      else
 >  $(my.json_object:)          << $(my.type_object.json_type_cast?'')$(my.input_variable:);
+.      endif
 .    elsif name(my.type_object) = 'Enumeration' | my.type_object.parent_type?'' = 'Enumeration'
 >  $(my.json_object:) << "$(my.field_object.name:)" << toString($(my.input_variable:));
 .    else
@@ -485,7 +495,7 @@
 >  jsono << "$(a.name:)" << $(a.name:)_pair_object;
 .- ------------------------------------resolved-type: Class ----------------------------------------------------
 .    else
->  // In the else branch....
+>  // gsl:488 - In the else branch....
 .      render_fundamental_to_json("$(a.name:)","jsono",a,typeobject,"input->$(a.name:)",typeobject.json_type?'Not-Set-For-Fundamental??')
 .    endif
 .- ----------------------------------------------------------------------------------------
@@ -546,7 +556,7 @@
 >      {
 >        return -$(index(a));
 >      }
-.        elsif a.resolved_type?'not-Enumeration' = 'Enumeration'
+.        elsif typeobject.parent_type?'not-Enumeration' = 'Enumeration'
 >      if(fromString($(a.name:)_array.get<jsonxx::String>(af),&$(a.name:)_af) != 0)
 >      {
 >        return -$(index(a));
@@ -795,6 +805,8 @@
 .  if my.type = "close" & my.context <> "_1"
 .    if defined(my.namespace_object) 
 >} // End of namespace $(my.namespace_object.name:)
+>
+>
 .      namespaces(my.namespace_object,my.type)
 .    endif
 .  endif
@@ -908,6 +920,13 @@
 .  TypeMapping.jsonxx_type_cast = '(unsigned int)'
 .endnew
 .new TypeMapping 
+.  TypeMapping.type = 'short unsigned int'
+.  TypeMapping.new_type = 'int16_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(signed int)'
+.endnew
+.new TypeMapping 
 .  TypeMapping.type = 'short'
 .  TypeMapping.new_type = 'int16_t'
 .  TypeMapping.default  = '0'
@@ -1017,31 +1036,16 @@
 .- -------------------------------------------------------------------------------------------
 .echo "  Handling FundamentalTypes..."
 .for FundamentalType as ft
-.  ft.json_type_cast = '($(ft.name:))'
-.  if regexp.match('.*[uU]?[Ii]nt.*', '$(ft.name)')?'' = '-1'
-.    ft.json_type = 'Number'
-.    ft.default_value = '0'
-.    if regexp.match('.*unsigned.*','$(ft.name)')
-.      ft.json_type_cast = '(unsigned int)'
-.    else
-.      ft.json_type_cast = '(int)'
-.    endif
-.-    echo "Seems that $(ft.name) might be initialized with $(ft.default_value) ??"
-.  elsif regexp.match('.*string.*', '$(ft.name)')?'' = '-1'
-.    ft.json_type = 'String'
-.    ft.default_value = '""'
-.-    echo "Seems that $(t.name) might be initialized with $(ft.default_value) ??"
-.  elsif regexp.match('.*char.*', '$(ft.name)')?'' = '-1'
-.    ft.json_type = 'String'
-.    ft.default_value = "0"
-.  elsif regexp.match('.*double.*|.*float.*', '$(ft.name)')?'' = '-1'
-.    ft.json_type = 'Number'
-.    ft.default_value = "0.0"
-.  elsif name="bool"
-.    ft.json_type = 'Boolean'
-.    ft.default_value = "false"
+.  type_mapping_object = root->GCC_XML->TypeMapping(type = ft.name)?
+.  if defined(type_mapping_object)
+.    ft.json_type_cast = type_mapping_object.jsonxx_type_cast
+.    ft.json_type      = type_mapping_object.jsonxx_type
+.    ft.default_value  = type_mapping_object.default
+.  else
+.    echo "Could not resolve FundamentalType $(ft.name)..."
 .  endif
 .endfor
+.
 .echo "  Handling Typedefs..."
 .- -------------------------------------------------------------------------------------------
 .for Typedef as t
@@ -1049,8 +1053,16 @@
 .  if defined(tt)
 .    t.parent_type = tt.ename
 .    type_mapping_object = root->GCC_XML->TypeMapping(new_type = t.name)?
+.-   If we did not explicitly have a type definition look up the fundamental-type
+.    if !defined(type_mapping_object)
+.      fundamental_type = root->GCC_XML->FundamentalType(id = t.type?'')?
+.      if defined(fundamental_type)
+.-        echo "$(t.name:): Setting type_mapping_object FundamentalType"
+.        type_mapping_object = root->GCC_XML->TypeMapping(type = fundamental_type.name)?
+.      endif
+.    endif
 .    if defined(type_mapping_object)
-.      echo "TypeMapping found: $(type_mapping_object.type:) -> $(type_mapping_object.new_type)"
+.-      echo "$(t.name:): TypeMapping found: $(type_mapping_object.type:) -> $(type_mapping_object.new_type)"
 .      t.json_type_cast  = type_mapping_object.jsonxx_type_cast
 .      t.json_type       = type_mapping_object.jsonxx_type
 .      t.default_value   = type_mapping_object.default
@@ -1137,8 +1149,11 @@
 .  if c.container?'not-vector' = 'vector' | c.container?'not-list' = 'list'
 .    c.container_prefix   = string.prefix(c.name?'no-t-name',",")
 .    c.container_type     = string.defix(c.container_prefix,"$(c.container:)<")
-.    c.container_iterator = "std::$(c.container_prefix:) >::iterator"
-.    c.container_const_iterator = "std::$(c.container_prefix:) >::const_iterator"
+.    if c.container_type = 'string'
+.      c.container_type = 'std::string'
+.    endif
+.    c.container_iterator = "std::$(c.container:)<$(c.container_type:)  >::iterator"
+.    c.container_const_iterator = "std::$(c.container:)<$(c.container_type:) >::const_iterator"
 .    c.container_fundamental_type = c.container_type
 .    if regexp.match ("::([^:]+)$", c.container_type, last_type)
 .-      echo "Found $(last_type:)-type from container_type: $(c.container_type:)"
