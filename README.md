@@ -1,4 +1,4 @@
-(https://travis-ci.org/fnchooft/CStructGen.svg?branch=master)
+[![Build Status](https://travis-ci.org/fnchooft/CStructGen.svg?branch=master)](https://travis-ci.org/fnchooft/CStructGen)
 
 # Code-generator for C/C++-Structs based on CASTXML gccxml-output
 
