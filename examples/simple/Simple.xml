@@ -21921,8 +21921,8 @@
   <File id="f2" name="/usr/include/c++/4.9/new"/>
   <File id="f3" name="/usr/include/c++/4.9/bits/stl_list.h"/>
   <File id="f4" name="/usr/include/stdio.h"/>
-  <File id="f5" name="/home/fnchooft/projects/XCP/alarm/castxml/share/castxml/clang/include/stdarg.h"/>
-  <File id="f6" name="/home/fnchooft/projects/XCP/alarm/castxml/share/castxml/clang/include/stddef.h"/>
+  <File id="f5" name="/home/fnchooft/tools/castxml/share/castxml/clang/include/stdarg.h"/>
+  <File id="f6" name="/home/fnchooft/tools/castxml/share/castxml/clang/include/stddef.h"/>
   <File id="f7" name="/usr/include/wchar.h"/>
   <File id="f8" name="/usr/include/time.h"/>
   <File id="f9" name="/usr/include/xlocale.h"/>

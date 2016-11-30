@@ -5,6 +5,7 @@
 #ifdef __cplusplus
 
 
+
 #include "Simple.generated.h"
 #include <stdio.h>
 #include <string.h>
@@ -103,15 +104,15 @@ bool operator!=(AddDrop lhs, AddDrop rhs) {
 std::string toJsonString(AddDrop *input) {
   jsonxx::Object jsono;
   // Typedef              name: [uint32_t]                     json_type: Number                            json_type_cast: (unsigned int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:localId       object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "localId"                  << (unsigned int)input->localId;
   // Typedef              name: [string]                       json_type: String                            json_type_cast: (std::string)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:transportPlaneId object_name: Typedef              json_type:string                      comment: String
   jsono              << "transportPlaneId"         << (std::string)input->transportPlaneId;
   // Enumeration          name: [AddDropType]                  json_type: String                            json_type_cast: (std::string)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:type          object_name: Enumeration             json_type:string                      comment: String
   jsono              << "type"                     << toString(input->type);
   return jsono.json();
@@ -518,14 +519,14 @@ bool operator!=(Simple lhs, Simple rhs) {
 std::string toJsonString(Simple *input) {
   jsonxx::Object jsono;
   // FundamentalType      name: [bool]                         json_type: Boolean                           json_type_cast: (bool)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:is_on         object_name: FundamentalType         json_type:boolean                     comment: Boolean
   jsono              << "is_on"                    << (bool)input->is_on;
   // Class                name: [vector<bool, std::allocator<bool> >] json_type: not-set                    json_type_cast: not-set
   // var_vector_of_bool is of type: Class                       trying to resolve type FundamentalType
   // Found FundamentalType
   jsonxx::Array jsona_var_vector_of_bool;
-  for (std::vector<bool >::iterator      it=input->var_vector_of_bool.begin(); it != input->var_vector_of_bool.end(); ++it)
+  for (std::vector<bool                           >::iterator it=input->var_vector_of_bool.begin(); it != input->var_vector_of_bool.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: FundamentalType         json_type:boolean                     comment: Boolean
     jsona_var_vector_of_bool << (bool)*it;
@@ -535,33 +536,33 @@ std::string toJsonString(Simple *input) {
   // var_vector_of_int is of type: Class                        trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_var_vector_of_int;
-  for (std::vector<int32_t >::iterator   it=input->var_vector_of_int.begin(); it != input->var_vector_of_int.end(); ++it)
+  for (std::vector<int32_t                        >::iterator it=input->var_vector_of_int.begin(); it != input->var_vector_of_int.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_var_vector_of_int   << (int)*it;
   }
   jsono << "var_vector_of_int" << jsona_var_vector_of_int;
   // Typedef              name: [uint8_t]                      json_type: Number                            json_type_cast: (unsigned int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_uint08    object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_uint08"               << (unsigned int)input->var_uint08;
   // Typedef              name: [uint16_t]                     json_type: Number                            json_type_cast: (unsigned int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_uint16    object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_uint16"               << (unsigned int)input->var_uint16;
   // Typedef              name: [uint32_t]                     json_type: Number                            json_type_cast: (unsigned int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_uint32    object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_uint32"               << (unsigned int)input->var_uint32;
   // Typedef              name: [uint64_t]                     json_type: Number                            json_type_cast: (unsigned long)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_uint64    object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_uint64"               << (unsigned long)input->var_uint64;
   // Class                name: [vector<uint8_t, std::allocator<uint8_t> >] json_type: not-set              json_type_cast: not-set
   // vector_of_uint08 is of type: Class                         trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_uint08;
-  for (std::vector<uint8_t >::iterator   it=input->vector_of_uint08.begin(); it != input->vector_of_uint08.end(); ++it)
+  for (std::vector<uint8_t                        >::iterator it=input->vector_of_uint08.begin(); it != input->vector_of_uint08.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_uint08    << (unsigned int)*it;
@@ -571,7 +572,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_uint16 is of type: Class                         trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_uint16;
-  for (std::vector<uint16_t >::iterator  it=input->vector_of_uint16.begin(); it != input->vector_of_uint16.end(); ++it)
+  for (std::vector<uint16_t                       >::iterator it=input->vector_of_uint16.begin(); it != input->vector_of_uint16.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_uint16    << (unsigned int)*it;
@@ -581,7 +582,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_uint32 is of type: Class                         trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_uint32;
-  for (std::vector<uint32_t >::iterator  it=input->vector_of_uint32.begin(); it != input->vector_of_uint32.end(); ++it)
+  for (std::vector<uint32_t                       >::iterator it=input->vector_of_uint32.begin(); it != input->vector_of_uint32.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_uint32    << (unsigned int)*it;
@@ -591,7 +592,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_uint64 is of type: Class                         trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_uint64;
-  for (std::vector<uint64_t >::iterator  it=input->vector_of_uint64.begin(); it != input->vector_of_uint64.end(); ++it)
+  for (std::vector<uint64_t                       >::iterator it=input->vector_of_uint64.begin(); it != input->vector_of_uint64.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_uint64    << (unsigned long)*it;
@@ -601,7 +602,7 @@ std::string toJsonString(Simple *input) {
   // list_of_uint08 is of type: Class                           trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_uint08;
-  for (std::list<uint8_t >::iterator     it=input->list_of_uint08.begin(); it != input->list_of_uint08.end(); ++it)
+  for (std::list<uint8_t                          >::iterator it=input->list_of_uint08.begin(); it != input->list_of_uint08.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_uint08      << (unsigned int)*it;
@@ -611,7 +612,7 @@ std::string toJsonString(Simple *input) {
   // list_of_uint16 is of type: Class                           trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_uint16;
-  for (std::list<uint16_t >::iterator    it=input->list_of_uint16.begin(); it != input->list_of_uint16.end(); ++it)
+  for (std::list<uint16_t                         >::iterator it=input->list_of_uint16.begin(); it != input->list_of_uint16.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_uint16      << (unsigned int)*it;
@@ -621,7 +622,7 @@ std::string toJsonString(Simple *input) {
   // list_of_uint32 is of type: Class                           trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_uint32;
-  for (std::list<uint32_t >::iterator    it=input->list_of_uint32.begin(); it != input->list_of_uint32.end(); ++it)
+  for (std::list<uint32_t                         >::iterator it=input->list_of_uint32.begin(); it != input->list_of_uint32.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_uint32      << (unsigned int)*it;
@@ -631,33 +632,33 @@ std::string toJsonString(Simple *input) {
   // list_of_uint64 is of type: Class                           trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_uint64;
-  for (std::list<uint64_t >::iterator    it=input->list_of_uint64.begin(); it != input->list_of_uint64.end(); ++it)
+  for (std::list<uint64_t                         >::iterator it=input->list_of_uint64.begin(); it != input->list_of_uint64.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_uint64      << (unsigned long)*it;
   }
   jsono << "list_of_uint64" << jsona_list_of_uint64;
   // Typedef              name: [int8_t]                       json_type: Number                            json_type_cast: (signed int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_int08     object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_int08"                << (signed int)input->var_int08;
   // Typedef              name: [int16_t]                      json_type: Number                            json_type_cast: (signed int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_int16     object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_int16"                << (signed int)input->var_int16;
   // Typedef              name: [int32_t]                      json_type: Number                            json_type_cast: (int)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_int32     object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_int32"                << (int)input->var_int32;
   // Typedef              name: [int64_t]                      json_type: Number                            json_type_cast: (long long)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_int64     object_name: Typedef                 json_type:number                      comment: Number
   jsono              << "var_int64"                << (long long)input->var_int64;
   // Class                name: [vector<int8_t, std::allocator<int8_t> >] json_type: not-set                json_type_cast: not-set
   // vector_of_int8 is of type: Class                           trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_int8;
-  for (std::vector<int8_t >::iterator    it=input->vector_of_int8.begin(); it != input->vector_of_int8.end(); ++it)
+  for (std::vector<int8_t                         >::iterator it=input->vector_of_int8.begin(); it != input->vector_of_int8.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_int8      << (signed int)*it;
@@ -667,7 +668,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_int16 is of type: Class                          trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_int16;
-  for (std::vector<int16_t >::iterator   it=input->vector_of_int16.begin(); it != input->vector_of_int16.end(); ++it)
+  for (std::vector<int16_t                        >::iterator it=input->vector_of_int16.begin(); it != input->vector_of_int16.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_int16     << (signed int)*it;
@@ -677,7 +678,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_int32 is of type: Class                          trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_int32;
-  for (std::vector<int32_t >::iterator   it=input->vector_of_int32.begin(); it != input->vector_of_int32.end(); ++it)
+  for (std::vector<int32_t                        >::iterator it=input->vector_of_int32.begin(); it != input->vector_of_int32.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_int32     << (int)*it;
@@ -687,7 +688,7 @@ std::string toJsonString(Simple *input) {
   // vector_of_int64 is of type: Class                          trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_vector_of_int64;
-  for (std::vector<int64_t >::iterator   it=input->vector_of_int64.begin(); it != input->vector_of_int64.end(); ++it)
+  for (std::vector<int64_t                        >::iterator it=input->vector_of_int64.begin(); it != input->vector_of_int64.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_vector_of_int64     << (long long)*it;
@@ -697,7 +698,7 @@ std::string toJsonString(Simple *input) {
   // list_of_int8 is of type: Class                             trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_int8;
-  for (std::list<int8_t >::iterator      it=input->list_of_int8.begin(); it != input->list_of_int8.end(); ++it)
+  for (std::list<int8_t                           >::iterator it=input->list_of_int8.begin(); it != input->list_of_int8.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_int8        << (signed int)*it;
@@ -707,7 +708,7 @@ std::string toJsonString(Simple *input) {
   // list_of_int16 is of type: Class                            trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_int16;
-  for (std::list<int16_t >::iterator     it=input->list_of_int16.begin(); it != input->list_of_int16.end(); ++it)
+  for (std::list<int16_t                          >::iterator it=input->list_of_int16.begin(); it != input->list_of_int16.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_int16       << (signed int)*it;
@@ -717,7 +718,7 @@ std::string toJsonString(Simple *input) {
   // list_of_int32 is of type: Class                            trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_int32;
-  for (std::list<int32_t >::iterator     it=input->list_of_int32.begin(); it != input->list_of_int32.end(); ++it)
+  for (std::list<int32_t                          >::iterator it=input->list_of_int32.begin(); it != input->list_of_int32.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_int32       << (int)*it;
@@ -727,37 +728,37 @@ std::string toJsonString(Simple *input) {
   // list_of_int64 is of type: Class                            trying to resolve type Typedef
   // Found Typedef
   jsonxx::Array jsona_list_of_int64;
-  for (std::list<int64_t >::iterator     it=input->list_of_int64.begin(); it != input->list_of_int64.end(); ++it)
+  for (std::list<int64_t                          >::iterator it=input->list_of_int64.begin(); it != input->list_of_int64.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Typedef                 json_type:number                      comment: Number
     jsona_list_of_int64       << (long long)*it;
   }
   jsono << "list_of_int64" << jsona_list_of_int64;
   // Typedef              name: [string]                       json_type: String                            json_type_cast: (std::string)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_string    object_name: Typedef                 json_type:string                      comment: String
   jsono              << "var_string"               << (std::string)input->var_string;
   // FundamentalType      name: [float]                        json_type: Number                            json_type_cast: (float)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_float     object_name: FundamentalType         json_type:number                      comment: Number
   jsono              << "var_float"                << (float)input->var_float;
   // FundamentalType      name: [double]                       json_type: Number                            json_type_cast: (double)
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_double    object_name: FundamentalType         json_type:number                      comment: Number
   jsono              << "var_double"               << (double)input->var_double;
-  // FundamentalType      name: [long int]                     json_type: Number                            json_type_cast: (int)
-  // In the else branch....
+  // FundamentalType      name: [long int]                     json_type: Number                            json_type_cast: (long long)
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_long      object_name: FundamentalType         json_type:number                      comment: Number
-  jsono              << "var_long"                 << (int)input->var_long;
+  jsono              << "var_long"                 << (long long)input->var_long;
   // Struct               name: [in_addr]                      json_type: Object                            json_type_cast: not-set
-  // In the else branch....
+  // gsl:488 - In the else branch....
   // render_fundamental_to_json: scope:var_in_addr   object_name: Struct                  json_type:object                      comment: Object
   jsono              << "var_in_addr"              << toString(input->var_in_addr);
   // Class                name: [vector<in_addr, std::allocator<in_addr> >] json_type: not-set              json_type_cast: not-set
   // vector_of_in_addr is of type: Class                        trying to resolve type Struct
   // Found Struct
   jsonxx::Array jsona_vector_of_in_addr;
-  for (std::vector<in_addr >::iterator   it=input->vector_of_in_addr.begin(); it != input->vector_of_in_addr.end(); ++it)
+  for (std::vector<in_addr                        >::iterator it=input->vector_of_in_addr.begin(); it != input->vector_of_in_addr.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Struct                  json_type:inaddr                      comment: InAddr
     jsona_vector_of_in_addr   << toString(*it);
@@ -767,7 +768,7 @@ std::string toJsonString(Simple *input) {
   // list_of_in_addr is of type: Class                          trying to resolve type Struct
   // Found Struct
   jsonxx::Array jsona_list_of_in_addr;
-  for (std::list<in_addr >::iterator     it=input->list_of_in_addr.begin(); it != input->list_of_in_addr.end(); ++it)
+  for (std::list<in_addr                          >::iterator it=input->list_of_in_addr.begin(); it != input->list_of_in_addr.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: Struct                  json_type:inaddr                      comment: InAddr
     jsona_list_of_in_addr     << toString(*it);
@@ -777,7 +778,7 @@ std::string toJsonString(Simple *input) {
   // vc         is of type: Class                               trying to resolve type FundamentalType
   // Found FundamentalType
   jsonxx::Array jsona_vc;
-  for (std::vector<float >::iterator     it=input->vc.begin();         it != input->vc.end();         ++it)
+  for (std::vector<float                          >::iterator it=input->vc.begin(); it != input->vc.end(); ++it)
   {
   // render_fundamental_to_json: scope:VectorList    object_name: FundamentalType         json_type:number                      comment: Number
     jsona_vc                  << (float)*it;
@@ -1113,10 +1114,10 @@ int32_t fromJson(Simple *output, std::string jsondata) {
   }
   // Return the negative-bitindex 31 of the var_long-field on error
   // Type is: _1790 ->      [long int] -> typeOf: FundamentalType -> parent_type unknown
-  // Line 663: Else case json_type: Number json_type_cast: (int)
+  // Line 663: Else case json_type: Number json_type_cast: (long long)
   if(json.has<jsonxx::Number>("var_long"))
   {
-    output->var_long = (int)json.get<jsonxx::Number>("var_long");
+    output->var_long = (long long)json.get<jsonxx::Number>("var_long");
   }
   // Return the negative-bitindex 32 of the var_in_addr-field on error
   // Type is: _683 ->       [in_addr] -> typeOf: Struct -> parent_type unknown

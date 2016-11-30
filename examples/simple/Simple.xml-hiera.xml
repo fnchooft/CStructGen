@@ -47,10 +47,7 @@
             id = "_6"
             name = "__float128"
             size = "128"
-            align = "128"
-            json_type_cast = "(__float128)"
-            json_type = "Number"
-            default_value = "0.0"/>
+            align = "128"/>
         <Namespace
             id = "_7"
             name = "std"
@@ -363,7 +360,10 @@
             location = "f6:62"
             file = "f6"
             line = "62"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_35"
             name = "wint_t"
@@ -372,7 +372,10 @@
             location = "f6:132"
             file = "f6"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_36"
             name = ""
@@ -721,7 +724,7 @@
                     name = "long int"
                     size = "64"
                     align = "64"
-                    json_type_cast = "(int)"
+                    json_type_cast = "(long long)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -1060,8 +1063,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1081,8 +1084,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1102,8 +1105,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1123,8 +1126,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1144,8 +1147,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1165,8 +1168,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1186,8 +1189,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1207,8 +1210,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1228,8 +1231,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1249,8 +1252,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1270,8 +1273,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1291,8 +1294,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1312,8 +1315,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
             <Field
@@ -1333,8 +1336,8 @@
                     name = "char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
         </Struct>
@@ -1346,7 +1349,10 @@
             location = "f13:30"
             file = "f13"
             line = "30"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_159"
             name = "__u_short"
@@ -1355,7 +1361,10 @@
             location = "f13:31"
             file = "f13"
             line = "31"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_160"
             name = "__u_int"
@@ -1364,7 +1373,10 @@
             location = "f13:32"
             file = "f13"
             line = "32"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_161"
             name = "__u_long"
@@ -1373,7 +1385,10 @@
             location = "f13:33"
             file = "f13"
             line = "33"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_162"
             name = "__int8_t"
@@ -1382,7 +1397,10 @@
             location = "f13:36"
             file = "f13"
             line = "36"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_163"
             name = "__uint8_t"
@@ -1391,7 +1409,10 @@
             location = "f13:37"
             file = "f13"
             line = "37"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_164"
             name = "__int16_t"
@@ -1409,7 +1430,10 @@
             location = "f13:39"
             file = "f13"
             line = "39"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_166"
             name = "__int32_t"
@@ -1418,7 +1442,10 @@
             location = "f13:40"
             file = "f13"
             line = "40"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_167"
             name = "__uint32_t"
@@ -1427,7 +1454,10 @@
             location = "f13:41"
             file = "f13"
             line = "41"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_168"
             name = "__int64_t"
@@ -1436,7 +1466,10 @@
             location = "f13:43"
             file = "f13"
             line = "43"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_169"
             name = "__uint64_t"
@@ -1445,7 +1478,10 @@
             location = "f13:44"
             file = "f13"
             line = "44"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_170"
             name = "__quad_t"
@@ -1454,7 +1490,10 @@
             location = "f13:52"
             file = "f13"
             line = "52"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_171"
             name = "__u_quad_t"
@@ -1463,7 +1502,10 @@
             location = "f13:53"
             file = "f13"
             line = "53"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_172"
             name = "__dev_t"
@@ -1472,7 +1514,10 @@
             location = "f13:124"
             file = "f13"
             line = "124"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_173"
             name = "__uid_t"
@@ -1481,7 +1526,10 @@
             location = "f13:125"
             file = "f13"
             line = "125"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_174"
             name = "__gid_t"
@@ -1490,7 +1538,10 @@
             location = "f13:126"
             file = "f13"
             line = "126"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_175"
             name = "__ino_t"
@@ -1499,7 +1550,10 @@
             location = "f13:127"
             file = "f13"
             line = "127"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_176"
             name = "__ino64_t"
@@ -1508,7 +1562,10 @@
             location = "f13:128"
             file = "f13"
             line = "128"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_177"
             name = "__mode_t"
@@ -1517,7 +1574,10 @@
             location = "f13:129"
             file = "f13"
             line = "129"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_178"
             name = "__nlink_t"
@@ -1526,7 +1586,10 @@
             location = "f13:130"
             file = "f13"
             line = "130"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_179"
             name = "__off_t"
@@ -1535,7 +1598,10 @@
             location = "f13:131"
             file = "f13"
             line = "131"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_180"
             name = "__off64_t"
@@ -1544,7 +1610,10 @@
             location = "f13:132"
             file = "f13"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_181"
             name = "__pid_t"
@@ -1553,7 +1622,10 @@
             location = "f13:133"
             file = "f13"
             line = "133"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_182"
             name = ""
@@ -1615,7 +1687,10 @@
             location = "f13:135"
             file = "f13"
             line = "135"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_185"
             name = "__rlim_t"
@@ -1624,7 +1699,10 @@
             location = "f13:136"
             file = "f13"
             line = "136"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_186"
             name = "__rlim64_t"
@@ -1633,7 +1711,10 @@
             location = "f13:137"
             file = "f13"
             line = "137"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_187"
             name = "__id_t"
@@ -1642,7 +1723,10 @@
             location = "f13:138"
             file = "f13"
             line = "138"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_188"
             name = "__time_t"
@@ -1651,7 +1735,10 @@
             location = "f13:139"
             file = "f13"
             line = "139"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_189"
             name = "__useconds_t"
@@ -1660,7 +1747,10 @@
             location = "f13:140"
             file = "f13"
             line = "140"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_190"
             name = "__suseconds_t"
@@ -1669,7 +1759,10 @@
             location = "f13:141"
             file = "f13"
             line = "141"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_191"
             name = "__daddr_t"
@@ -1678,7 +1771,10 @@
             location = "f13:143"
             file = "f13"
             line = "143"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_192"
             name = "__key_t"
@@ -1687,7 +1783,10 @@
             location = "f13:144"
             file = "f13"
             line = "144"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_193"
             name = "__clockid_t"
@@ -1696,7 +1795,10 @@
             location = "f13:147"
             file = "f13"
             line = "147"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_194"
             name = "__timer_t"
@@ -1714,7 +1816,10 @@
             location = "f13:153"
             file = "f13"
             line = "153"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_196"
             name = "__blkcnt_t"
@@ -1723,7 +1828,10 @@
             location = "f13:158"
             file = "f13"
             line = "158"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_197"
             name = "__blkcnt64_t"
@@ -1732,7 +1840,10 @@
             location = "f13:159"
             file = "f13"
             line = "159"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_198"
             name = "__fsblkcnt_t"
@@ -1741,7 +1852,10 @@
             location = "f13:162"
             file = "f13"
             line = "162"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_199"
             name = "__fsblkcnt64_t"
@@ -1750,7 +1864,10 @@
             location = "f13:163"
             file = "f13"
             line = "163"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_200"
             name = "__fsfilcnt_t"
@@ -1759,7 +1876,10 @@
             location = "f13:166"
             file = "f13"
             line = "166"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_201"
             name = "__fsfilcnt64_t"
@@ -1768,7 +1888,10 @@
             location = "f13:167"
             file = "f13"
             line = "167"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_202"
             name = "__fsword_t"
@@ -1777,7 +1900,10 @@
             location = "f13:170"
             file = "f13"
             line = "170"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_203"
             name = "__ssize_t"
@@ -1786,7 +1912,10 @@
             location = "f13:172"
             file = "f13"
             line = "172"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_204"
             name = "__syscall_slong_t"
@@ -1795,7 +1924,10 @@
             location = "f13:175"
             file = "f13"
             line = "175"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_205"
             name = "__syscall_ulong_t"
@@ -1804,7 +1936,10 @@
             location = "f13:177"
             file = "f13"
             line = "177"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_206"
             name = "__loff_t"
@@ -1840,7 +1975,10 @@
             location = "f13:186"
             file = "f13"
             line = "186"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_210"
             name = "__socklen_t"
@@ -1849,7 +1987,10 @@
             location = "f13:189"
             file = "f13"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Enumeration
             id = "_213"
             name = ""
@@ -1935,7 +2076,7 @@
                 line = "122"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_188"
                     name = "__time_t"
@@ -1944,7 +2085,10 @@
                     location = "f13:139"
                     file = "f13"
                     line = "139"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1839"
@@ -1957,7 +2101,7 @@
                 line = "123"
                 offset = "64"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -1966,7 +2110,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
         </Struct>
         <Typedef
@@ -2054,7 +2201,10 @@
             location = "f17:118"
             file = "f17"
             line = "118"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_265"
             name = ""
@@ -2095,7 +2245,10 @@
                         location = "f17:118"
                         file = "f17"
                         line = "118"
-                        parent_type = "FundamentalType"/>
+                        parent_type = "FundamentalType"
+                        json_type_cast = "(unsigned long)"
+                        json_type = "Number"
+                        default_value = "0"/>
                 </ArrayType>
             </Field>
         </Struct>
@@ -2132,7 +2285,7 @@
                 line = "32"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_188"
                     name = "__time_t"
@@ -2141,7 +2294,10 @@
                     location = "f13:139"
                     file = "f13"
                     line = "139"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1866"
@@ -2154,7 +2310,7 @@
                 line = "33"
                 offset = "64"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_190"
                     name = "__suseconds_t"
@@ -2163,7 +2319,10 @@
                     location = "f13:141"
                     file = "f13"
                     line = "141"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
         </Struct>
         <Struct
@@ -2210,7 +2369,7 @@
                 line = "28"
                 offset = "64"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2219,7 +2378,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1873"
@@ -2232,7 +2394,7 @@
                 line = "29"
                 offset = "128"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2241,7 +2403,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1874"
@@ -2254,7 +2419,7 @@
                 line = "30"
                 offset = "192"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2263,7 +2428,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1875"
@@ -2276,7 +2444,7 @@
                 line = "31"
                 offset = "256"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2285,7 +2453,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1876"
@@ -2319,7 +2490,7 @@
                 line = "33"
                 offset = "384"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2328,7 +2499,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1878"
@@ -2341,7 +2515,7 @@
                 line = "34"
                 offset = "448"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2350,7 +2524,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1879"
@@ -2363,7 +2540,7 @@
                 line = "35"
                 offset = "512"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2372,7 +2549,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1880"
@@ -2409,7 +2589,7 @@
                         line = "32"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -2418,7 +2598,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1866"
@@ -2431,7 +2614,7 @@
                         line = "33"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_190"
                             name = "__suseconds_t"
@@ -2440,7 +2623,10 @@
                             location = "f13:141"
                             file = "f13"
                             line = "141"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
                 <Struct
@@ -2466,7 +2652,7 @@
                         line = "32"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -2475,7 +2661,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1866"
@@ -2488,7 +2677,7 @@
                         line = "33"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_190"
                             name = "__suseconds_t"
@@ -2497,7 +2686,10 @@
                             location = "f13:141"
                             file = "f13"
                             line = "141"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
             </Field>
@@ -2512,7 +2704,7 @@
                 line = "37"
                 offset = "704"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2521,7 +2713,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1882"
@@ -2534,7 +2729,7 @@
                 line = "38"
                 offset = "768"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2543,7 +2738,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1883"
@@ -2556,7 +2754,7 @@
                 line = "39"
                 offset = "832"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2565,7 +2763,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1884"
@@ -2599,7 +2800,7 @@
                 line = "41"
                 offset = "960"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2608,7 +2809,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1886"
@@ -2621,7 +2825,7 @@
                 line = "42"
                 offset = "1024"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2630,7 +2834,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1887"
@@ -2643,7 +2850,7 @@
                 line = "43"
                 offset = "1088"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2652,7 +2859,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1888"
@@ -2665,7 +2875,7 @@
                 line = "44"
                 offset = "1152"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2674,7 +2884,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1889"
@@ -2687,7 +2900,7 @@
                 line = "45"
                 offset = "1216"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_204"
                     name = "__syscall_slong_t"
@@ -2696,7 +2909,10 @@
                     location = "f13:175"
                     file = "f13"
                     line = "175"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(long long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_1890"
@@ -3036,7 +3252,7 @@
                         line = "122"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -3045,7 +3261,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1839"
@@ -3058,7 +3277,7 @@
                         line = "123"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_204"
                             name = "__syscall_slong_t"
@@ -3067,7 +3286,10 @@
                             location = "f13:175"
                             file = "f13"
                             line = "175"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
                 <Struct
@@ -3093,7 +3315,7 @@
                         line = "122"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -3102,7 +3324,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1839"
@@ -3115,7 +3340,7 @@
                         line = "123"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_204"
                             name = "__syscall_slong_t"
@@ -3124,7 +3349,10 @@
                             location = "f13:175"
                             file = "f13"
                             line = "175"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
             </Field>
@@ -3163,7 +3391,7 @@
                         line = "122"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -3172,7 +3400,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1839"
@@ -3185,7 +3416,7 @@
                         line = "123"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_204"
                             name = "__syscall_slong_t"
@@ -3194,7 +3425,10 @@
                             location = "f13:175"
                             file = "f13"
                             line = "175"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
                 <Struct
@@ -3220,7 +3454,7 @@
                         line = "122"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_188"
                             name = "__time_t"
@@ -3229,7 +3463,10 @@
                             location = "f13:139"
                             file = "f13"
                             line = "139"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_1839"
@@ -3242,7 +3479,7 @@
                         line = "123"
                         offset = "64"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_204"
                             name = "__syscall_slong_t"
@@ -3251,7 +3488,10 @@
                             location = "f13:175"
                             file = "f13"
                             line = "175"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(long long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                 </Struct>
             </Field>
@@ -3344,7 +3584,10 @@
             location = "f20:60"
             file = "f20"
             line = "60"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Union
             id = "_331"
             name = "pthread_attr_t"
@@ -3650,7 +3893,10 @@
             location = "f20:163"
             file = "f20"
             line = "163"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_344"
             name = "pthread_once_t"
@@ -3659,7 +3905,10 @@
             location = "f20:167"
             file = "f20"
             line = "167"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Union
             id = "_345"
             name = ""
@@ -4427,7 +4676,10 @@
             location = "f24:32"
             file = "f24"
             line = "32"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_556"
             name = "int8_t"
@@ -4532,7 +4784,10 @@
             location = "f27:65"
             file = "f27"
             line = "65"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_565"
             name = "int_least16_t"
@@ -4550,7 +4805,10 @@
             location = "f27:67"
             file = "f27"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_567"
             name = "int_least64_t"
@@ -4559,7 +4817,10 @@
             location = "f27:69"
             file = "f27"
             line = "69"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_568"
             name = "uint_least8_t"
@@ -4568,7 +4829,10 @@
             location = "f27:76"
             file = "f27"
             line = "76"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_569"
             name = "uint_least16_t"
@@ -4577,7 +4841,10 @@
             location = "f27:77"
             file = "f27"
             line = "77"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_570"
             name = "uint_least32_t"
@@ -4586,7 +4853,10 @@
             location = "f27:78"
             file = "f27"
             line = "78"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_571"
             name = "uint_least64_t"
@@ -4595,7 +4865,10 @@
             location = "f27:80"
             file = "f27"
             line = "80"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_572"
             name = "int_fast8_t"
@@ -4604,7 +4877,10 @@
             location = "f27:90"
             file = "f27"
             line = "90"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_573"
             name = "int_fast16_t"
@@ -4613,7 +4889,10 @@
             location = "f27:92"
             file = "f27"
             line = "92"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_574"
             name = "int_fast32_t"
@@ -4622,7 +4901,10 @@
             location = "f27:93"
             file = "f27"
             line = "93"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_575"
             name = "int_fast64_t"
@@ -4631,7 +4913,10 @@
             location = "f27:94"
             file = "f27"
             line = "94"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_576"
             name = "uint_fast8_t"
@@ -4640,7 +4925,10 @@
             location = "f27:103"
             file = "f27"
             line = "103"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_577"
             name = "uint_fast16_t"
@@ -4649,7 +4937,10 @@
             location = "f27:105"
             file = "f27"
             line = "105"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_578"
             name = "uint_fast32_t"
@@ -4658,7 +4949,10 @@
             location = "f27:106"
             file = "f27"
             line = "106"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_579"
             name = "uint_fast64_t"
@@ -4667,7 +4961,10 @@
             location = "f27:107"
             file = "f27"
             line = "107"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_580"
             name = "intptr_t"
@@ -4676,7 +4973,10 @@
             location = "f27:119"
             file = "f27"
             line = "119"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_581"
             name = "uintptr_t"
@@ -4685,7 +4985,10 @@
             location = "f27:122"
             file = "f27"
             line = "122"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_582"
             name = "intmax_t"
@@ -4694,7 +4997,10 @@
             location = "f27:134"
             file = "f27"
             line = "134"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_583"
             name = "uintmax_t"
@@ -4703,7 +5009,10 @@
             location = "f27:135"
             file = "f27"
             line = "135"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_584"
             name = "u_char"
@@ -4928,7 +5237,10 @@
             location = "f28:150"
             file = "f28"
             line = "150"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_609"
             name = "ushort"
@@ -4937,7 +5249,10 @@
             location = "f28:151"
             file = "f28"
             line = "151"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_610"
             name = "uint"
@@ -4946,7 +5261,10 @@
             location = "f28:152"
             file = "f28"
             line = "152"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_611"
             name = "u_int8_t"
@@ -4955,7 +5273,10 @@
             location = "f28:200"
             file = "f28"
             line = "200"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_612"
             name = "u_int16_t"
@@ -4964,7 +5285,10 @@
             location = "f28:201"
             file = "f28"
             line = "201"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_613"
             name = "u_int32_t"
@@ -4973,7 +5297,10 @@
             location = "f28:202"
             file = "f28"
             line = "202"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_614"
             name = "u_int64_t"
@@ -4982,7 +5309,10 @@
             location = "f28:203"
             file = "f28"
             line = "203"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_615"
             name = "register_t"
@@ -4991,7 +5321,10 @@
             location = "f28:205"
             file = "f28"
             line = "205"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_616"
             name = "__sig_atomic_t"
@@ -5000,7 +5333,10 @@
             location = "f29:22"
             file = "f29"
             line = "22"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_617"
             name = ""
@@ -5038,7 +5374,7 @@
                         name = "long unsigned int"
                         size = "64"
                         align = "64"
-                        json_type_cast = "(unsigned int)"
+                        json_type_cast = "(unsigned long)"
                         json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
@@ -5071,7 +5407,10 @@
             location = "f30:54"
             file = "f30"
             line = "54"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_621"
             name = ""
@@ -5112,7 +5451,10 @@
                         location = "f30:54"
                         file = "f30"
                         line = "54"
-                        parent_type = "FundamentalType"/>
+                        parent_type = "FundamentalType"
+                        json_type_cast = "(long long)"
+                        json_type = "Number"
+                        default_value = "0"/>
                 </ArrayType>
             </Field>
         </Struct>
@@ -5237,7 +5579,7 @@
                 line = "46"
                 offset = "64"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_34"
                     name = "size_t"
@@ -5246,7 +5588,10 @@
                     location = "f6:62"
                     file = "f6"
                     line = "62"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(unsigned long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
         </Struct>
         <Typedef
@@ -5305,7 +5650,10 @@
             location = "f36:28"
             file = "f36"
             line = "28"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_648"
             name = "sockaddr"
@@ -5329,7 +5677,7 @@
                 line = "151"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_647"
                     name = "sa_family_t"
@@ -5338,7 +5686,10 @@
                     location = "f36:28"
                     file = "f36"
                     line = "28"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(signed int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2078"
@@ -5365,8 +5716,8 @@
                         name = "char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -5394,7 +5745,7 @@
                 line = "164"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_647"
                     name = "sa_family_t"
@@ -5403,7 +5754,10 @@
                     location = "f36:28"
                     file = "f36"
                     line = "28"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(signed int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2084"
@@ -5422,7 +5776,7 @@
                     name = "long unsigned int"
                     size = "64"
                     align = "64"
-                    json_type_cast = "(unsigned int)"
+                    json_type_cast = "(unsigned long)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -5451,8 +5805,8 @@
                         name = "char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -5606,7 +5960,7 @@
                 line = "230"
                 offset = "192"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_34"
                     name = "size_t"
@@ -5615,7 +5969,10 @@
                     location = "f6:62"
                     file = "f6"
                     line = "62"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(unsigned long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2094"
@@ -5644,7 +6001,7 @@
                 line = "233"
                 offset = "320"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_34"
                     name = "size_t"
@@ -5653,7 +6010,10 @@
                     location = "f6:62"
                     file = "f6"
                     line = "62"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(unsigned long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2096"
@@ -5700,7 +6060,7 @@
                 line = "244"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_34"
                     name = "size_t"
@@ -5709,7 +6069,10 @@
                     location = "f6:62"
                     file = "f6"
                     line = "62"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(unsigned long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2102"
@@ -5777,8 +6140,8 @@
                         name = "unsigned char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(unsigned char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -5964,7 +6327,7 @@
                     name = "short unsigned int"
                     size = "16"
                     align = "16"
-                    json_type_cast = "(unsigned int)"
+                    json_type_cast = "(signed int)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -5993,8 +6356,8 @@
                         name = "unsigned char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(unsigned char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -6121,7 +6484,7 @@
                         line = "230"
                         offset = "192"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_34"
                             name = "size_t"
@@ -6130,7 +6493,10 @@
                             location = "f6:62"
                             file = "f6"
                             line = "62"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(unsigned long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2094"
@@ -6159,7 +6525,7 @@
                         line = "233"
                         offset = "320"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_34"
                             name = "size_t"
@@ -6168,7 +6534,10 @@
                             location = "f6:62"
                             file = "f6"
                             line = "62"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(unsigned long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2096"
@@ -6269,7 +6638,7 @@
                         line = "230"
                         offset = "192"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_34"
                             name = "size_t"
@@ -6278,7 +6647,10 @@
                             location = "f6:62"
                             file = "f6"
                             line = "62"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(unsigned long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2094"
@@ -6307,7 +6679,7 @@
                         line = "233"
                         offset = "320"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_34"
                             name = "size_t"
@@ -6316,7 +6688,10 @@
                             location = "f6:62"
                             file = "f6"
                             line = "62"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(unsigned long)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2096"
@@ -6527,8 +6902,8 @@
                         name = "char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -7309,7 +7684,7 @@
                 line = "239"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_647"
                     name = "sa_family_t"
@@ -7318,7 +7693,10 @@
                     location = "f36:28"
                     file = "f36"
                     line = "28"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(signed int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2173"
@@ -7450,8 +7828,8 @@
                         name = "unsigned char"
                         size = "8"
                         align = "8"
-                        json_type_cast = "(unsigned char)"
-                        json_type = "String"
+                        json_type_cast = "(unsigned int)"
+                        json_type = "Number"
                         default_value = "0"/>
                 </ArrayType>
             </Field>
@@ -7479,7 +7857,7 @@
                 line = "254"
                 offset = "0"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_647"
                     name = "sa_family_t"
@@ -7488,7 +7866,10 @@
                     location = "f36:28"
                     file = "f36"
                     line = "28"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(signed int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Field
                 id = "_2181"
@@ -8576,7 +8957,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -8585,7 +8966,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -8604,7 +8988,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -8633,8 +9017,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -8662,7 +9046,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -8671,7 +9055,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -8690,7 +9077,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -8719,8 +9106,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -8799,7 +9186,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -8808,7 +9195,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -8827,7 +9217,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -8856,8 +9246,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -8885,7 +9275,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -8894,7 +9284,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -8913,7 +9306,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -8942,8 +9335,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -8984,7 +9377,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -8993,7 +9386,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -9012,7 +9408,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -9041,8 +9437,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -9070,7 +9466,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -9079,7 +9475,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -9098,7 +9497,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -9127,8 +9526,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -9467,7 +9866,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -9476,7 +9875,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -9495,7 +9897,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -9524,8 +9926,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -9553,7 +9955,7 @@
                         line = "164"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -9562,7 +9964,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2084"
@@ -9581,7 +9986,7 @@
                             name = "long unsigned int"
                             size = "64"
                             align = "64"
-                            json_type_cast = "(unsigned int)"
+                            json_type_cast = "(unsigned long)"
                             json_type = "Number"
                             default_value = "0"/>
                     </Field>
@@ -9610,8 +10015,8 @@
                                 name = "char"
                                 size = "8"
                                 align = "8"
-                                json_type_cast = "(char)"
-                                json_type = "String"
+                                json_type_cast = "(unsigned int)"
+                                json_type = "Number"
                                 default_value = "0"/>
                         </ArrayType>
                     </Field>
@@ -10013,7 +10418,7 @@
                         line = "254"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -10022,7 +10427,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2181"
@@ -10353,7 +10761,7 @@
                         line = "254"
                         offset = "0"
                         resolved_type = "Typedef"
-                        default_value = "{}">
+                        default_value = "0">
                         <Typedef
                             id = "_647"
                             name = "sa_family_t"
@@ -10362,7 +10770,10 @@
                             location = "f36:28"
                             file = "f36"
                             line = "28"
-                            parent_type = "FundamentalType"/>
+                            parent_type = "FundamentalType"
+                            json_type_cast = "(signed int)"
+                            json_type = "Number"
+                            default_value = "0"/>
                     </Field>
                     <Field
                         id = "_2181"
@@ -10988,7 +11399,7 @@
             align = "64"
             json_type = "Object"
             default_value = "{ }"
-            c_struct_init = " = { .is_on = false, .var_vector_of_bool = {}, .var_vector_of_int = {}, .var_uint08 = 0, .var_uint16 = 0, .var_uint32 = 0, .var_uint64 = 0, .vector_of_uint08 = {}, .vector_of_uint16 = {}, .vector_of_uint32 = {}, .vector_of_uint64 = {}, .list_of_uint08 = {}, .list_of_uint16 = {}, .list_of_uint32 = {}, .list_of_uint64 = {}, .var_int08 = 0, .var_int16 = 0, .var_int32 = 0, .var_int64 = 0, .vector_of_int8 = {}, .vector_of_int16 = {}, .vector_of_int32 = {}, .vector_of_int64 = {}, .list_of_int8 = {}, .list_of_int16 = {}, .list_of_int32 = {}, .list_of_int64 = {}, .var_string = &quot;&quot;, .var_float = 0.0, .var_double = 0.0, .var_long = 0, .var_in_addr = { 0 }, .vector_of_in_addr = {}, .list_of_in_addr = {}, .vc = {} }">
+            c_struct_init = " = { .is_on = false, .var_vector_of_bool = {}, .var_vector_of_int = {}, .var_uint08 = 0, .var_uint16 = 0, .var_uint32 = 0, .var_uint64 = 0, .vector_of_uint08 = {}, .vector_of_uint16 = {}, .vector_of_uint32 = {}, .vector_of_uint64 = {}, .list_of_uint08 = {}, .list_of_uint16 = {}, .list_of_uint32 = {}, .list_of_uint64 = {}, .var_int08 = 0, .var_int16 = 0, .var_int32 = 0, .var_int64 = 0, .vector_of_int8 = {}, .vector_of_int16 = {}, .vector_of_int32 = {}, .vector_of_int64 = {}, .list_of_int8 = {}, .list_of_int16 = {}, .list_of_int32 = {}, .list_of_int64 = {}, .var_string = &quot;&quot;, .var_float = 0.0f, .var_double = 0.0, .var_long = 0, .var_in_addr = { 0 }, .vector_of_in_addr = {}, .list_of_in_addr = {}, .vc = {} }">
             <Field
                 id = "_2277"
                 name = "is_on"
@@ -11036,7 +11447,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;bool"
                     container_type = "bool"
-                    container_iterator = "std::vector&lt;bool &gt;::iterator"
+                    container_iterator = "std::vector&lt;bool                           &gt;::iterator"
                     container_const_iterator = "std::vector&lt;bool &gt;::const_iterator"
                     container_fundamental_type = "bool"
                     parent_type = "FundamentalType"
@@ -11082,7 +11493,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;int32_t"
                     container_type = "int32_t"
-                    container_iterator = "std::vector&lt;int32_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;int32_t                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;int32_t &gt;::const_iterator"
                     container_fundamental_type = "int32_t"
                     parent_type = "Typedef"
@@ -11232,7 +11643,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;uint8_t"
                     container_type = "uint8_t"
-                    container_iterator = "std::vector&lt;uint8_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;uint8_t                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;uint8_t &gt;::const_iterator"
                     container_fundamental_type = "uint8_t"
                     parent_type = "Typedef"
@@ -11282,7 +11693,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;uint16_t"
                     container_type = "uint16_t"
-                    container_iterator = "std::vector&lt;uint16_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;uint16_t                       &gt;::iterator"
                     container_const_iterator = "std::vector&lt;uint16_t &gt;::const_iterator"
                     container_fundamental_type = "uint16_t"
                     parent_type = "Typedef"
@@ -11332,7 +11743,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;uint32_t"
                     container_type = "uint32_t"
-                    container_iterator = "std::vector&lt;uint32_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;uint32_t                       &gt;::iterator"
                     container_const_iterator = "std::vector&lt;uint32_t &gt;::const_iterator"
                     container_fundamental_type = "uint32_t"
                     parent_type = "Typedef"
@@ -11382,7 +11793,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;uint64_t"
                     container_type = "uint64_t"
-                    container_iterator = "std::vector&lt;uint64_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;uint64_t                       &gt;::iterator"
                     container_const_iterator = "std::vector&lt;uint64_t &gt;::const_iterator"
                     container_fundamental_type = "uint64_t"
                     parent_type = "Typedef"
@@ -11432,7 +11843,7 @@
                     container = "list"
                     container_prefix = "list&lt;uint8_t"
                     container_type = "uint8_t"
-                    container_iterator = "std::list&lt;uint8_t &gt;::iterator"
+                    container_iterator = "std::list&lt;uint8_t                          &gt;::iterator"
                     container_const_iterator = "std::list&lt;uint8_t &gt;::const_iterator"
                     container_fundamental_type = "uint8_t"
                     parent_type = "Typedef"
@@ -11482,7 +11893,7 @@
                     container = "list"
                     container_prefix = "list&lt;uint16_t"
                     container_type = "uint16_t"
-                    container_iterator = "std::list&lt;uint16_t &gt;::iterator"
+                    container_iterator = "std::list&lt;uint16_t                         &gt;::iterator"
                     container_const_iterator = "std::list&lt;uint16_t &gt;::const_iterator"
                     container_fundamental_type = "uint16_t"
                     parent_type = "Typedef"
@@ -11532,7 +11943,7 @@
                     container = "list"
                     container_prefix = "list&lt;uint32_t"
                     container_type = "uint32_t"
-                    container_iterator = "std::list&lt;uint32_t &gt;::iterator"
+                    container_iterator = "std::list&lt;uint32_t                         &gt;::iterator"
                     container_const_iterator = "std::list&lt;uint32_t &gt;::const_iterator"
                     container_fundamental_type = "uint32_t"
                     parent_type = "Typedef"
@@ -11582,7 +11993,7 @@
                     container = "list"
                     container_prefix = "list&lt;uint64_t"
                     container_type = "uint64_t"
-                    container_iterator = "std::list&lt;uint64_t &gt;::iterator"
+                    container_iterator = "std::list&lt;uint64_t                         &gt;::iterator"
                     container_const_iterator = "std::list&lt;uint64_t &gt;::const_iterator"
                     container_fundamental_type = "uint64_t"
                     parent_type = "Typedef"
@@ -11732,7 +12143,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;int8_t"
                     container_type = "int8_t"
-                    container_iterator = "std::vector&lt;int8_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;int8_t                         &gt;::iterator"
                     container_const_iterator = "std::vector&lt;int8_t &gt;::const_iterator"
                     container_fundamental_type = "int8_t"
                     parent_type = "Typedef"
@@ -11782,7 +12193,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;int16_t"
                     container_type = "int16_t"
-                    container_iterator = "std::vector&lt;int16_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;int16_t                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;int16_t &gt;::const_iterator"
                     container_fundamental_type = "int16_t"
                     parent_type = "Typedef"
@@ -11832,7 +12243,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;int32_t"
                     container_type = "int32_t"
-                    container_iterator = "std::vector&lt;int32_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;int32_t                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;int32_t &gt;::const_iterator"
                     container_fundamental_type = "int32_t"
                     parent_type = "Typedef"
@@ -11882,7 +12293,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;int64_t"
                     container_type = "int64_t"
-                    container_iterator = "std::vector&lt;int64_t &gt;::iterator"
+                    container_iterator = "std::vector&lt;int64_t                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;int64_t &gt;::const_iterator"
                     container_fundamental_type = "int64_t"
                     parent_type = "Typedef"
@@ -11932,7 +12343,7 @@
                     container = "list"
                     container_prefix = "list&lt;int8_t"
                     container_type = "int8_t"
-                    container_iterator = "std::list&lt;int8_t &gt;::iterator"
+                    container_iterator = "std::list&lt;int8_t                           &gt;::iterator"
                     container_const_iterator = "std::list&lt;int8_t &gt;::const_iterator"
                     container_fundamental_type = "int8_t"
                     parent_type = "Typedef"
@@ -11982,7 +12393,7 @@
                     container = "list"
                     container_prefix = "list&lt;int16_t"
                     container_type = "int16_t"
-                    container_iterator = "std::list&lt;int16_t &gt;::iterator"
+                    container_iterator = "std::list&lt;int16_t                          &gt;::iterator"
                     container_const_iterator = "std::list&lt;int16_t &gt;::const_iterator"
                     container_fundamental_type = "int16_t"
                     parent_type = "Typedef"
@@ -12032,7 +12443,7 @@
                     container = "list"
                     container_prefix = "list&lt;int32_t"
                     container_type = "int32_t"
-                    container_iterator = "std::list&lt;int32_t &gt;::iterator"
+                    container_iterator = "std::list&lt;int32_t                          &gt;::iterator"
                     container_const_iterator = "std::list&lt;int32_t &gt;::const_iterator"
                     container_fundamental_type = "int32_t"
                     parent_type = "Typedef"
@@ -12082,7 +12493,7 @@
                     container = "list"
                     container_prefix = "list&lt;int64_t"
                     container_type = "int64_t"
-                    container_iterator = "std::list&lt;int64_t &gt;::iterator"
+                    container_iterator = "std::list&lt;int64_t                          &gt;::iterator"
                     container_const_iterator = "std::list&lt;int64_t &gt;::const_iterator"
                     container_fundamental_type = "int64_t"
                     parent_type = "Typedef"
@@ -12142,7 +12553,7 @@
                 line = "79"
                 offset = "3456"
                 resolved_type = "FundamentalType"
-                default_value = "0.0">
+                default_value = "0.0f">
                 <FundamentalType
                     id = "_1788"
                     name = "float"
@@ -12150,7 +12561,7 @@
                     align = "32"
                     json_type_cast = "(float)"
                     json_type = "Number"
-                    default_value = "0.0"/>
+                    default_value = "0.0f"/>
             </Field>
             <Field
                 id = "_2306"
@@ -12190,7 +12601,7 @@
                     name = "long int"
                     size = "64"
                     align = "64"
-                    json_type_cast = "(int)"
+                    json_type_cast = "(long long)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -12303,7 +12714,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;in_addr"
                     container_type = "in_addr"
-                    container_iterator = "std::vector&lt;in_addr &gt;::iterator"
+                    container_iterator = "std::vector&lt;in_addr                        &gt;::iterator"
                     container_const_iterator = "std::vector&lt;in_addr &gt;::const_iterator"
                     container_fundamental_type = "in_addr"
                     parent_type = "Struct"
@@ -12364,7 +12775,7 @@
                     container = "list"
                     container_prefix = "list&lt;in_addr"
                     container_type = "in_addr"
-                    container_iterator = "std::list&lt;in_addr &gt;::iterator"
+                    container_iterator = "std::list&lt;in_addr                          &gt;::iterator"
                     container_const_iterator = "std::list&lt;in_addr &gt;::const_iterator"
                     container_fundamental_type = "in_addr"
                     parent_type = "Struct"
@@ -12425,7 +12836,7 @@
                     container = "vector"
                     container_prefix = "vector&lt;float"
                     container_type = "float"
-                    container_iterator = "std::vector&lt;float &gt;::iterator"
+                    container_iterator = "std::vector&lt;float                          &gt;::iterator"
                     container_const_iterator = "std::vector&lt;float &gt;::const_iterator"
                     container_fundamental_type = "float"
                     parent_type = "FundamentalType"
@@ -12442,7 +12853,7 @@
                         align = "32"
                         json_type_cast = "(float)"
                         json_type = "Number"
-                        default_value = "0.0"/>
+                        default_value = "0.0f"/>
                 </Class>
             </Field>
         </Struct>
@@ -12460,18 +12871,12 @@
             id = "_760"
             name = "__int128"
             size = "128"
-            align = "128"
-            json_type_cast = "(int)"
-            json_type = "Number"
-            default_value = "0"/>
+            align = "128"/>
         <FundamentalType
             id = "_761"
             name = "unsigned __int128"
             size = "128"
-            align = "128"
-            json_type_cast = "(unsigned int)"
-            json_type = "Number"
-            default_value = "0"/>
+            align = "128"/>
         <PointerType
             id = "_762"
             type = "_2315"/>
@@ -12505,7 +12910,10 @@
             location = "f42:188"
             file = "f42"
             line = "188"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_765"
             name = "ptrdiff_t"
@@ -12514,7 +12922,10 @@
             location = "f42:189"
             file = "f42"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <OperatorFunction
             id = "_766"
             name = "&gt;&gt;"
@@ -13185,7 +13596,10 @@
                 location = "f10:235"
                 file = "f10"
                 line = "235"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2649"
                 name = "int_type"
@@ -13195,7 +13609,10 @@
                 location = "f10:236"
                 file = "f10"
                 line = "236"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2650"
                 name = "pos_type"
@@ -13298,7 +13715,10 @@
             location = "f47:88"
             file = "f47"
             line = "88"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_846"
             name = "streamsize"
@@ -13395,8 +13815,8 @@
                     name = "unsigned char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(unsigned char)"
-                    json_type = "String"
+                    json_type_cast = "(unsigned int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
         </Struct>
@@ -13435,7 +13855,7 @@
                     name = "short unsigned int"
                     size = "16"
                     align = "16"
-                    json_type_cast = "(unsigned int)"
+                    json_type_cast = "(signed int)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -13515,7 +13935,7 @@
                     name = "long unsigned int"
                     size = "64"
                     align = "64"
-                    json_type_cast = "(unsigned int)"
+                    json_type_cast = "(unsigned long)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -13555,8 +13975,8 @@
                     name = "signed char"
                     size = "8"
                     align = "8"
-                    json_type_cast = "(signed char)"
-                    json_type = "String"
+                    json_type_cast = "(signed int)"
+                    json_type = "Number"
                     default_value = "0"/>
             </Field>
         </Struct>
@@ -13589,15 +14009,12 @@
                 line = "109"
                 offset = "128"
                 resolved_type = "FundamentalType"
-                default_value = "0">
+                default_value = "{}">
                 <FundamentalType
                     id = "_1828"
                     name = "short int"
                     size = "16"
-                    align = "16"
-                    json_type_cast = "(int)"
-                    json_type = "Number"
-                    default_value = "0"/>
+                    align = "16"/>
             </Field>
         </Struct>
         <Struct
@@ -13675,7 +14092,7 @@
                     name = "long int"
                     size = "64"
                     align = "64"
-                    json_type_cast = "(int)"
+                    json_type_cast = "(long long)"
                     json_type = "Number"
                     default_value = "0"/>
             </Field>
@@ -13846,7 +14263,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2745"
                 name = "pointer"
@@ -13948,7 +14368,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2767"
                 name = "pointer"
@@ -14050,7 +14473,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2789"
                 name = "pointer"
@@ -14152,7 +14578,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2811"
                 name = "pointer"
@@ -14254,7 +14683,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2833"
                 name = "pointer"
@@ -14458,7 +14890,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2877"
                 name = "pointer"
@@ -14560,7 +14995,10 @@
                 location = "f3:132"
                 file = "f3"
                 line = "132"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2899"
                 name = "pointer"
@@ -14775,7 +15213,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2944"
                 name = "pointer"
@@ -14887,7 +15328,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2968"
                 name = "pointer"
@@ -14999,7 +15443,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_2992"
                 name = "pointer"
@@ -15111,7 +15558,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_3016"
                 name = "pointer"
@@ -15223,7 +15673,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_3040"
                 name = "pointer"
@@ -15447,7 +15900,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_3088"
                 name = "pointer"
@@ -15559,7 +16015,10 @@
                 location = "f3:212"
                 file = "f3"
                 line = "212"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_3112"
                 name = "pointer"
@@ -15814,7 +16273,7 @@
             container = "list"
             container_prefix = "list&lt;uint8_t"
             container_type = "uint8_t"
-            container_iterator = "std::list&lt;uint8_t &gt;::iterator"
+            container_iterator = "std::list&lt;uint8_t                          &gt;::iterator"
             container_const_iterator = "std::list&lt;uint8_t &gt;::const_iterator"
             container_fundamental_type = "uint8_t"
             parent_type = "Typedef"
@@ -15851,7 +16310,7 @@
             container = "list"
             container_prefix = "list&lt;uint16_t"
             container_type = "uint16_t"
-            container_iterator = "std::list&lt;uint16_t &gt;::iterator"
+            container_iterator = "std::list&lt;uint16_t                         &gt;::iterator"
             container_const_iterator = "std::list&lt;uint16_t &gt;::const_iterator"
             container_fundamental_type = "uint16_t"
             parent_type = "Typedef"
@@ -15888,7 +16347,7 @@
             container = "list"
             container_prefix = "list&lt;uint32_t"
             container_type = "uint32_t"
-            container_iterator = "std::list&lt;uint32_t &gt;::iterator"
+            container_iterator = "std::list&lt;uint32_t                         &gt;::iterator"
             container_const_iterator = "std::list&lt;uint32_t &gt;::const_iterator"
             container_fundamental_type = "uint32_t"
             parent_type = "Typedef"
@@ -15925,7 +16384,7 @@
             container = "list"
             container_prefix = "list&lt;uint64_t"
             container_type = "uint64_t"
-            container_iterator = "std::list&lt;uint64_t &gt;::iterator"
+            container_iterator = "std::list&lt;uint64_t                         &gt;::iterator"
             container_const_iterator = "std::list&lt;uint64_t &gt;::const_iterator"
             container_fundamental_type = "uint64_t"
             parent_type = "Typedef"
@@ -15962,7 +16421,7 @@
             container = "list"
             container_prefix = "list&lt;int8_t"
             container_type = "int8_t"
-            container_iterator = "std::list&lt;int8_t &gt;::iterator"
+            container_iterator = "std::list&lt;int8_t                           &gt;::iterator"
             container_const_iterator = "std::list&lt;int8_t &gt;::const_iterator"
             container_fundamental_type = "int8_t"
             parent_type = "Typedef"
@@ -15999,7 +16458,7 @@
             container = "list"
             container_prefix = "list&lt;int16_t"
             container_type = "int16_t"
-            container_iterator = "std::list&lt;int16_t &gt;::iterator"
+            container_iterator = "std::list&lt;int16_t                          &gt;::iterator"
             container_const_iterator = "std::list&lt;int16_t &gt;::const_iterator"
             container_fundamental_type = "int16_t"
             parent_type = "Typedef"
@@ -16036,7 +16495,7 @@
             container = "list"
             container_prefix = "list&lt;int32_t"
             container_type = "int32_t"
-            container_iterator = "std::list&lt;int32_t &gt;::iterator"
+            container_iterator = "std::list&lt;int32_t                          &gt;::iterator"
             container_const_iterator = "std::list&lt;int32_t &gt;::const_iterator"
             container_fundamental_type = "int32_t"
             parent_type = "Typedef"
@@ -16073,7 +16532,7 @@
             container = "list"
             container_prefix = "list&lt;int64_t"
             container_type = "int64_t"
-            container_iterator = "std::list&lt;int64_t &gt;::iterator"
+            container_iterator = "std::list&lt;int64_t                          &gt;::iterator"
             container_const_iterator = "std::list&lt;int64_t &gt;::const_iterator"
             container_fundamental_type = "int64_t"
             parent_type = "Typedef"
@@ -16110,7 +16569,7 @@
             container = "list"
             container_prefix = "list&lt;in_addr"
             container_type = "in_addr"
-            container_iterator = "std::list&lt;in_addr &gt;::iterator"
+            container_iterator = "std::list&lt;in_addr                          &gt;::iterator"
             container_const_iterator = "std::list&lt;in_addr &gt;::const_iterator"
             container_fundamental_type = "in_addr"
             parent_type = "Struct"
@@ -16152,7 +16611,10 @@
             location = "f49:67"
             file = "f49"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Enumeration
             id = "_899"
             name = ""
@@ -16207,7 +16669,7 @@
                 line = "73"
                 offset = "64"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_898"
                     name = "_Bit_type"
@@ -16216,7 +16678,10 @@
                     location = "f49:67"
                     file = "f49"
                     line = "67"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(unsigned long)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
             <Converter
                 id = "_3950"
@@ -16410,7 +16875,10 @@
                 location = "f49:302"
                 file = "f49"
                 line = "302"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
             <Typedef
                 id = "_3995"
                 name = "const_reference"
@@ -16420,7 +16888,10 @@
                 location = "f49:303"
                 file = "f49"
                 line = "303"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
             <Typedef
                 id = "_3996"
                 name = "pointer"
@@ -18384,7 +18855,7 @@
             container = "vector"
             container_prefix = "vector&lt;bool"
             container_type = "bool"
-            container_iterator = "std::vector&lt;bool &gt;::iterator"
+            container_iterator = "std::vector&lt;bool                           &gt;::iterator"
             container_const_iterator = "std::vector&lt;bool &gt;::const_iterator"
             container_fundamental_type = "bool"
             parent_type = "FundamentalType"
@@ -18417,7 +18888,7 @@
             container = "vector"
             container_prefix = "vector&lt;int32_t"
             container_type = "int32_t"
-            container_iterator = "std::vector&lt;int32_t &gt;::iterator"
+            container_iterator = "std::vector&lt;int32_t                        &gt;::iterator"
             container_const_iterator = "std::vector&lt;int32_t &gt;::const_iterator"
             container_fundamental_type = "int32_t"
             parent_type = "Typedef"
@@ -18454,7 +18925,7 @@
             container = "vector"
             container_prefix = "vector&lt;uint8_t"
             container_type = "uint8_t"
-            container_iterator = "std::vector&lt;uint8_t &gt;::iterator"
+            container_iterator = "std::vector&lt;uint8_t                        &gt;::iterator"
             container_const_iterator = "std::vector&lt;uint8_t &gt;::const_iterator"
             container_fundamental_type = "uint8_t"
             parent_type = "Typedef"
@@ -18491,7 +18962,7 @@
             container = "vector"
             container_prefix = "vector&lt;uint16_t"
             container_type = "uint16_t"
-            container_iterator = "std::vector&lt;uint16_t &gt;::iterator"
+            container_iterator = "std::vector&lt;uint16_t                       &gt;::iterator"
             container_const_iterator = "std::vector&lt;uint16_t &gt;::const_iterator"
             container_fundamental_type = "uint16_t"
             parent_type = "Typedef"
@@ -18528,7 +18999,7 @@
             container = "vector"
             container_prefix = "vector&lt;uint32_t"
             container_type = "uint32_t"
-            container_iterator = "std::vector&lt;uint32_t &gt;::iterator"
+            container_iterator = "std::vector&lt;uint32_t                       &gt;::iterator"
             container_const_iterator = "std::vector&lt;uint32_t &gt;::const_iterator"
             container_fundamental_type = "uint32_t"
             parent_type = "Typedef"
@@ -18565,7 +19036,7 @@
             container = "vector"
             container_prefix = "vector&lt;uint64_t"
             container_type = "uint64_t"
-            container_iterator = "std::vector&lt;uint64_t &gt;::iterator"
+            container_iterator = "std::vector&lt;uint64_t                       &gt;::iterator"
             container_const_iterator = "std::vector&lt;uint64_t &gt;::const_iterator"
             container_fundamental_type = "uint64_t"
             parent_type = "Typedef"
@@ -18602,7 +19073,7 @@
             container = "vector"
             container_prefix = "vector&lt;int8_t"
             container_type = "int8_t"
-            container_iterator = "std::vector&lt;int8_t &gt;::iterator"
+            container_iterator = "std::vector&lt;int8_t                         &gt;::iterator"
             container_const_iterator = "std::vector&lt;int8_t &gt;::const_iterator"
             container_fundamental_type = "int8_t"
             parent_type = "Typedef"
@@ -18639,7 +19110,7 @@
             container = "vector"
             container_prefix = "vector&lt;int16_t"
             container_type = "int16_t"
-            container_iterator = "std::vector&lt;int16_t &gt;::iterator"
+            container_iterator = "std::vector&lt;int16_t                        &gt;::iterator"
             container_const_iterator = "std::vector&lt;int16_t &gt;::const_iterator"
             container_fundamental_type = "int16_t"
             parent_type = "Typedef"
@@ -18676,7 +19147,7 @@
             container = "vector"
             container_prefix = "vector&lt;int64_t"
             container_type = "int64_t"
-            container_iterator = "std::vector&lt;int64_t &gt;::iterator"
+            container_iterator = "std::vector&lt;int64_t                        &gt;::iterator"
             container_const_iterator = "std::vector&lt;int64_t &gt;::const_iterator"
             container_fundamental_type = "int64_t"
             parent_type = "Typedef"
@@ -18713,7 +19184,7 @@
             container = "vector"
             container_prefix = "vector&lt;in_addr"
             container_type = "in_addr"
-            container_iterator = "std::vector&lt;in_addr &gt;::iterator"
+            container_iterator = "std::vector&lt;in_addr                        &gt;::iterator"
             container_const_iterator = "std::vector&lt;in_addr &gt;::const_iterator"
             container_fundamental_type = "in_addr"
             parent_type = "Struct"
@@ -18761,7 +19232,7 @@
             container = "vector"
             container_prefix = "vector&lt;float"
             container_type = "float"
-            container_iterator = "std::vector&lt;float &gt;::iterator"
+            container_iterator = "std::vector&lt;float                          &gt;::iterator"
             container_const_iterator = "std::vector&lt;float &gt;::const_iterator"
             container_fundamental_type = "float"
             parent_type = "FundamentalType"
@@ -18778,7 +19249,7 @@
                 align = "32"
                 json_type_cast = "(float)"
                 json_type = "Number"
-                default_value = "0.0"/>
+                default_value = "0.0f"/>
         </Class>
         <Struct
             id = "_931"
@@ -21076,7 +21547,10 @@
                 location = "f56:123"
                 file = "f56"
                 line = "123"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
             <Typedef
                 id = "_5821"
                 name = "difference_type"
@@ -21086,7 +21560,10 @@
                 location = "f56:125"
                 file = "f56"
                 line = "125"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5822"
                 name = "pointer"
@@ -21140,7 +21617,10 @@
                 location = "f56:123"
                 file = "f56"
                 line = "123"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
             <Typedef
                 id = "_5830"
                 name = "difference_type"
@@ -21150,7 +21630,10 @@
                 location = "f56:125"
                 file = "f56"
                 line = "125"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5831"
                 name = "pointer"
@@ -21205,7 +21688,10 @@
                 location = "f56:123"
                 file = "f56"
                 line = "123"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
             <Typedef
                 id = "_5839"
                 name = "difference_type"
@@ -21215,7 +21701,10 @@
                 location = "f56:125"
                 file = "f56"
                 line = "125"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5840"
                 name = "pointer"
@@ -21235,7 +21724,10 @@
                 location = "f56:129"
                 file = "f56"
                 line = "129"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(bool)"
+                json_type = "Boolean"
+                default_value = "false"/>
         </Struct>
         <Struct
             id = "_1362"
@@ -21395,7 +21887,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5866"
                 name = "difference_type"
@@ -21459,7 +21954,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5875"
                 name = "difference_type"
@@ -21523,7 +22021,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5884"
                 name = "difference_type"
@@ -21587,7 +22088,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5893"
                 name = "difference_type"
@@ -21651,7 +22155,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5902"
                 name = "difference_type"
@@ -21715,7 +22222,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5911"
                 name = "difference_type"
@@ -21843,7 +22353,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5929"
                 name = "difference_type"
@@ -21972,7 +22485,10 @@
                 location = "f56:178"
                 file = "f56"
                 line = "178"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(float)"
+                json_type = "Number"
+                default_value = "0.0f"/>
             <Typedef
                 id = "_5947"
                 name = "difference_type"
@@ -22036,7 +22552,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5956"
                 name = "difference_type"
@@ -22226,7 +22745,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_5983"
                 name = "difference_type"
@@ -22416,7 +22938,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_6010"
                 name = "difference_type"
@@ -22606,7 +23131,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_6037"
                 name = "difference_type"
@@ -22796,7 +23324,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_6064"
                 name = "difference_type"
@@ -22986,7 +23517,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_6091"
                 name = "difference_type"
@@ -23366,7 +23900,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
             <Typedef
                 id = "_6145"
                 name = "difference_type"
@@ -23747,7 +24284,10 @@
                 location = "f56:189"
                 file = "f56"
                 line = "189"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(float)"
+                json_type = "Number"
+                default_value = "0.0f"/>
             <Typedef
                 id = "_6199"
                 name = "difference_type"
@@ -32854,7 +33394,10 @@
                 location = "f63:74"
                 file = "f63"
                 line = "74"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1720"
@@ -32877,7 +33420,10 @@
                 location = "f63:78"
                 file = "f63"
                 line = "78"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1721"
@@ -32900,7 +33446,10 @@
                 location = "f63:82"
                 file = "f63"
                 line = "82"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1722"
@@ -32923,7 +33472,10 @@
                 location = "f63:86"
                 file = "f63"
                 line = "86"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1723"
@@ -32946,7 +33498,10 @@
                 location = "f63:90"
                 file = "f63"
                 line = "90"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1724"
@@ -33012,7 +33567,10 @@
                 location = "f63:117"
                 file = "f63"
                 line = "117"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1728"
@@ -33035,7 +33593,10 @@
                 location = "f63:121"
                 file = "f63"
                 line = "121"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(signed int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1729"
@@ -33081,7 +33642,10 @@
                 location = "f63:129"
                 file = "f63"
                 line = "129"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(int)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1731"
@@ -33104,7 +33668,10 @@
                 location = "f63:133"
                 file = "f63"
                 line = "133"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
         </Struct>
         <Struct
             id = "_1732"
@@ -33193,7 +33760,10 @@
                 location = "f63:182"
                 file = "f63"
                 line = "182"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(double)"
+                json_type = "Number"
+                default_value = "0.0"/>
         </Struct>
         <Struct
             id = "_1737"
@@ -33216,7 +33786,10 @@
                 location = "f63:186"
                 file = "f63"
                 line = "186"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(float)"
+                json_type = "Number"
+                default_value = "0.0f"/>
         </Struct>
         <PointerType
             id = "_1738"
@@ -33237,7 +33810,7 @@
             name = "long unsigned int"
             size = "64"
             align = "64"
-            json_type_cast = "(unsigned int)"
+            json_type_cast = "(unsigned long)"
             json_type = "Number"
             default_value = "0"/>
         <FundamentalType
@@ -33268,16 +33841,12 @@
             id = "_1743"
             name = "long long unsigned int"
             size = "64"
-            align = "64"
-            json_type_cast = "(unsigned int)"
-            json_type = "Number"
-            default_value = "0"/>
+            align = "64"/>
         <FundamentalType
             id = "_1744"
             name = "void"
             size = "0"
-            align = "8"
-            json_type_cast = "(void)"/>
+            align = "8"/>
         <CvQualifiedType
             id = "_1744c"
             type = "_1744"
@@ -33518,10 +34087,7 @@
             id = "_1780"
             name = "wchar_t"
             size = "32"
-            align = "32"
-            json_type_cast = "(wchar_t)"
-            json_type = "String"
-            default_value = "0"/>
+            align = "32"/>
         <CvQualifiedType
             id = "_1780c"
             type = "_1780"
@@ -33583,31 +34149,25 @@
             align = "32"
             json_type_cast = "(float)"
             json_type = "Number"
-            default_value = "0.0"/>
+            default_value = "0.0f"/>
         <FundamentalType
             id = "_1789"
             name = "long double"
             size = "128"
-            align = "128"
-            json_type_cast = "(long double)"
-            json_type = "Number"
-            default_value = "0.0"/>
+            align = "128"/>
         <FundamentalType
             id = "_1790"
             name = "long int"
             size = "64"
             align = "64"
-            json_type_cast = "(int)"
+            json_type_cast = "(long long)"
             json_type = "Number"
             default_value = "0"/>
         <FundamentalType
             id = "_1791"
             name = "long long int"
             size = "64"
-            align = "64"
-            json_type_cast = "(int)"
-            json_type = "Number"
-            default_value = "0"/>
+            align = "64"/>
         <PointerType
             id = "_1792"
             type = "_31"/>
@@ -33884,15 +34444,15 @@
             name = "unsigned char"
             size = "8"
             align = "8"
-            json_type_cast = "(unsigned char)"
-            json_type = "String"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
             default_value = "0"/>
         <FundamentalType
             id = "_1826"
             name = "short unsigned int"
             size = "16"
             align = "16"
-            json_type_cast = "(unsigned int)"
+            json_type_cast = "(signed int)"
             json_type = "Number"
             default_value = "0"/>
         <FundamentalType
@@ -33900,17 +34460,14 @@
             name = "signed char"
             size = "8"
             align = "8"
-            json_type_cast = "(signed char)"
-            json_type = "String"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
             default_value = "0"/>
         <FundamentalType
             id = "_1828"
             name = "short int"
             size = "16"
-            align = "16"
-            json_type_cast = "(int)"
-            json_type = "Number"
-            default_value = "0"/>
+            align = "16"/>
         <Field
             id = "_1829"
             name = "__val"
@@ -34501,7 +35058,7 @@
                 name = "long int"
                 size = "64"
                 align = "64"
-                json_type_cast = "(int)"
+                json_type_cast = "(long long)"
                 json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
@@ -36200,8 +36757,8 @@
             name = "char"
             size = "8"
             align = "8"
-            json_type_cast = "(char)"
-            json_type = "String"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
             default_value = "0"/>
         <CvQualifiedType
             id = "_2315c"
@@ -36529,7 +37086,7 @@
                 line = "152"
                 offset = "128"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_553"
                     name = "_Atomic_word"
@@ -36538,7 +37095,10 @@
                     location = "f24:32"
                     file = "f24"
                     line = "32"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
         </Struct>
         <Struct
@@ -36878,7 +37438,7 @@
                 line = "152"
                 offset = "128"
                 resolved_type = "Typedef"
-                default_value = "{}">
+                default_value = "0">
                 <Typedef
                     id = "_553"
                     name = "_Atomic_word"
@@ -36887,7 +37447,10 @@
                     location = "f24:32"
                     file = "f24"
                     line = "32"
-                    parent_type = "FundamentalType"/>
+                    parent_type = "FundamentalType"
+                    json_type_cast = "(int)"
+                    json_type = "Number"
+                    default_value = "0"/>
             </Field>
         </Struct>
         <Struct
@@ -37094,7 +37657,10 @@
             location = "f10:235"
             file = "f10"
             line = "235"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2649"
             name = "int_type"
@@ -37104,7 +37670,10 @@
             location = "f10:236"
             file = "f10"
             line = "236"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2650"
             name = "pos_type"
@@ -37372,7 +37941,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2745"
             name = "pointer"
@@ -37455,7 +38027,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2767"
             name = "pointer"
@@ -37538,7 +38113,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2789"
             name = "pointer"
@@ -37621,7 +38199,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2811"
             name = "pointer"
@@ -37704,7 +38285,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2833"
             name = "pointer"
@@ -37870,7 +38454,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2877"
             name = "pointer"
@@ -37953,7 +38540,10 @@
             location = "f3:132"
             file = "f3"
             line = "132"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2899"
             name = "pointer"
@@ -38134,7 +38724,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2944"
             name = "pointer"
@@ -38231,7 +38824,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2968"
             name = "pointer"
@@ -38328,7 +38924,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_2992"
             name = "pointer"
@@ -38425,7 +39024,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3016"
             name = "pointer"
@@ -38522,7 +39124,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3040"
             name = "pointer"
@@ -38716,7 +39321,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3088"
             name = "pointer"
@@ -38813,7 +39421,10 @@
             location = "f3:212"
             file = "f3"
             line = "212"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3112"
             name = "pointer"
@@ -40458,7 +41069,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3321"
             name = "pointer"
@@ -40631,7 +41245,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3391"
             name = "pointer"
@@ -40804,7 +41421,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3461"
             name = "pointer"
@@ -40977,7 +41597,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3531"
             name = "pointer"
@@ -41150,7 +41773,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3601"
             name = "pointer"
@@ -41496,7 +42122,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3741"
             name = "pointer"
@@ -41669,7 +42298,10 @@
             location = "f3:459"
             file = "f3"
             line = "459"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_3811"
             name = "pointer"
@@ -42073,7 +42705,10 @@
             location = "f49:302"
             file = "f49"
             line = "302"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_3995"
             name = "const_reference"
@@ -42083,7 +42718,10 @@
             location = "f49:303"
             file = "f49"
             line = "303"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_3996"
             name = "pointer"
@@ -43725,7 +44363,10 @@
             location = "f49:535"
             file = "f49"
             line = "535"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_4214"
             name = "size_type"
@@ -43766,7 +44407,10 @@
             location = "f49:539"
             file = "f49"
             line = "539"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_4218"
             name = "pointer"
@@ -43890,7 +44534,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4282"
             name = "pointer"
@@ -44052,7 +44699,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4347"
             name = "pointer"
@@ -44214,7 +44864,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4412"
             name = "pointer"
@@ -44376,7 +45029,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4477"
             name = "pointer"
@@ -44538,7 +45194,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4542"
             name = "pointer"
@@ -44700,7 +45359,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4607"
             name = "pointer"
@@ -45024,7 +45686,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_4737"
             name = "pointer"
@@ -45349,7 +46014,10 @@
             location = "f50:226"
             file = "f50"
             line = "226"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <Typedef
             id = "_4867"
             name = "pointer"
@@ -45783,7 +46451,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5067"
             name = "rebind&lt;char&gt;"
@@ -45995,7 +46666,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Struct
             id = "_5094"
             name = "rebind&lt;unsigned long&gt;"
@@ -46089,7 +46763,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5107"
             name = "rebind&lt;unsigned long&gt;"
@@ -46207,7 +46884,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5123"
             name = "rebind&lt;int&gt;"
@@ -46325,7 +47005,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5138"
             name = "rebind&lt;unsigned char&gt;"
@@ -46443,7 +47126,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5153"
             name = "rebind&lt;unsigned short&gt;"
@@ -46561,7 +47247,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5168"
             name = "rebind&lt;unsigned int&gt;"
@@ -46963,7 +47652,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5235"
             name = "rebind&lt;signed char&gt;"
@@ -47199,7 +47891,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Struct
             id = "_5265"
             name = "rebind&lt;long&gt;"
@@ -47791,7 +48486,10 @@
             location = "f53:101"
             file = "f53"
             line = "101"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <Struct
             id = "_5360"
             name = "rebind&lt;float&gt;"
@@ -48510,7 +49208,10 @@
             location = "f56:123"
             file = "f56"
             line = "123"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_5821"
             name = "difference_type"
@@ -48520,7 +49221,10 @@
             location = "f56:125"
             file = "f56"
             line = "125"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5822"
             name = "pointer"
@@ -48561,7 +49265,10 @@
             location = "f56:123"
             file = "f56"
             line = "123"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_5830"
             name = "difference_type"
@@ -48571,7 +49278,10 @@
             location = "f56:125"
             file = "f56"
             line = "125"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5831"
             name = "pointer"
@@ -48613,7 +49323,10 @@
             location = "f56:123"
             file = "f56"
             line = "123"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_5839"
             name = "difference_type"
@@ -48623,7 +49336,10 @@
             location = "f56:125"
             file = "f56"
             line = "125"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5840"
             name = "pointer"
@@ -48643,7 +49359,10 @@
             location = "f56:129"
             file = "f56"
             line = "129"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_5846"
             name = "iterator_category"
@@ -48764,7 +49483,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5866"
             name = "difference_type"
@@ -48815,7 +49537,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5875"
             name = "difference_type"
@@ -48866,7 +49591,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5884"
             name = "difference_type"
@@ -48917,7 +49645,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5893"
             name = "difference_type"
@@ -48968,7 +49699,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5902"
             name = "difference_type"
@@ -49019,7 +49753,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5911"
             name = "difference_type"
@@ -49121,7 +49858,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5929"
             name = "difference_type"
@@ -49224,7 +49964,10 @@
             location = "f56:178"
             file = "f56"
             line = "178"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <Typedef
             id = "_5947"
             name = "difference_type"
@@ -49275,7 +50018,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5956"
             name = "difference_type"
@@ -49426,7 +50172,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_5983"
             name = "difference_type"
@@ -49577,7 +50326,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_6010"
             name = "difference_type"
@@ -49728,7 +50480,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_6037"
             name = "difference_type"
@@ -49879,7 +50634,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_6064"
             name = "difference_type"
@@ -50030,7 +50788,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_6091"
             name = "difference_type"
@@ -50332,7 +51093,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_6145"
             name = "difference_type"
@@ -50635,7 +51399,10 @@
             location = "f56:189"
             file = "f56"
             line = "189"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <Typedef
             id = "_6199"
             name = "difference_type"
@@ -57456,7 +58223,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8058"
             name = "size_type"
@@ -57596,7 +58366,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(bool)"
+            json_type = "Boolean"
+            default_value = "false"/>
         <Typedef
             id = "_8096"
             name = "size_type"
@@ -57666,7 +58439,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8115"
             name = "size_type"
@@ -57736,7 +58512,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8134"
             name = "size_type"
@@ -57806,7 +58585,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8153"
             name = "size_type"
@@ -57876,7 +58658,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8172"
             name = "size_type"
@@ -57946,7 +58731,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8191"
             name = "size_type"
@@ -58300,7 +59088,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8286"
             name = "size_type"
@@ -58440,7 +59231,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8324"
             name = "size_type"
@@ -58936,7 +59730,10 @@
             location = "f61:67"
             file = "f61"
             line = "67"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <Struct
             id = "_8457"
             name = "_Iter_less_iter"
@@ -59224,7 +60021,10 @@
             location = "f63:74"
             file = "f63"
             line = "74"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8607"
             name = "__type"
@@ -59234,7 +60034,10 @@
             location = "f63:78"
             file = "f63"
             line = "78"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8612"
             name = "__type"
@@ -59244,7 +60047,10 @@
             location = "f63:82"
             file = "f63"
             line = "82"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8617"
             name = "__type"
@@ -59254,7 +60060,10 @@
             location = "f63:86"
             file = "f63"
             line = "86"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8622"
             name = "__type"
@@ -59264,7 +60073,10 @@
             location = "f63:90"
             file = "f63"
             line = "90"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(unsigned long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8627"
             name = "__type"
@@ -59284,7 +60096,10 @@
             location = "f63:117"
             file = "f63"
             line = "117"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8637"
             name = "__type"
@@ -59294,7 +60109,10 @@
             location = "f63:121"
             file = "f63"
             line = "121"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(signed int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8642"
             name = "__type"
@@ -59314,7 +60132,10 @@
             location = "f63:129"
             file = "f63"
             line = "129"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(int)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8652"
             name = "__type"
@@ -59324,7 +60145,10 @@
             location = "f63:133"
             file = "f63"
             line = "133"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(long long)"
+            json_type = "Number"
+            default_value = "0"/>
         <Typedef
             id = "_8657"
             name = "__type"
@@ -59354,7 +60178,10 @@
             location = "f63:182"
             file = "f63"
             line = "182"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(double)"
+            json_type = "Number"
+            default_value = "0.0"/>
         <Typedef
             id = "_8672"
             name = "__type"
@@ -59364,7 +60191,10 @@
             location = "f63:186"
             file = "f63"
             line = "186"
-            parent_type = "FundamentalType"/>
+            parent_type = "FundamentalType"
+            json_type_cast = "(float)"
+            json_type = "Number"
+            default_value = "0.0f"/>
         <ReferenceType
             id = "_8683"
             type = "_36c"/>
@@ -59490,7 +60320,10 @@
                 location = "f17:118"
                 file = "f17"
                 line = "118"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(unsigned long)"
+                json_type = "Number"
+                default_value = "0"/>
         </ArrayType>
         <ReferenceType
             id = "_8710"
@@ -59541,8 +60374,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -59661,8 +60494,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -59688,8 +60521,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -59795,8 +60628,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -59952,8 +60785,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -59979,8 +60812,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -60110,7 +60943,7 @@
                 name = "long unsigned int"
                 size = "64"
                 align = "64"
-                json_type_cast = "(unsigned int)"
+                json_type_cast = "(unsigned long)"
                 json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
@@ -60140,7 +60973,10 @@
                 location = "f30:54"
                 file = "f30"
                 line = "54"
-                parent_type = "FundamentalType"/>
+                parent_type = "FundamentalType"
+                json_type_cast = "(long long)"
+                json_type = "Number"
+                default_value = "0"/>
         </ArrayType>
         <ReferenceType
             id = "_8808"
@@ -60171,8 +61007,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -60194,8 +61030,8 @@
                 name = "char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -60225,8 +61061,8 @@
                 name = "unsigned char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(unsigned char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -60268,8 +61104,8 @@
                 name = "unsigned char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(unsigned char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -60347,8 +61183,8 @@
                 name = "unsigned char"
                 size = "8"
                 align = "8"
-                json_type_cast = "(unsigned char)"
-                json_type = "String"
+                json_type_cast = "(unsigned int)"
+                json_type = "Number"
                 default_value = "0"/>
         </ArrayType>
         <ReferenceType
@@ -69719,10 +70555,10 @@
             name = "/usr/include/stdio.h"/>
         <File
             id = "f5"
-            name = "/home/fnchooft/projects/XCP/alarm/castxml/share/castxml/clang/include/stdarg.h"/>
+            name = "/home/fnchooft/tools/castxml/share/castxml/clang/include/stdarg.h"/>
         <File
             id = "f6"
-            name = "/home/fnchooft/projects/XCP/alarm/castxml/share/castxml/clang/include/stddef.h"/>
+            name = "/home/fnchooft/tools/castxml/share/castxml/clang/include/stddef.h"/>
         <File
             id = "f7"
             name = "/usr/include/wchar.h"/>
@@ -69907,6 +70743,12 @@
             jsonxx_type = "Number"
             jsonxx_type_cast = "(unsigned long)"/>
         <TypeMapping
+            type = "long unsigned int"
+            new_type = "uint64_t"
+            default = "0"
+            jsonxx_type = "Number"
+            jsonxx_type_cast = "(unsigned long)"/>
+        <TypeMapping
             type = "in_addr"
             new_type = "in_addr"
             default = "{ 0 }"
@@ -69931,6 +70773,12 @@
             jsonxx_type = "Number"
             jsonxx_type_cast = "(long long)"/>
         <TypeMapping
+            type = "long int"
+            new_type = "int64_t"
+            default = "0"
+            jsonxx_type = "Number"
+            jsonxx_type_cast = "(long long)"/>
+        <TypeMapping
             type = "unsigned int"
             new_type = "uint32_t"
             default = "0"
@@ -69948,6 +70796,12 @@
             default = "0"
             jsonxx_type = "Number"
             jsonxx_type_cast = "(unsigned int)"/>
+        <TypeMapping
+            type = "short unsigned int"
+            new_type = "int16_t"
+            default = "0"
+            jsonxx_type = "Number"
+            jsonxx_type_cast = "(signed int)"/>
         <TypeMapping
             type = "short"
             new_type = "int16_t"

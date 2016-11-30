@@ -440,9 +440,7 @@
 >  // Iterate over ArrayType and check for $(at_type.min)..$(at_type.max) $(at_type.parent_value_type)-field
 >  for(int af = $(at_type.min); af <= $(at_type.max); af++)
 >  {
-.[gsl].shuffle = 1
-.     render_fundamental_to_json("Array","  jsona_$(a.name:)",a,array_element_type,"input->$(a.name:)[af]",array_element_type.json_type)
-.[gsl].shuffle = 2
+.    render_fundamental_to_json("Array","  jsona_$(a.name:)",a,array_element_type,"input->$(a.name:)[af]",array_element_type.json_type)
 >  }
 >  jsono << "$(a.name:)" << jsona_$(a.name:);
 .- ------------------------------------resolved-type: Class ----------------------------------------------------
@@ -871,6 +869,13 @@
 .  TypeMapping.jsonxx_type_cast = '(unsigned long)'
 .endnew
 .new TypeMapping 
+.  TypeMapping.type = 'long unsigned int'
+.  TypeMapping.new_type = 'uint64_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(unsigned long)'
+.endnew
+.new TypeMapping 
 .  TypeMapping.type = 'in_addr'
 .  TypeMapping.new_type = 'in_addr'
 .  TypeMapping.default  = '{ 0 }'
@@ -893,6 +898,13 @@
 .endnew
 .new TypeMapping 
 .  TypeMapping.type = 'long'
+.  TypeMapping.new_type = 'int64_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(long long)'
+.endnew
+.new TypeMapping 
+.  TypeMapping.type = 'long int'
 .  TypeMapping.new_type = 'int64_t'
 .  TypeMapping.default  = '0'
 .  TypeMapping.jsonxx_type  = 'Number'
