@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+PACKAGE_NAME="@PACKAGE_NAME@"
+PACKAGE_VERSION="@PACKAGE_VERSION@"
+PACKAGE_NAME_VERSION="${PACKAGE_NAME}-${PACKAGE_VERSION}"
+PACKAGE_PREFIX_DIR=`pkg-config $PACKAGE_NAME_VERSION --variable scriptdir`
+
+echo "${PACKAGE_NAME_VERSION} - installdir: ${PACKAGE_PREFIX_DIR}"
+
+check_dependencies() {
+    #check dependencies
+    castxml="$(which castxml)"
+    if [ "$castxml" == "" ] ; then
+        echo "${PACKAGE_NAME_VERSION} - requires castxml. Make sure its on the path."
+        exit 1
+    fi
+
+    gsl="$(which gsl)"
+    if [ "$gsl" == "" ] ; then
+        echo "${PACKAGE_NAME_VERSION} - requires gsl. Make sure its on the path."
+        exit 1
+    fi
+
+    xsltproc="$(which xsltproc)"
+    if [ "$xsltproc" == "" ] ; then
+        echo "${PACKAGE_NAME_VERSION} - requires xsltproc. Make sure its on the path."
+        exit 1
+    fi
+}
+
+show_help(){
+    echo "\t-v : verbose       - Show more information during the generation process"
+    echo "\t-f : file          - Header-filename to analyze"
+    echo "\t-i : include_paths - Pass include-paths with the -I-prefix"
+    exit 1;
+}
+
+check_dependencies
+# Initialize our own variables:
+output_file=""
+verbose=0
+class_filter=""
+cast_filter=""
+include_path=""
+
+while getopts "h?vf:i:" opt; do
+    case "$opt" in
+    h|\?)
+        show_help
+        exit 0
+        ;;
+    v)  verbose=1
+        ;;
+    f)	file_name="$OPTARG"
+		;;
+    i)	include_paths="$OPTARG "
+		;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
+
+echo "file: '$file_name' verbose=$verbose, include_paths='$include_paths' Leftovers: $@"
+
+filename=$(basename "$file_name")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+echo "${PACKAGE_NAME_VERSION} - Generating code for file: $file_name..." > "$filename.log"
+
+castxml $include_paths -c -x c++ -std=gnu++11 --castxml-cc-gnu g++ --castxml-gccxml $file_name >> "$filename.log"
+if [ "$?" != "0" ] ; then
+    echo "${PACKAGE_NAME_VERSION} - castxml was unable to generate a xml-representation!"
+    exit 1
+fi
+
+gsl -script:$PACKAGE_PREFIX_DIR/cast_xml_generate_printers-$PACKAGE_VERSION.gsl -type:Enumeration,Struct,Class -file:$file_name $filename.xml >> "$filename.log"
+if [ "$?" != "0" ] ; then
+    echo "${PACKAGE_NAME_VERSION} - gsl was unable to generate the code from the xml-representation!"
+    exit 1
+fi

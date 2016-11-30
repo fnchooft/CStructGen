@@ -65,13 +65,13 @@ std::string toString(const AddDrop & adddrop) {
 // Found Struct->settings.... 0
 // Generated default compare implementation for struct: AddDrop
 bool operator<(AddDrop lhs, AddDrop rhs) {
-    // Type of field _562      / localId             resolved_type: Typedef
+    // Type of field _561      / localId             resolved_type: Typedef
     if (lhs.localId    < rhs.localId)    return true;
     if (lhs.localId    > rhs.localId)    return false;
-    // Type of field _850      / transportPlaneId    resolved_type: Typedef
+    // Type of field _849      / transportPlaneId    resolved_type: Typedef
     if (lhs.transportPlaneId < rhs.transportPlaneId) return true;
     if (lhs.transportPlaneId > rhs.transportPlaneId) return false;
-    // Type of field _756      / type                resolved_type: Enumeration
+    // Type of field _755      / type                resolved_type: Enumeration
     if (lhs.type       < rhs.type)       return true;
     if (lhs.type       > rhs.type)       return false;
     return false;
@@ -126,21 +126,21 @@ int32_t fromJson(AddDrop *output, std::string jsondata) {
     return -2048;
   }
   // Return the negative-bitindex 1 of the localId-field on error
-  // Type is: _562 ->       [uint32_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _561 ->       [uint32_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (unsigned int)
   if(json.has<jsonxx::Number>("localId"))
   {
     output->localId = (unsigned int)json.get<jsonxx::Number>("localId");
   }
   // Return the negative-bitindex 2 of the transportPlaneId-field on error
-  // Type is: _850 ->       [string] -> typeOf: Typedef -> parent_type Class
+  // Type is: _849 ->       [string] -> typeOf: Typedef -> parent_type Class
   // Line 663: Else case json_type: String json_type_cast: (std::string)
   if(json.has<jsonxx::String>("transportPlaneId"))
   {
     output->transportPlaneId = (std::string)json.get<jsonxx::String>("transportPlaneId");
   }
   // Return the negative-bitindex 3 of the type-field on error
-  // Type is: _756 ->       [AddDropType] -> typeOf: Enumeration -> parent_type unknown
+  // Type is: _755 ->       [AddDropType] -> typeOf: Enumeration -> parent_type unknown
   if(json.has<jsonxx::String>("type"))
   {
     if(fromString(json.get<jsonxx::String>("type"),&output->type) == false)
@@ -352,109 +352,109 @@ std::string toString(const Simple & simple) {
 // Found Struct->settings.... 0
 // Generated default compare implementation for struct: Simple
 bool operator<(Simple lhs, Simple rhs) {
-    // Type of field _2268     / is_on               resolved_type: FundamentalType
+    // Type of field _2267     / is_on               resolved_type: FundamentalType
     if (lhs.is_on      < rhs.is_on)      return true;
     if (lhs.is_on      > rhs.is_on)      return false;
-    // Type of field _920      / var_vector_of_bool  resolved_type: Class
+    // Type of field _919      / var_vector_of_bool  resolved_type: Class
     if (lhs.var_vector_of_bool < rhs.var_vector_of_bool) return true;
     if (lhs.var_vector_of_bool > rhs.var_vector_of_bool) return false;
-    // Type of field _921      / var_vector_of_int   resolved_type: Class
+    // Type of field _920      / var_vector_of_int   resolved_type: Class
     if (lhs.var_vector_of_int < rhs.var_vector_of_int) return true;
     if (lhs.var_vector_of_int > rhs.var_vector_of_int) return false;
-    // Type of field _560      / var_uint08          resolved_type: Typedef
+    // Type of field _559      / var_uint08          resolved_type: Typedef
     if (lhs.var_uint08 < rhs.var_uint08) return true;
     if (lhs.var_uint08 > rhs.var_uint08) return false;
-    // Type of field _561      / var_uint16          resolved_type: Typedef
+    // Type of field _560      / var_uint16          resolved_type: Typedef
     if (lhs.var_uint16 < rhs.var_uint16) return true;
     if (lhs.var_uint16 > rhs.var_uint16) return false;
-    // Type of field _562      / var_uint32          resolved_type: Typedef
+    // Type of field _561      / var_uint32          resolved_type: Typedef
     if (lhs.var_uint32 < rhs.var_uint32) return true;
     if (lhs.var_uint32 > rhs.var_uint32) return false;
-    // Type of field _563      / var_uint64          resolved_type: Typedef
+    // Type of field _562      / var_uint64          resolved_type: Typedef
     if (lhs.var_uint64 < rhs.var_uint64) return true;
     if (lhs.var_uint64 > rhs.var_uint64) return false;
-    // Type of field _922      / vector_of_uint08    resolved_type: Class
+    // Type of field _921      / vector_of_uint08    resolved_type: Class
     if (lhs.vector_of_uint08 < rhs.vector_of_uint08) return true;
     if (lhs.vector_of_uint08 > rhs.vector_of_uint08) return false;
-    // Type of field _923      / vector_of_uint16    resolved_type: Class
+    // Type of field _922      / vector_of_uint16    resolved_type: Class
     if (lhs.vector_of_uint16 < rhs.vector_of_uint16) return true;
     if (lhs.vector_of_uint16 > rhs.vector_of_uint16) return false;
-    // Type of field _924      / vector_of_uint32    resolved_type: Class
+    // Type of field _923      / vector_of_uint32    resolved_type: Class
     if (lhs.vector_of_uint32 < rhs.vector_of_uint32) return true;
     if (lhs.vector_of_uint32 > rhs.vector_of_uint32) return false;
-    // Type of field _925      / vector_of_uint64    resolved_type: Class
+    // Type of field _924      / vector_of_uint64    resolved_type: Class
     if (lhs.vector_of_uint64 < rhs.vector_of_uint64) return true;
     if (lhs.vector_of_uint64 > rhs.vector_of_uint64) return false;
-    // Type of field _889      / list_of_uint08      resolved_type: Class
+    // Type of field _888      / list_of_uint08      resolved_type: Class
     if (lhs.list_of_uint08 < rhs.list_of_uint08) return true;
     if (lhs.list_of_uint08 > rhs.list_of_uint08) return false;
-    // Type of field _890      / list_of_uint16      resolved_type: Class
+    // Type of field _889      / list_of_uint16      resolved_type: Class
     if (lhs.list_of_uint16 < rhs.list_of_uint16) return true;
     if (lhs.list_of_uint16 > rhs.list_of_uint16) return false;
-    // Type of field _891      / list_of_uint32      resolved_type: Class
+    // Type of field _890      / list_of_uint32      resolved_type: Class
     if (lhs.list_of_uint32 < rhs.list_of_uint32) return true;
     if (lhs.list_of_uint32 > rhs.list_of_uint32) return false;
-    // Type of field _892      / list_of_uint64      resolved_type: Class
+    // Type of field _891      / list_of_uint64      resolved_type: Class
     if (lhs.list_of_uint64 < rhs.list_of_uint64) return true;
     if (lhs.list_of_uint64 > rhs.list_of_uint64) return false;
-    // Type of field _556      / var_int08           resolved_type: Typedef
+    // Type of field _555      / var_int08           resolved_type: Typedef
     if (lhs.var_int08  < rhs.var_int08)  return true;
     if (lhs.var_int08  > rhs.var_int08)  return false;
-    // Type of field _557      / var_int16           resolved_type: Typedef
+    // Type of field _556      / var_int16           resolved_type: Typedef
     if (lhs.var_int16  < rhs.var_int16)  return true;
     if (lhs.var_int16  > rhs.var_int16)  return false;
-    // Type of field _558      / var_int32           resolved_type: Typedef
+    // Type of field _557      / var_int32           resolved_type: Typedef
     if (lhs.var_int32  < rhs.var_int32)  return true;
     if (lhs.var_int32  > rhs.var_int32)  return false;
-    // Type of field _559      / var_int64           resolved_type: Typedef
+    // Type of field _558      / var_int64           resolved_type: Typedef
     if (lhs.var_int64  < rhs.var_int64)  return true;
     if (lhs.var_int64  > rhs.var_int64)  return false;
-    // Type of field _926      / vector_of_int8      resolved_type: Class
+    // Type of field _925      / vector_of_int8      resolved_type: Class
     if (lhs.vector_of_int8 < rhs.vector_of_int8) return true;
     if (lhs.vector_of_int8 > rhs.vector_of_int8) return false;
-    // Type of field _927      / vector_of_int16     resolved_type: Class
+    // Type of field _926      / vector_of_int16     resolved_type: Class
     if (lhs.vector_of_int16 < rhs.vector_of_int16) return true;
     if (lhs.vector_of_int16 > rhs.vector_of_int16) return false;
-    // Type of field _921      / vector_of_int32     resolved_type: Class
+    // Type of field _920      / vector_of_int32     resolved_type: Class
     if (lhs.vector_of_int32 < rhs.vector_of_int32) return true;
     if (lhs.vector_of_int32 > rhs.vector_of_int32) return false;
-    // Type of field _928      / vector_of_int64     resolved_type: Class
+    // Type of field _927      / vector_of_int64     resolved_type: Class
     if (lhs.vector_of_int64 < rhs.vector_of_int64) return true;
     if (lhs.vector_of_int64 > rhs.vector_of_int64) return false;
-    // Type of field _893      / list_of_int8        resolved_type: Class
+    // Type of field _892      / list_of_int8        resolved_type: Class
     if (lhs.list_of_int8 < rhs.list_of_int8) return true;
     if (lhs.list_of_int8 > rhs.list_of_int8) return false;
-    // Type of field _894      / list_of_int16       resolved_type: Class
+    // Type of field _893      / list_of_int16       resolved_type: Class
     if (lhs.list_of_int16 < rhs.list_of_int16) return true;
     if (lhs.list_of_int16 > rhs.list_of_int16) return false;
-    // Type of field _895      / list_of_int32       resolved_type: Class
+    // Type of field _894      / list_of_int32       resolved_type: Class
     if (lhs.list_of_int32 < rhs.list_of_int32) return true;
     if (lhs.list_of_int32 > rhs.list_of_int32) return false;
-    // Type of field _896      / list_of_int64       resolved_type: Class
+    // Type of field _895      / list_of_int64       resolved_type: Class
     if (lhs.list_of_int64 < rhs.list_of_int64) return true;
     if (lhs.list_of_int64 > rhs.list_of_int64) return false;
-    // Type of field _850      / var_string          resolved_type: Typedef
+    // Type of field _849      / var_string          resolved_type: Typedef
     if (lhs.var_string < rhs.var_string) return true;
     if (lhs.var_string > rhs.var_string) return false;
-    // Type of field _1788     / var_float           resolved_type: FundamentalType
+    // Type of field _1787     / var_float           resolved_type: FundamentalType
     if (lhs.var_float  < rhs.var_float)  return true;
     if (lhs.var_float  > rhs.var_float)  return false;
-    // Type of field _1787     / var_double          resolved_type: FundamentalType
+    // Type of field _1786     / var_double          resolved_type: FundamentalType
     if (lhs.var_double < rhs.var_double) return true;
     if (lhs.var_double > rhs.var_double) return false;
-    // Type of field _1790     / var_long            resolved_type: FundamentalType
+    // Type of field _1789     / var_long            resolved_type: FundamentalType
     if (lhs.var_long   < rhs.var_long)   return true;
     if (lhs.var_long   > rhs.var_long)   return false;
-    // Type of field _683      / var_in_addr         resolved_type: Struct
+    // Type of field _682      / var_in_addr         resolved_type: Struct
     if (lhs.var_in_addr < rhs.var_in_addr) return true;
     if (lhs.var_in_addr > rhs.var_in_addr) return false;
-    // Type of field _929      / vector_of_in_addr   resolved_type: Class
+    // Type of field _928      / vector_of_in_addr   resolved_type: Class
     if (lhs.vector_of_in_addr < rhs.vector_of_in_addr) return true;
     if (lhs.vector_of_in_addr > rhs.vector_of_in_addr) return false;
-    // Type of field _897      / list_of_in_addr     resolved_type: Class
+    // Type of field _896      / list_of_in_addr     resolved_type: Class
     if (lhs.list_of_in_addr < rhs.list_of_in_addr) return true;
     if (lhs.list_of_in_addr > rhs.list_of_in_addr) return false;
-    // Type of field _930      / vc                  resolved_type: Class
+    // Type of field _929      / vc                  resolved_type: Class
     if (lhs.vc         < rhs.vc)         return true;
     if (lhs.vc         > rhs.vc)         return false;
     return false;
@@ -795,14 +795,14 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     return -2048;
   }
   // Return the negative-bitindex 1 of the is_on-field on error
-  // Type is: _2268 ->      [bool] -> typeOf: FundamentalType -> parent_type unknown
+  // Type is: _2267 ->      [bool] -> typeOf: FundamentalType -> parent_type unknown
   // Line 663: Else case json_type: Boolean json_type_cast: (bool)
   if(json.has<jsonxx::Boolean>("is_on"))
   {
     output->is_on = (bool)json.get<jsonxx::Boolean>("is_on");
   }
   // Return the negative-bitindex 2 of the var_vector_of_bool-field on error
-  // Type is: _920 ->       [vector<bool, std::allocator<bool> >] -> typeOf: Class -> parent_type FundamentalType
+  // Type is: _919 ->       [vector<bool, std::allocator<bool> >] -> typeOf: Class -> parent_type FundamentalType
   // vector-container implementation...
   if(json.has<jsonxx::Array>("var_vector_of_bool"))
   {
@@ -815,7 +815,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 3 of the var_vector_of_int-field on error
-  // Type is: _921 ->       [vector<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _920 ->       [vector<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("var_vector_of_int"))
   {
@@ -828,35 +828,35 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 4 of the var_uint08-field on error
-  // Type is: _560 ->       [uint8_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _559 ->       [uint8_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (unsigned int)
   if(json.has<jsonxx::Number>("var_uint08"))
   {
     output->var_uint08 = (unsigned int)json.get<jsonxx::Number>("var_uint08");
   }
   // Return the negative-bitindex 5 of the var_uint16-field on error
-  // Type is: _561 ->       [uint16_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _560 ->       [uint16_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (unsigned int)
   if(json.has<jsonxx::Number>("var_uint16"))
   {
     output->var_uint16 = (unsigned int)json.get<jsonxx::Number>("var_uint16");
   }
   // Return the negative-bitindex 6 of the var_uint32-field on error
-  // Type is: _562 ->       [uint32_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _561 ->       [uint32_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (unsigned int)
   if(json.has<jsonxx::Number>("var_uint32"))
   {
     output->var_uint32 = (unsigned int)json.get<jsonxx::Number>("var_uint32");
   }
   // Return the negative-bitindex 7 of the var_uint64-field on error
-  // Type is: _563 ->       [uint64_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _562 ->       [uint64_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (unsigned long)
   if(json.has<jsonxx::Number>("var_uint64"))
   {
     output->var_uint64 = (unsigned long)json.get<jsonxx::Number>("var_uint64");
   }
   // Return the negative-bitindex 8 of the vector_of_uint08-field on error
-  // Type is: _922 ->       [vector<uint8_t, std::allocator<uint8_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _921 ->       [vector<uint8_t, std::allocator<uint8_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_uint08"))
   {
@@ -869,7 +869,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 9 of the vector_of_uint16-field on error
-  // Type is: _923 ->       [vector<uint16_t, std::allocator<uint16_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _922 ->       [vector<uint16_t, std::allocator<uint16_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_uint16"))
   {
@@ -882,7 +882,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 10 of the vector_of_uint32-field on error
-  // Type is: _924 ->       [vector<uint32_t, std::allocator<uint32_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _923 ->       [vector<uint32_t, std::allocator<uint32_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_uint32"))
   {
@@ -895,7 +895,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 11 of the vector_of_uint64-field on error
-  // Type is: _925 ->       [vector<uint64_t, std::allocator<uint64_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _924 ->       [vector<uint64_t, std::allocator<uint64_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_uint64"))
   {
@@ -908,7 +908,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 12 of the list_of_uint08-field on error
-  // Type is: _889 ->       [list<uint8_t, std::allocator<uint8_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _888 ->       [list<uint8_t, std::allocator<uint8_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_uint08"))
   {
@@ -921,7 +921,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 13 of the list_of_uint16-field on error
-  // Type is: _890 ->       [list<uint16_t, std::allocator<uint16_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _889 ->       [list<uint16_t, std::allocator<uint16_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_uint16"))
   {
@@ -934,7 +934,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 14 of the list_of_uint32-field on error
-  // Type is: _891 ->       [list<uint32_t, std::allocator<uint32_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _890 ->       [list<uint32_t, std::allocator<uint32_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_uint32"))
   {
@@ -947,7 +947,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 15 of the list_of_uint64-field on error
-  // Type is: _892 ->       [list<uint64_t, std::allocator<uint64_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _891 ->       [list<uint64_t, std::allocator<uint64_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_uint64"))
   {
@@ -960,35 +960,35 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 16 of the var_int08-field on error
-  // Type is: _556 ->       [int8_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _555 ->       [int8_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (signed int)
   if(json.has<jsonxx::Number>("var_int08"))
   {
     output->var_int08 = (signed int)json.get<jsonxx::Number>("var_int08");
   }
   // Return the negative-bitindex 17 of the var_int16-field on error
-  // Type is: _557 ->       [int16_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _556 ->       [int16_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (signed int)
   if(json.has<jsonxx::Number>("var_int16"))
   {
     output->var_int16 = (signed int)json.get<jsonxx::Number>("var_int16");
   }
   // Return the negative-bitindex 18 of the var_int32-field on error
-  // Type is: _558 ->       [int32_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _557 ->       [int32_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (int)
   if(json.has<jsonxx::Number>("var_int32"))
   {
     output->var_int32 = (int)json.get<jsonxx::Number>("var_int32");
   }
   // Return the negative-bitindex 19 of the var_int64-field on error
-  // Type is: _559 ->       [int64_t] -> typeOf: Typedef -> parent_type FundamentalType
+  // Type is: _558 ->       [int64_t] -> typeOf: Typedef -> parent_type FundamentalType
   // Line 663: Else case json_type: Number json_type_cast: (long long)
   if(json.has<jsonxx::Number>("var_int64"))
   {
     output->var_int64 = (long long)json.get<jsonxx::Number>("var_int64");
   }
   // Return the negative-bitindex 20 of the vector_of_int8-field on error
-  // Type is: _926 ->       [vector<int8_t, std::allocator<int8_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _925 ->       [vector<int8_t, std::allocator<int8_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_int8"))
   {
@@ -1001,7 +1001,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 21 of the vector_of_int16-field on error
-  // Type is: _927 ->       [vector<int16_t, std::allocator<int16_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _926 ->       [vector<int16_t, std::allocator<int16_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_int16"))
   {
@@ -1014,7 +1014,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 22 of the vector_of_int32-field on error
-  // Type is: _921 ->       [vector<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _920 ->       [vector<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_int32"))
   {
@@ -1027,7 +1027,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 23 of the vector_of_int64-field on error
-  // Type is: _928 ->       [vector<int64_t, std::allocator<int64_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _927 ->       [vector<int64_t, std::allocator<int64_t> >] -> typeOf: Class -> parent_type Typedef
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_int64"))
   {
@@ -1040,7 +1040,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 24 of the list_of_int8-field on error
-  // Type is: _893 ->       [list<int8_t, std::allocator<int8_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _892 ->       [list<int8_t, std::allocator<int8_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_int8"))
   {
@@ -1053,7 +1053,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 25 of the list_of_int16-field on error
-  // Type is: _894 ->       [list<int16_t, std::allocator<int16_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _893 ->       [list<int16_t, std::allocator<int16_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_int16"))
   {
@@ -1066,7 +1066,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 26 of the list_of_int32-field on error
-  // Type is: _895 ->       [list<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _894 ->       [list<int32_t, std::allocator<int32_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_int32"))
   {
@@ -1079,7 +1079,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 27 of the list_of_int64-field on error
-  // Type is: _896 ->       [list<int64_t, std::allocator<int64_t> >] -> typeOf: Class -> parent_type Typedef
+  // Type is: _895 ->       [list<int64_t, std::allocator<int64_t> >] -> typeOf: Class -> parent_type Typedef
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_int64"))
   {
@@ -1092,35 +1092,35 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 28 of the var_string-field on error
-  // Type is: _850 ->       [string] -> typeOf: Typedef -> parent_type Class
+  // Type is: _849 ->       [string] -> typeOf: Typedef -> parent_type Class
   // Line 663: Else case json_type: String json_type_cast: (std::string)
   if(json.has<jsonxx::String>("var_string"))
   {
     output->var_string = (std::string)json.get<jsonxx::String>("var_string");
   }
   // Return the negative-bitindex 29 of the var_float-field on error
-  // Type is: _1788 ->      [float] -> typeOf: FundamentalType -> parent_type unknown
+  // Type is: _1787 ->      [float] -> typeOf: FundamentalType -> parent_type unknown
   // Line 663: Else case json_type: Number json_type_cast: (float)
   if(json.has<jsonxx::Number>("var_float"))
   {
     output->var_float = (float)json.get<jsonxx::Number>("var_float");
   }
   // Return the negative-bitindex 30 of the var_double-field on error
-  // Type is: _1787 ->      [double] -> typeOf: FundamentalType -> parent_type unknown
+  // Type is: _1786 ->      [double] -> typeOf: FundamentalType -> parent_type unknown
   // Line 663: Else case json_type: Number json_type_cast: (double)
   if(json.has<jsonxx::Number>("var_double"))
   {
     output->var_double = (double)json.get<jsonxx::Number>("var_double");
   }
   // Return the negative-bitindex 31 of the var_long-field on error
-  // Type is: _1790 ->      [long int] -> typeOf: FundamentalType -> parent_type unknown
+  // Type is: _1789 ->      [long int] -> typeOf: FundamentalType -> parent_type unknown
   // Line 663: Else case json_type: Number json_type_cast: (long long)
   if(json.has<jsonxx::Number>("var_long"))
   {
     output->var_long = (long long)json.get<jsonxx::Number>("var_long");
   }
   // Return the negative-bitindex 32 of the var_in_addr-field on error
-  // Type is: _683 ->       [in_addr] -> typeOf: Struct -> parent_type unknown
+  // Type is: _682 ->       [in_addr] -> typeOf: Struct -> parent_type unknown
   if(json.has<jsonxx::String>("var_in_addr"))
   {
     std::string var_in_addr_str = json.get<jsonxx::String>("var_in_addr");
@@ -1129,7 +1129,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
       return -32;
   }
   // Return the negative-bitindex 33 of the vector_of_in_addr-field on error
-  // Type is: _929 ->       [vector<in_addr, std::allocator<in_addr> >] -> typeOf: Class -> parent_type Struct
+  // Type is: _928 ->       [vector<in_addr, std::allocator<in_addr> >] -> typeOf: Class -> parent_type Struct
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vector_of_in_addr"))
   {
@@ -1147,7 +1147,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 34 of the list_of_in_addr-field on error
-  // Type is: _897 ->       [list<in_addr, std::allocator<in_addr> >] -> typeOf: Class -> parent_type Struct
+  // Type is: _896 ->       [list<in_addr, std::allocator<in_addr> >] -> typeOf: Class -> parent_type Struct
   // list-container implementation...
   if(json.has<jsonxx::Array>("list_of_in_addr"))
   {
@@ -1165,7 +1165,7 @@ int32_t fromJson(Simple *output, std::string jsondata) {
     }
   }
   // Return the negative-bitindex 35 of the vc-field on error
-  // Type is: _930 ->       [vector<float, std::allocator<float> >] -> typeOf: Class -> parent_type FundamentalType
+  // Type is: _929 ->       [vector<float, std::allocator<float> >] -> typeOf: Class -> parent_type FundamentalType
   // vector-container implementation...
   if(json.has<jsonxx::Array>("vc"))
   {

@@ -31,4 +31,6 @@ LT_INIT([static])
 
 AC_CONFIG_FILES([Makefile ${PACKAGE_NAME}-${PACKAGE_VERSION}.pc:pkg.pc.in])
 AC_CONFIG_FILES([scripts/Makefile examples/simple/Makefile examples/pair_test/Makefile])
+AC_CONFIG_FILES([scripts/${PACKAGE_NAME}_v${PACKAGE_VERSION}:scripts/gen.sh.in])
+AC_CONFIG_FILES([scripts/cast_xml_generate_printers-${PACKAGE_VERSION}.gsl:scripts/cast_xml_generate_printers.gsl.in])
 AC_OUTPUT
