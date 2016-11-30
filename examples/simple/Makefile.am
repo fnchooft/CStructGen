@@ -13,4 +13,4 @@ generate_xml:
 	castxml -I. -c -x c++ --castxml-cc-gnu g++ --castxml-gccxml Simple.h
 
 generate_code: generate_xml
-	gsl -script:../../scripts/cast_xml_generate_printers.gsl -cstandard:C11 -type:Enumeration,Struct,Class -file:Simple.h Simple.xml
+	gsl -script:../../scripts/cast_xml_generate_printers-$(PACKAGE_VERSION).gsl -cstandard:C11 -type:Enumeration,Struct,Class -file:Simple.h Simple.xml
