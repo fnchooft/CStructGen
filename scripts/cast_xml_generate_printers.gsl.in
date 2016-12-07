@@ -170,6 +170,7 @@
 .      else
 .        typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
 .        if typeobject.parent_value_type?'ns' = 'char'
+.-        if a.resolved_type?'unresolved-type' = 'PointerType'
 >    if (lhs.$(field_to_compare:) == NULL && rhs.$(field_to_compare:) != NULL) return false;
 >    if (lhs.$(field_to_compare:) != NULL && rhs.$(field_to_compare:) == NULL) return false;
 >    if (strcmp(lhs.$(field_to_compare:),lhs.$(field_to_compare:)) != 0) return false;
@@ -220,8 +221,9 @@
 >      if (lhs.$(a.name:)[af] < rhs.$(a.name:)[af]) return true;
 >      if (lhs.$(a.name:)[af] > rhs.$(a.name:)[af]) return false;
 >    }
-.      elsif typeobject.parent_value_type?'ns' = 'char'
->    // Char / String compare....
+.-      elsif typeobject.parent_value_type?'ns' = 'char'
+.      elsif a.resolved_type?'unresolved-type' = 'PointerType'
+>    // Resolved type is $(a.resolved_type?'not-set') and points to char...
 >    int $(a.name:)_compare = strcmp(lhs.$(a.name:),rhs.$(a.name:));
 >    if ($(a.name:)_compare < 0) return true;
 >    if ($(a.name:)_compare > 0) return false;
@@ -270,6 +272,7 @@
 .      else
 .        typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
 .        if typeobject.parent_value_type?'ns' = 'char'
+>    // Resolved type is $(a.resolved_type?'not-set') and points to char...
 >    if (lhs.$(a.name:) == NULL && rhs.$(a.name:) != NULL) return false;
 >    if (lhs.$(a.name:) != NULL && rhs.$(a.name:) == NULL) return false;
 >    if (strcmp(lhs.$(a.name:),lhs.$(a.name:)) != 0) return false;
@@ -493,7 +496,6 @@
 >  jsono << "$(a.name:)" << $(a.name:)_pair_object;
 .- ------------------------------------resolved-type: Class ----------------------------------------------------
 .    else
->  // gsl:488 - In the else branch....
 .      render_fundamental_to_json("$(a.name:)","jsono",a,typeobject,"input->$(a.name:)",typeobject.json_type?'Not-Set-For-Fundamental??')
 .    endif
 .- ----------------------------------------------------------------------------------------
@@ -668,7 +670,6 @@
 >    output->$(a.name:) = strdup(json.get<jsonxx::String>("$(a.name:)").c_str());
 >  }
 .  else
->  // Line 663: Else case json_type: $(typeobject.json_type?'NotSet':) json_type_cast: $(typeobject.json_type_cast?'NotSet':)
 >  if(json.has<jsonxx::$(typeobject.json_type:)>("$(a.name:)"))
 >  {
 >    output->$(a.name:) = $(typeobject.json_type_cast?'':)json.get<jsonxx::$(typeobject.json_type:)>("$(a.name:)");
@@ -1054,12 +1055,26 @@
 .    ft.json_type      = type_mapping_object.jsonxx_type
 .    ft.default_value  = type_mapping_object.default
 .  else
-.    echo "Could not resolve FundamentalType $(ft.name)..."
+.    echo "    Could not resolve FundamentalType $(ft.name)..."
 .  endif
 .endfor
-.
-.echo "  Handling Typedefs..."
 .- -------------------------------------------------------------------------------------------
+.echo "  Handling PointerTypes..."
+.for PointerType as pt
+.  pttype = root->GCC_XML->Id2Type(eid = pt.type)?
+.  if defined(pttype)
+.    pointed_type = root->GCC_XML->$(pttype.ename)(id = pt.type?'')?
+.    if defined(pointed_type) & pointed_type.name?'ns' = 'char'
+.      echo "    Special handling for pointer-to-char handling as std::string..."
+.      pt.json_type_cast = "(std::string)"
+.      pt.json_type = "String"
+.      pt.default_value = 'strdup("NADA")'
+.      copy pointed_type to pt
+.    endif   
+.  endif
+.endfor
+.- -------------------------------------------------------------------------------------------
+.echo "  Handling Typedefs..."
 .for Typedef as t
 .  tt = root->GCC_XML->Id2Type(eid = t.type)?
 .  if defined(tt)
@@ -1291,7 +1306,7 @@
 .            copy t to f 
 .          endif
 .        else
-.-          echo "No special treatment Field.type: for $(f.resolved_type:).. YET"
+.-          echo "No special treatment $(f.name) Field.type: for $(f.resolved_type:).. YET"
 .        endif
 .-       echo "$(name(t)) $(f.type)"
 .        f.default_value = t.default_value?'{}'
@@ -1386,5 +1401,5 @@
 .      endif
 .    endif
 .  endfor
-
+P
 .root.save("$(filename:)-hiera.xml")
