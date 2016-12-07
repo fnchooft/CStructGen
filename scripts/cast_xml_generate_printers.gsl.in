@@ -209,7 +209,7 @@
 .      endfor
 .    else
 .      typeobject = a->$(a.resolved_type?)(id?'' = a.type)?
->    // Type of field $(a.type) / $(a.name?'no-name') resolved_type: $(a.resolved_type?'resolved-type')
+>    // $(a.name?'no-name') resolved_type: $(a.resolved_type?'resolved-type')
 .[gsl].shuffle = 2
 .      my.class.c_struct_init += " .$(a.name:) = $(a.default_value?'UNKNOWN')$(last(a)??''?',')"
 .[gsl].shuffle = 1
@@ -530,7 +530,7 @@
 .- For all non-union types....
 .  else
 .    typeobject = a->$(a.resolved_type)(id?'' = a.type)?
->  // Type is: $(a.type) ->  [$(typeobject.name?'oopsie')] -> typeOf: $(name(typeobject)) -> parent_type $(typeobject.parent_type?'unknown')
+>  // [$(typeobject.name?'oopsie')] -> typeOf: $(name(typeobject)) -> parent_type $(typeobject.parent_type?'unknown')
 .  if typeobject.container?'not-vector' = 'vector' | typeobject.container?'not-list' = 'list'
 >  // $(typeobject.container)-container implementation...
 >  if(json.has<jsonxx::Array>("$(a.name:)"))
@@ -934,10 +934,10 @@
 .endnew
 .new TypeMapping 
 .  TypeMapping.type = 'short unsigned int'
-.  TypeMapping.new_type = 'int16_t'
+.  TypeMapping.new_type = 'uint16_t'
 .  TypeMapping.default  = '0'
 .  TypeMapping.jsonxx_type  = 'Number'
-.  TypeMapping.jsonxx_type_cast = '(signed int)'
+.  TypeMapping.jsonxx_type_cast = '(unsigned int)'
 .endnew
 .new TypeMapping 
 .  TypeMapping.type = 'short'
@@ -1067,6 +1067,7 @@
 .    if defined(pointed_type) & pointed_type.name?'ns' = 'char'
 .      echo "    Special handling for pointer-to-char handling as std::string..."
 .      pt.json_type_cast = "(std::string)"
+.      pt.parent_value_type = "char" 
 .      pt.json_type = "String"
 .      pt.default_value = 'strdup("NADA")'
 .      copy pointed_type to pt
@@ -1401,5 +1402,4 @@
 .      endif
 .    endif
 .  endfor
-P
 .root.save("$(filename:)-hiera.xml")
