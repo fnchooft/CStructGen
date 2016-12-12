@@ -33,6 +33,7 @@ check_dependencies() {
 show_help(){
     echo "\t-v : verbose       - Show more information during the generation process"
     echo "\t-f : file          - Header-filename to analyze"
+    echo "\t-c : cstandard     - Generate C98 or C11 [C98*|C11] (influences Struct-initialization for testcases)"
     echo "\t-i : include_paths - Pass include-paths with the -I-prefix"
     exit 1;
 }
@@ -44,8 +45,9 @@ verbose=0
 class_filter=""
 cast_filter=""
 include_path=""
+cstandard="C98"
 
-while getopts "h?vf:i:" opt; do
+while getopts "h?vf:i:c:" opt; do
     case "$opt" in
     h|\?)
         show_help
@@ -53,8 +55,10 @@ while getopts "h?vf:i:" opt; do
         ;;
     v)  verbose=1
         ;;
-    f)	file_name="$OPTARG"
-		;;
+    f)  file_name="$OPTARG"
+        ;;
+    c)  cstandard="$OPTARG"
+        ;;
     i)	include_paths="$OPTARG "
 		;;
     esac
@@ -78,7 +82,7 @@ if [ "$?" != "0" ] ; then
     exit 1
 fi
 
-gsl -script:$PACKAGE_PREFIX_DIR/cast_xml_generate_printers-$PACKAGE_VERSION.gsl -type:Enumeration,Struct,Class -file:$file_name $filename.xml >> "$filename.log"
+gsl -script:$PACKAGE_PREFIX_DIR/cast_xml_generate_printers-$PACKAGE_VERSION.gsl -cstandard:$cstandard -type:Enumeration,Struct,Class -file:$file_name $filename.xml >> "$filename.log"
 if [ "$?" != "0" ] ; then
     echo "${PACKAGE_NAME_VERSION} - gsl was unable to generate the code from the xml-representation!"
     exit 1

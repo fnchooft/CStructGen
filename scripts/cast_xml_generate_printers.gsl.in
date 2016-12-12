@@ -940,6 +940,13 @@
 .  TypeMapping.jsonxx_type_cast = '(unsigned int)'
 .endnew
 .new TypeMapping 
+.  TypeMapping.type = 'short int'
+.  TypeMapping.new_type = 'int16_t'
+.  TypeMapping.default  = '0'
+.  TypeMapping.jsonxx_type  = 'Number'
+.  TypeMapping.jsonxx_type_cast = '(signed int)'
+.endnew
+.new TypeMapping 
 .  TypeMapping.type = 'short'
 .  TypeMapping.new_type = 'int16_t'
 .  TypeMapping.default  = '0'
