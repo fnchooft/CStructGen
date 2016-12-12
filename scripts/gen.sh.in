@@ -33,7 +33,7 @@ check_dependencies() {
 show_help(){
     echo "\t-v : verbose       - Show more information during the generation process"
     echo "\t-f : file          - Header-filename to analyze"
-    echo "\t-c : cstandard     - Generate C98 or C11 [C98*|C11] (influences Struct-initialization for testcases)"
+    echo "\t-c : cstandard     - Generate C99,C11 or C14 [C99*|C11|C14] (influences Struct-initialization for testcases)"
     echo "\t-i : include_paths - Pass include-paths with the -I-prefix"
     exit 1;
 }
@@ -45,7 +45,7 @@ verbose=0
 class_filter=""
 cast_filter=""
 include_path=""
-cstandard="C98"
+cstandard="C99"
 
 while getopts "h?vf:i:c:" opt; do
     case "$opt" in
