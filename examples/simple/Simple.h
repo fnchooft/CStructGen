@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <list>
+#include <set>
+#include <map>
 #include <string>
 #include <stdint.h>
 #include <arpa/inet.h>
@@ -30,8 +32,10 @@ struct AddDrop {
 };
 
 
+//typedef std::vector<AddDrop> TAddDropList;
+
 typedef struct Simple {
-  Simple(): 
+  Simple():
     is_on(false),
     var_uint08(0x00),var_uint16(0x00),var_uint32(0x00),var_uint64(0x00),
     var_int08(0x00),var_int16(0x00),var_int32(0x00),var_int64(0x00),
@@ -49,12 +53,12 @@ typedef struct Simple {
   uint64_t var_uint64;
 
   std::vector<uint8_t>  vector_of_uint08;  // _885 unsigned char
-  std::vector<uint16_t> vector_of_uint16;  // _886 unsigned short            
+  std::vector<uint16_t> vector_of_uint16;  // _886 unsigned short
   std::vector<uint32_t> vector_of_uint32;  // _887 unsigned int
   std::vector<uint64_t> vector_of_uint64;  // _888 unsigned long
 
   std::list<uint8_t>  list_of_uint08;  // _885 unsigned char
-  std::list<uint16_t> list_of_uint16;  // _886 unsigned short            
+  std::list<uint16_t> list_of_uint16;  // _886 unsigned short
   std::list<uint32_t> list_of_uint32;  // _887 unsigned int
   std::list<uint64_t> list_of_uint64;  // _888 unsigned long
 
@@ -84,7 +88,7 @@ typedef struct Simple {
   struct in_addr var_in_addr;
   std::vector<struct in_addr> vector_of_in_addr;
   std::list<struct in_addr> list_of_in_addr;
-  
+
 
 
   //td::vector<char*> vb;                // as-is
@@ -96,9 +100,19 @@ typedef struct Simple {
   //std::list<float> lc;                  // as-is
   //std::list<long int> ld;               // int32_t
 
-  //std::vector<std::string> string_vector; // std::basic_string&lt;char&gt;
-  //std::list<std::string> string_list; // std::basic_string&lt;char&gt;
+  std::map<uint8_t,std::string> map_uint8_t_string_map;
+  std::map<uint8_t,AddDrop>     map_uint8_t_add_drop_map;
 
+  //std::map<std::string,TAddDropList> map_string_tadd_drop_map;
+
+  // Do strings,vectors and lists of strings....
+  std::vector<std::string> vector_of_string;
+  std::list<std::string>   list_of_string;
+
+
+  std::vector<AddDropType> vector_of_enum_adddrop_type;
+  std::list<AddDropType> list_of_enum_adddrop_type;
+  std::set<AddDropType> set_of_enum_adddrop_type;
 
 } Simple;
 
@@ -106,4 +120,3 @@ typedef struct Simple {
 
 
 #endif /* SIMPLE_STRUCT */
-

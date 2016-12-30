@@ -1,11 +1,11 @@
-#ifndef SRC_XCP_TYPES_ADDDROP_H_
-#define SRC_XCP_TYPES_ADDDROP_H_
+#ifndef SRC_OUTER_INNER_ADDDROP_H_
+#define SRC_OUTER_INNER_ADDDROP_H_
 
 #include <string>
 #include <stdint.h>
 
-namespace CPqD {
-namespace Xcp {
+namespace OuterNameSpace {
+namespace InnerNameSpace {
 
 //enum class AddDropType : uint8_t {
 
@@ -21,7 +21,7 @@ struct AddDrop {
     AddDropType type;
 };
 
-} // End of namespace Xcp
-} // End of namespace CPqD
+} // End of namespace InnerNameSpace
+} // End of namespace OuterNameSpace
 
-#endif // SRC_XCP_TYPES_ADDDROP_H_
+#endif // SRC_OUTER_INNER_ADDDROP_H_

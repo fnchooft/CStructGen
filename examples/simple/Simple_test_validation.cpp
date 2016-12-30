@@ -57,6 +57,17 @@ TEST(Simple, compareAB){
   //b.vc.push_back(b.var_float - 1.0000f);
   //b.vc.push_back(b.var_float - 2.0000f);
   //b.vc.push_back(b.var_float - 3.0000f);
+  AddDrop addDrop1;
+  addDrop1.localId = 3;
+  addDrop1.transportPlaneId = "transportPlaneId";
+  addDrop1.type = ADD_DROP_GLOBAL;
+  b.map_uint8_t_add_drop_map[3] = addDrop1;
+ 
+  b.map_uint8_t_string_map[1] = "One";
+  b.map_uint8_t_string_map[2] = "Two";
+  b.map_uint8_t_string_map[3] = "Three";
+  b.map_uint8_t_string_map[4] = "Four";
+  b.map_uint8_t_string_map[5] = "Five";
 
   /* Test all the lists */
   b.list_of_uint08.push_back(0x00);
@@ -85,7 +96,12 @@ TEST(Simple, compareAB){
 
   b.list_of_int64.push_back(std::numeric_limits<int64_t>::min());
   b.list_of_int64.push_back(std::numeric_limits<int64_t>::max());
-
+  
+  b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
+  b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
+  b.set_of_enum_adddrop_type.insert(ADD_DROP_GLOBAL);
+  b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
+  b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
 
   Simple c = Simple();
   std::cout << "JSON-b: " << toJsonString(&b) << std::endl;

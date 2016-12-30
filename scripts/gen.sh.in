@@ -75,15 +75,19 @@ extension="${filename##*.}"
 filename="${filename%.*}"
 
 echo "${PACKAGE_NAME_VERSION} - Generating code for file: $file_name..." > "$filename.log"
+echo "${PACKAGE_NAME_VERSION}:filename      [-f]: $file_name"            >> "$filename.log"
+echo "${PACKAGE_NAME_VERSION}:include_paths [-i]: $include_paths"        >> "$filename.log"
+echo "${PACKAGE_NAME_VERSION}:cstandard     [-c]: $cstandard"            >> "$filename.log"
 
 castxml $include_paths -c -x c++ -std=gnu++11 --castxml-cc-gnu g++ --castxml-gccxml $file_name >> "$filename.log"
 if [ "$?" != "0" ] ; then
-    echo "${PACKAGE_NAME_VERSION} - castxml was unable to generate a xml-representation!"
+    echo "${PACKAGE_NAME_VERSION}:ERROR - castxml was unable to generate a xml-representation!" | tee -a "$filename.log"
     exit 1
 fi
 
 gsl -script:$PACKAGE_PREFIX_DIR/cast_xml_generate_printers-$PACKAGE_VERSION.gsl -cstandard:$cstandard -type:Enumeration,Struct,Class -file:$file_name $filename.xml >> "$filename.log"
 if [ "$?" != "0" ] ; then
-    echo "${PACKAGE_NAME_VERSION} - gsl was unable to generate the code from the xml-representation!"
+    echo "${PACKAGE_NAME_VERSION}:ERROR - gsl was unable to generate the code from the xml-representation!" | tee -a "$filename.log"
     exit 1
 fi
+echo "${PACKAGE_NAME_VERSION} - Generation finished successfully." >> "$filename.log"

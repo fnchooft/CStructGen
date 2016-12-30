@@ -43,4 +43,18 @@ TEST(SMapTest, compareAB){
   EXPECT_EQ(c,b);
 }
 
+#include "Pair.generated.h"
+#include <gtest/gtest.h>
+
+
+TEST(SVectorEnumTest, compareAB){
+  SVectorEnumTest a = SVectorEnumTest();
+  SVectorEnumTest b = SVectorEnumTest();
+  EXPECT_EQ(a,b);
+  SVectorEnumTest c = SVectorEnumTest();
+  std::cout << "JSON-b: " << toJsonString(&b) << std::endl;
+  EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
+  std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
+  EXPECT_EQ(c,b);
+}
 

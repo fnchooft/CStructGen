@@ -1,4 +1,4 @@
-AC_INIT([CStructGen], [0.1.2], [fnchooft@gmail.com], [CStructGen],
+AC_INIT([CStructGen], [0.1.3], [fnchooft@gmail.com], [CStructGen],
         [https://github.com/fnchooft/CStructGen])
 AC_PREREQ([2.59])
 

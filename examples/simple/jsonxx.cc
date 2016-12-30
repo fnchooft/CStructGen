@@ -37,11 +37,6 @@ void jsonxx::assertion( const char *file, int line, const char *expression, bool
 
 namespace jsonxx {
 
-std::string nlwins    = "\r\n";
-std::string nlunix    = "\n";
-std::string newline = nlwins;
-
-
 //static_assert( sizeof(unsigned long long) < sizeof(long double), "'long double' cannot hold 64bit values in this compiler :(");
 
 bool match(const char* pattern, std::istream& input);
@@ -173,7 +168,7 @@ bool parse_identifier(std::istream& input, String& value) {
             (ch >= 'a' && ch <= 'z') ||
             (ch >= 'A' && ch <= 'Z') ||
             (ch >= '0' && ch <= '9')) {
-            value.push_back(ch);
+            value.push_back(ch);            
         }
         else if(ch == '\t' || ch == ' ') {
             input >> std::ws;
@@ -573,41 +568,40 @@ namespace json {
         else
             ss << tab;
 
-
         switch( t.type_ )
         {
             default:
             case jsonxx::Value::NULL_:
                 ss << "null";
-                return ss.str() + "," + newline;
+                return ss.str() + ",\n";
 
             case jsonxx::Value::BOOL_:
                 ss << ( t.bool_value_ ? "true" : "false" );
-                return ss.str() + "," + newline;
+                return ss.str() + ",\n";
 
             case jsonxx::Value::ARRAY_:
-                ss << "[" + newline;
+                ss << "[\n";
                 for(Array::container::const_iterator it = t.array_value_->values().begin(),
                     end = t.array_value_->values().end(); it != end; ++it )
                   ss << tag( format, depth+1, std::string(), **it );
-                return remove_last_comma( ss.str() ) + tab + "]" "," + newline;
+                return remove_last_comma( ss.str() ) + tab + "]" ",\n";
 
             case jsonxx::Value::STRING_:
                 ss << '\"' << escape_string( *t.string_value_ ) << '\"';
-                return ss.str() + "," + newline;
+                return ss.str() + ",\n";
 
             case jsonxx::Value::OBJECT_:
-                ss << "{" + newline;
+                ss << "{\n";
                 for(Object::container::const_iterator it=t.object_value_->kv_map().begin(),
                     end = t.object_value_->kv_map().end(); it != end ; ++it)
                   ss << tag( format, depth+1, it->first, *it->second );
-                return remove_last_comma( ss.str() ) + tab + "}" "," + newline;
+                return remove_last_comma( ss.str() ) + tab + "}" ",\n";
 
             case jsonxx::Value::NUMBER_:
                 // max precision
                 ss << std::setprecision(std::numeric_limits<long double>::digits10 + 1);
                 ss << t.number_value_;
-                return ss.str() + "," + newline;
+                return ss.str() + ",\n";
         }
     }
 } // namespace jsonxx::anon::json
@@ -761,35 +755,35 @@ std::string tag( unsigned format, unsigned depth, const std::string &name, const
     {
         default:
         case jsonxx::Value::NULL_:
-            return tab + open_tag( format, '0', name, " /" ) + newline;
+            return tab + open_tag( format, '0', name, " /" ) + '\n';
 
         case jsonxx::Value::BOOL_:
             ss << ( t.bool_value_ ? "true" : "false" );
             return tab + open_tag( format, 'b', name, std::string(), format == jsonxx::JXMLex ? ss.str() : std::string() )
                        + ss.str()
-                       + close_tag( format, 'b', name ) + newline;
+                       + close_tag( format, 'b', name ) + '\n';
 
         case jsonxx::Value::ARRAY_:
             for(Array::container::const_iterator it = t.array_value_->values().begin(),
                 end = t.array_value_->values().end(); it != end; ++it )
               ss << tag( format, depth+1, std::string(), **it );
-            return tab + open_tag( format, 'a', name, attr ) + newline
+            return tab + open_tag( format, 'a', name, attr ) + '\n'
                        + ss.str()
-                 + tab + close_tag( format, 'a', name ) + newline;
+                 + tab + close_tag( format, 'a', name ) + '\n';
 
         case jsonxx::Value::STRING_:
             ss << escape_tag( *t.string_value_, format );
             return tab + open_tag( format, 's', name, std::string(), format == jsonxx::JXMLex ? ss.str() : std::string() )
                        + ss.str()
-                       + close_tag( format, 's', name ) + newline;
+                       + close_tag( format, 's', name ) + '\n';
 
         case jsonxx::Value::OBJECT_:
             for(Object::container::const_iterator it=t.object_value_->kv_map().begin(),
                 end = t.object_value_->kv_map().end(); it != end ; ++it)
               ss << tag( format, depth+1, it->first, *it->second );
-            return tab + open_tag( format, 'o', name, attr ) + newline
+            return tab + open_tag( format, 'o', name, attr ) + '\n'
                        + ss.str()
-                 + tab + close_tag( format, 'o', name ) + newline;
+                 + tab + close_tag( format, 'o', name ) + '\n';
 
         case jsonxx::Value::NUMBER_:
             // max precision
@@ -797,7 +791,7 @@ std::string tag( unsigned format, unsigned depth, const std::string &name, const
             ss << t.number_value_;
             return tab + open_tag( format, 'n', name, std::string(), format == jsonxx::JXMLex ? ss.str() : std::string() )
                        + ss.str()
-                       + close_tag( format, 'n', name ) + newline;
+                       + close_tag( format, 'n', name ) + '\n';
     }
 }
 
@@ -806,16 +800,16 @@ const char *defheader[] = {
     "",
 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-         JSONXX_XML_TAG "\r\n",
+         JSONXX_XML_TAG "\n",
 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-         JSONXX_XML_TAG "\r\n",
+         JSONXX_XML_TAG "\n",
 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-         JSONXX_XML_TAG "\r\n",
+         JSONXX_XML_TAG "\n",
 
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-         JSONXX_XML_TAG "\r\n"
+         JSONXX_XML_TAG "\n"
 };
 
 // order here matches jsonxx::Format enum
