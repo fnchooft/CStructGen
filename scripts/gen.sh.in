@@ -85,6 +85,13 @@ if [ "$?" != "0" ] ; then
     exit 1
 fi
 
+sha1sum $filename > $filename.sha1
+if [ "$?" != "0" ] ; then
+    echo "${PACKAGE_NAME_VERSION}:ERROR - sha1sum was unable to generate the .sha1 file for $file_name!" | tee -a "$filename.log"
+    exit 1
+fi
+
+
 gsl -script:$PACKAGE_PREFIX_DIR/cast_xml_generate_printers-$PACKAGE_VERSION.gsl -cstandard:$cstandard -type:Enumeration,Struct,Class -file:$file_name $filename.xml >> "$filename.log"
 if [ "$?" != "0" ] ; then
     echo "${PACKAGE_NAME_VERSION}:ERROR - gsl was unable to generate the code from the xml-representation!" | tee -a "$filename.log"

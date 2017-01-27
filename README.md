@@ -70,3 +70,14 @@ Since the gccxml-syntax is well structured, the following entities are analyzed/
 
  - [pygccxml](http://pygccxml.readthedocs.io)
    - This library can also read the gccxml-output, but needs a python-infrastructure.
+
+
+## Open Issues / Todos
+
+- [x] Add comments in generated artifacts
+- [x] Cleanup test-includes for gtest
+- [x] Add sha1sum of input-file in generated artifacts
+- [ ] Add better float comparison handling (floating-point according to IEEE754 standard)
+- [ ] Tests ( json ser, json deser )
+- [ ] Add Examples for meta-data injection ( structs, compare functions, union-serialization )
+- [ ] Add Tests for meta-data injection ( structs, compare functions, union-serialization )

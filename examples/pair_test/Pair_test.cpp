@@ -13,10 +13,6 @@ TEST(SPairSecond, compareAB){
   EXPECT_EQ(c,b);
 }
 
-#include "Pair.generated.h"
-#include <gtest/gtest.h>
-
-
 TEST(SPair, compareAB){
   SPair a = SPair();
   SPair b = SPair();
@@ -28,10 +24,6 @@ TEST(SPair, compareAB){
   EXPECT_EQ(c,b);
 }
 
-#include "Pair.generated.h"
-#include <gtest/gtest.h>
-
-
 TEST(SMapTest, compareAB){
   SMapTest a = SMapTest();
   SMapTest b = SMapTest();
@@ -42,10 +34,6 @@ TEST(SMapTest, compareAB){
   std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
   EXPECT_EQ(c,b);
 }
-
-#include "Pair.generated.h"
-#include <gtest/gtest.h>
-
 
 TEST(SVectorEnumTest, compareAB){
   SVectorEnumTest a = SVectorEnumTest();

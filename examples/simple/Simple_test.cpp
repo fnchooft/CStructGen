@@ -13,10 +13,6 @@ TEST(AddDrop, compareAB){
   EXPECT_EQ(c,b);
 }
 
-#include "Simple.generated.h"
-#include <gtest/gtest.h>
-
-
 TEST(Simple, compareAB){
   Simple a = Simple();
   Simple b = Simple();

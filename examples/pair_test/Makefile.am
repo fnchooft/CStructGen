@@ -7,4 +7,5 @@ Pair_test_SOURCES=Pair.generated.cpp Pair_test.cpp jsonxx.cc
  
 Pair.generated.h Pair.generated.cpp: Pair.hpp  ../../scripts/cast_xml_generate_printers.gsl.in
 	castxml -I. -c -x c++ --castxml-cc-gnu g++ --castxml-gccxml $<
+	sha1sum $< > $<.sha1
 	gsl -script:../../scripts/cast_xml_generate_printers.gsl.in -cstandard:C11 -type:Enumeration,Struct,Class -file:$< $(basename $<).xml

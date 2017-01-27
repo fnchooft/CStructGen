@@ -1,4 +1,4 @@
-AC_INIT([CStructGen], [0.1.3], [fnchooft@gmail.com], [CStructGen],
+AC_INIT([CStructGen], [0.1.4], [fnchooft@gmail.com], [CStructGen],
         [https://github.com/fnchooft/CStructGen])
 AC_PREREQ([2.59])
 
@@ -14,7 +14,10 @@ if test -z "$CASTXML_TOOL";
    then AC_MSG_WARN([castxml not found - install it with apt-get install castxml or by following the instructions under: https://github.com/fnchooft/CastXML])
 fi
 
-AC_CHECK_PROGS([XSLTPROC], [xsltproc])
+AC_CHECK_PROGS([SHA1SUM_TOOL], [sha1sum])
+if test -z "$SHA1SUM_TOOL";
+   then AC_MSG_WARN([sha1sum not found - install it with apt-get install or via the systems package manager])
+fi
 
 # From https://nerdland.net/2009/07/detecting-c-libraries-with-autotools
 AC_CHECK_LIB([gtest_main], [main], 
