@@ -85,7 +85,7 @@ if [ "$?" != "0" ] ; then
     exit 1
 fi
 
-sha1sum $filename > $filename.sha1
+sha1sum $file_name > $file_name.sha1
 if [ "$?" != "0" ] ; then
     echo "${PACKAGE_NAME_VERSION}:ERROR - sha1sum was unable to generate the .sha1 file for $file_name!" | tee -a "$filename.log"
     exit 1
