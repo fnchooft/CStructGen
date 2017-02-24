@@ -62,7 +62,7 @@ TEST(Simple, compareAB){
   addDrop1.transportPlaneId = "transportPlaneId";
   addDrop1.type = ADD_DROP_GLOBAL;
   b.map_uint8_t_add_drop_map[3] = addDrop1;
- 
+
   b.map_uint8_t_string_map[1] = "One";
   b.map_uint8_t_string_map[2] = "Two";
   b.map_uint8_t_string_map[3] = "Three";
@@ -96,7 +96,7 @@ TEST(Simple, compareAB){
 
   b.list_of_int64.push_back(std::numeric_limits<int64_t>::min());
   b.list_of_int64.push_back(std::numeric_limits<int64_t>::max());
-  
+
   b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
   b.set_of_enum_adddrop_type.insert(ADD_DROP_LOCAL);
   b.set_of_enum_adddrop_type.insert(ADD_DROP_GLOBAL);
@@ -108,6 +108,23 @@ TEST(Simple, compareAB){
   EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
   std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
   EXPECT_EQ(c,b);
+
+
+  SOspf s = SOspf();
+  SOspfInterface si = SOspfInterface();
+  si.area.s_addr = 12345;
+  si.cost = 5000;
+  si.deadInterval = 3600;
+  s.interfaces.push_back(si);
+
+  SOspf t = SOspf();
+
+  std::cout << "JSON-ssrc: " << toJsonString(&s) << std::endl;
+  EXPECT_EQ(0,fromJson(&t, toJsonString(&s)));
+  std::cout << "JSON-sdst: " << toJsonString(&t) << std::endl;
+  EXPECT_EQ(s,t);
+
+
 }
 
 

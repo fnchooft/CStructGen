@@ -1,4 +1,4 @@
-/* 
+/*
 ---- WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING  ----
 ---- ANY MANUAL CHANGES IN THIS FILE WILL DISAPPEAR IF YOU REGENERATE ----
 --------------------------------------------------------------------------
@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------
  Package: @PACKAGE_NAME@
  Version: @PACKAGE_VERSION@
- Sha1sum: 97f57514f88072ab81db560f0ddd8979af53ec6d  Simple.h
+ Sha1sum: b99c102ba284cc6d3b2a5174969f6a6dcef73dc8  Simple.h
 --------------------------------------------------------------------------
  Make sure to update the originating Simple.h-file
 --------------------------------------------------------------------------
@@ -332,7 +332,7 @@ std::ostream & operator<<(std::ostream & out, const Simple & simple) {
     out << "map_uint8_t_string_map:" << " [ ";
     for (
          std::map<uint8_t,std::string >::const_iterator it=simple.map_uint8_t_string_map.begin();
-         it != simple.map_uint8_t_string_map.end(); 
+         it != simple.map_uint8_t_string_map.end();
          ++it
 	     )
     {
@@ -344,7 +344,7 @@ std::ostream & operator<<(std::ostream & out, const Simple & simple) {
     out << "map_uint8_t_add_drop_map:" << " [ ";
     for (
          std::map<uint8_t,AddDrop >::const_iterator it=simple.map_uint8_t_add_drop_map.begin();
-         it != simple.map_uint8_t_add_drop_map.end(); 
+         it != simple.map_uint8_t_add_drop_map.end();
          ++it
 	     )
     {
@@ -705,7 +705,7 @@ std::string toJsonString(Simple *input) {
   jsonxx::Array jsonm_map_uint8_t_string_map;
   for (
        std::map<uint8_t,std::string >::iterator it=input->map_uint8_t_string_map.begin();
-       it != input->map_uint8_t_string_map.end(); 
+       it != input->map_uint8_t_string_map.end();
        ++it
       )
   {
@@ -718,7 +718,7 @@ std::string toJsonString(Simple *input) {
   jsonxx::Array jsonm_map_uint8_t_add_drop_map;
   for (
        std::map<uint8_t,AddDrop >::iterator it=input->map_uint8_t_add_drop_map.begin();
-       it != input->map_uint8_t_add_drop_map.end(); 
+       it != input->map_uint8_t_add_drop_map.end();
        ++it
       )
   {
@@ -1153,6 +1153,395 @@ int32_t fromJson(Simple *output, std::string jsondata) {
         return -42;
       }
       output->set_of_enum_adddrop_type.insert(set_of_enum_adddrop_type_af);
+    }
+  }
+  return 0;
+}
+
+// Generated default printers for struct: SOspfInterface
+std::ostream & operator<<(std::ostream & out, const SOspfInterface & sospfinterface) {
+    out << "localIp:"    << " "  << sospfinterface.localIp        << ", ";
+    out << "netmask:"    << " "  << sospfinterface.netmask        << ", ";
+    out << "area:"       << " "  << sospfinterface.area           << ", ";
+    out << "cost:"       << " "  << sospfinterface.cost           << ", ";
+    out << "priority:"   << " "  << sospfinterface.priority       << ", ";
+    out << "helloInterval:" << " " << sospfinterface.helloInterval << ", ";
+    out << "deadInterval:" << " " << sospfinterface.deadInterval  << ", ";
+    out << "mtu:"        << " "  << sospfinterface.mtu            << "";
+    return out;
+}
+
+
+std::string toString(const SOspfInterface & sospfinterface) {
+    std::stringstream out;
+    std::string ret = "";
+    out << sospfinterface;
+    ret = out.str();
+    return ret;
+}
+
+
+// struct: SOspfInterface compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare implementation for struct: SOspfInterface
+bool operator<(SOspfInterface lhs, SOspfInterface rhs) {
+    if (lhs.localIp    < rhs.localIp)    return true;
+    if (lhs.localIp    > rhs.localIp)    return false;
+    if (lhs.netmask    < rhs.netmask)    return true;
+    if (lhs.netmask    > rhs.netmask)    return false;
+    if (lhs.area       < rhs.area)       return true;
+    if (lhs.area       > rhs.area)       return false;
+    if (lhs.cost       < rhs.cost)       return true;
+    if (lhs.cost       > rhs.cost)       return false;
+    if (lhs.priority   < rhs.priority)   return true;
+    if (lhs.priority   > rhs.priority)   return false;
+    if (lhs.helloInterval < rhs.helloInterval) return true;
+    if (lhs.helloInterval > rhs.helloInterval) return false;
+    if (lhs.deadInterval < rhs.deadInterval) return true;
+    if (lhs.deadInterval > rhs.deadInterval) return false;
+    if (lhs.mtu        < rhs.mtu)        return true;
+    if (lhs.mtu        > rhs.mtu)        return false;
+    return false;
+}
+bool operator<=(SOspfInterface lhs, SOspfInterface rhs) {
+    if ((lhs < rhs) || (lhs == rhs)){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool operator>(SOspfInterface lhs, SOspfInterface rhs) {
+    return !(lhs <= rhs);
+}
+bool operator>=(SOspfInterface lhs, SOspfInterface rhs) {
+    return !(lhs < rhs);
+}
+bool operator==(SOspfInterface lhs, SOspfInterface rhs){
+    if (lhs.localIp    != rhs.localIp)    return false;
+    if (lhs.netmask    != rhs.netmask)    return false;
+    if (lhs.area       != rhs.area)       return false;
+    if (lhs.cost       != rhs.cost)       return false;
+    if (lhs.priority   != rhs.priority)   return false;
+    if (lhs.helloInterval != rhs.helloInterval) return false;
+    if (lhs.deadInterval != rhs.deadInterval) return false;
+    if (lhs.mtu        != rhs.mtu)        return false;
+    return true;
+}
+bool operator!=(SOspfInterface lhs, SOspfInterface rhs) {
+    return !(lhs == rhs);
+}
+
+
+// Generated toJsonString / fromJsonString implementation for struct: SOspfInterface
+std::string toJsonString(SOspfInterface *input) {
+  jsonxx::Object jsono;
+  jsono << "localIp" << toString(input->localIp);
+  jsono << "netmask" << toString(input->netmask);
+  jsono << "area" << toString(input->area);
+  jsono << "cost" << (unsigned int)input->cost;
+  jsono << "priority" << (unsigned int)input->priority;
+  jsono << "helloInterval" << (unsigned int)input->helloInterval;
+  jsono << "deadInterval" << (unsigned int)input->deadInterval;
+  jsono << "mtu" << (unsigned int)input->mtu;
+  return jsono.json();
+}
+
+
+int32_t fromJson(SOspfInterface *output, std::string jsondata) {
+  jsonxx::Object json;
+  if(!json.parse(jsondata))
+  {
+    return -2048;
+  }
+  if(json.has<jsonxx::String>("localIp"))
+  {
+    std::string localip_str = json.get<jsonxx::String>("localIp");
+    int cc = inet_pton(AF_INET, localip_str.c_str(), &output->localIp);
+    if(cc == 0) // Error
+      return -1;
+  }
+  if(json.has<jsonxx::String>("netmask"))
+  {
+    std::string netmask_str = json.get<jsonxx::String>("netmask");
+    int cc = inet_pton(AF_INET, netmask_str.c_str(), &output->netmask);
+    if(cc == 0) // Error
+      return -2;
+  }
+  if(json.has<jsonxx::String>("area"))
+  {
+    std::string area_str = json.get<jsonxx::String>("area");
+    int cc = inet_pton(AF_INET, area_str.c_str(), &output->area);
+    if(cc == 0) // Error
+      return -3;
+  }
+  if(json.has<jsonxx::Number>("cost"))
+  {
+    output->cost = (unsigned int)json.get<jsonxx::Number>("cost");
+  }
+  if(json.has<jsonxx::Number>("priority"))
+  {
+    output->priority = (unsigned int)json.get<jsonxx::Number>("priority");
+  }
+  if(json.has<jsonxx::Number>("helloInterval"))
+  {
+    output->helloInterval = (unsigned int)json.get<jsonxx::Number>("helloInterval");
+  }
+  if(json.has<jsonxx::Number>("deadInterval"))
+  {
+    output->deadInterval = (unsigned int)json.get<jsonxx::Number>("deadInterval");
+  }
+  if(json.has<jsonxx::Number>("mtu"))
+  {
+    output->mtu = (unsigned int)json.get<jsonxx::Number>("mtu");
+  }
+  return 0;
+}
+
+// Generated default printers for struct: SOspfNeighbor
+std::ostream & operator<<(std::ostream & out, const SOspfNeighbor & sospfneighbor) {
+    out << "routerId:"   << " "  << sospfneighbor.routerId        << ", ";
+    out << "ipAddress:"  << " "  << sospfneighbor.ipAddress       << ", ";
+    out << "designatedRouter:" << " " << sospfneighbor.designatedRouter << ", ";
+    out << "backupDesignatedRouter:" << " " << sospfneighbor.backupDesignatedRouter << "";
+    return out;
+}
+
+
+std::string toString(const SOspfNeighbor & sospfneighbor) {
+    std::stringstream out;
+    std::string ret = "";
+    out << sospfneighbor;
+    ret = out.str();
+    return ret;
+}
+
+
+// struct: SOspfNeighbor compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare implementation for struct: SOspfNeighbor
+bool operator<(SOspfNeighbor lhs, SOspfNeighbor rhs) {
+    if (lhs.routerId   < rhs.routerId)   return true;
+    if (lhs.routerId   > rhs.routerId)   return false;
+    if (lhs.ipAddress  < rhs.ipAddress)  return true;
+    if (lhs.ipAddress  > rhs.ipAddress)  return false;
+    if (lhs.designatedRouter < rhs.designatedRouter) return true;
+    if (lhs.designatedRouter > rhs.designatedRouter) return false;
+    if (lhs.backupDesignatedRouter < rhs.backupDesignatedRouter) return true;
+    if (lhs.backupDesignatedRouter > rhs.backupDesignatedRouter) return false;
+    return false;
+}
+bool operator<=(SOspfNeighbor lhs, SOspfNeighbor rhs) {
+    if ((lhs < rhs) || (lhs == rhs)){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool operator>(SOspfNeighbor lhs, SOspfNeighbor rhs) {
+    return !(lhs <= rhs);
+}
+bool operator>=(SOspfNeighbor lhs, SOspfNeighbor rhs) {
+    return !(lhs < rhs);
+}
+bool operator==(SOspfNeighbor lhs, SOspfNeighbor rhs){
+    if (lhs.routerId   != rhs.routerId)   return false;
+    if (lhs.ipAddress  != rhs.ipAddress)  return false;
+    if (lhs.designatedRouter != rhs.designatedRouter) return false;
+    if (lhs.backupDesignatedRouter != rhs.backupDesignatedRouter) return false;
+    return true;
+}
+bool operator!=(SOspfNeighbor lhs, SOspfNeighbor rhs) {
+    return !(lhs == rhs);
+}
+
+
+// Generated toJsonString / fromJsonString implementation for struct: SOspfNeighbor
+std::string toJsonString(SOspfNeighbor *input) {
+  jsonxx::Object jsono;
+  jsono << "routerId" << toString(input->routerId);
+  jsono << "ipAddress" << toString(input->ipAddress);
+  jsono << "designatedRouter" << toString(input->designatedRouter);
+  jsono << "backupDesignatedRouter" << toString(input->backupDesignatedRouter);
+  return jsono.json();
+}
+
+
+int32_t fromJson(SOspfNeighbor *output, std::string jsondata) {
+  jsonxx::Object json;
+  if(!json.parse(jsondata))
+  {
+    return -2048;
+  }
+  if(json.has<jsonxx::String>("routerId"))
+  {
+    std::string routerid_str = json.get<jsonxx::String>("routerId");
+    int cc = inet_pton(AF_INET, routerid_str.c_str(), &output->routerId);
+    if(cc == 0) // Error
+      return -1;
+  }
+  if(json.has<jsonxx::String>("ipAddress"))
+  {
+    std::string ipaddress_str = json.get<jsonxx::String>("ipAddress");
+    int cc = inet_pton(AF_INET, ipaddress_str.c_str(), &output->ipAddress);
+    if(cc == 0) // Error
+      return -2;
+  }
+  if(json.has<jsonxx::String>("designatedRouter"))
+  {
+    std::string designatedrouter_str = json.get<jsonxx::String>("designatedRouter");
+    int cc = inet_pton(AF_INET, designatedrouter_str.c_str(), &output->designatedRouter);
+    if(cc == 0) // Error
+      return -3;
+  }
+  if(json.has<jsonxx::String>("backupDesignatedRouter"))
+  {
+    std::string backupdesignatedrouter_str = json.get<jsonxx::String>("backupDesignatedRouter");
+    int cc = inet_pton(AF_INET, backupdesignatedrouter_str.c_str(), &output->backupDesignatedRouter);
+    if(cc == 0) // Error
+      return -4;
+  }
+  return 0;
+}
+
+// Generated default printers for struct: SOspf
+std::ostream & operator<<(std::ostream & out, const SOspf & sospf) {
+    out << "routerId:"   << " "  << sospf.routerId                << ", ";
+    out << "enabled:"    << " "  << sospf.enabled                 << ", ";
+    out << "areas:" << " [ ";
+    for (std::vector<in_addr >::const_iterator it=sospf.areas.begin(); it != sospf.areas.end(); ++it)
+    {
+      out << *it;
+      if(it != sospf.areas.end())
+        out << ",";
+    }
+    out << " ] " << ", ";
+    out << "interfaces:" << " [ ";
+    for (std::vector<SOspfInterface >::const_iterator it=sospf.interfaces.begin(); it != sospf.interfaces.end(); ++it)
+    {
+      out << *it;
+      if(it != sospf.interfaces.end())
+        out << ",";
+    }
+    out << " ] " << "";
+    return out;
+}
+
+
+std::string toString(const SOspf & sospf) {
+    std::stringstream out;
+    std::string ret = "";
+    out << sospf;
+    ret = out.str();
+    return ret;
+}
+
+
+// struct: SOspf compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare implementation for struct: SOspf
+bool operator<(SOspf lhs, SOspf rhs) {
+    if (lhs.routerId   < rhs.routerId)   return true;
+    if (lhs.routerId   > rhs.routerId)   return false;
+    if (lhs.enabled    < rhs.enabled)    return true;
+    if (lhs.enabled    > rhs.enabled)    return false;
+    if (lhs.areas      < rhs.areas)      return true;
+    if (lhs.areas      > rhs.areas)      return false;
+    if (lhs.interfaces < rhs.interfaces) return true;
+    if (lhs.interfaces > rhs.interfaces) return false;
+    return false;
+}
+bool operator<=(SOspf lhs, SOspf rhs) {
+    if ((lhs < rhs) || (lhs == rhs)){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool operator>(SOspf lhs, SOspf rhs) {
+    return !(lhs <= rhs);
+}
+bool operator>=(SOspf lhs, SOspf rhs) {
+    return !(lhs < rhs);
+}
+bool operator==(SOspf lhs, SOspf rhs){
+    if (lhs.routerId   != rhs.routerId)   return false;
+    if (lhs.enabled    != rhs.enabled)    return false;
+    if (lhs.areas      != rhs.areas)      return false;
+    if (lhs.interfaces != rhs.interfaces) return false;
+    return true;
+}
+bool operator!=(SOspf lhs, SOspf rhs) {
+    return !(lhs == rhs);
+}
+
+
+// Generated toJsonString / fromJsonString implementation for struct: SOspf
+std::string toJsonString(SOspf *input) {
+  jsonxx::Object jsono;
+  jsono << "routerId" << toString(input->routerId);
+  jsono << "enabled" << (bool)input->enabled;
+  jsonxx::Array jsona_areas;
+  for (std::vector<in_addr >::iterator it=input->areas.begin(); it != input->areas.end(); ++it)
+  {
+    jsona_areas << toString(*it);
+  }
+  jsono << "areas" << jsona_areas;
+  jsonxx::Array jsona_interfaces;
+  for (std::vector<SOspfInterface >::iterator it=input->interfaces.begin(); it != input->interfaces.end(); ++it)
+  {
+  jsonxx::Object VectorList_interfaces_object;
+  if(VectorList_interfaces_object.parse(toJsonString(&*it)) != 1)
+    return "BROKEN interfaces_object";
+    jsona_interfaces << VectorList_interfaces_object; // 0.1.4
+  }
+  jsono << "interfaces" << jsona_interfaces;
+  return jsono.json();
+}
+
+
+int32_t fromJson(SOspf *output, std::string jsondata) {
+  jsonxx::Object json;
+  if(!json.parse(jsondata))
+  {
+    return -2048;
+  }
+  if(json.has<jsonxx::String>("routerId"))
+  {
+    std::string routerid_str = json.get<jsonxx::String>("routerId");
+    int cc = inet_pton(AF_INET, routerid_str.c_str(), &output->routerId);
+    if(cc == 0) // Error
+      return -1;
+  }
+  if(json.has<jsonxx::Boolean>("enabled"))
+  {
+    output->enabled = (bool)json.get<jsonxx::Boolean>("enabled");
+  }
+  if(json.has<jsonxx::Array>("areas"))
+  {
+    jsonxx::Array areas_array = json.get<jsonxx::Array>("areas");
+    for(int af = 0; af < areas_array.size(); af++)
+    {
+      in_addr areas_af;
+      std::string areas_str = areas_array.get<jsonxx::String>(af);
+      int cc = inet_pton(AF_INET, areas_str.c_str(), &areas_af);
+      if(cc == 0) // Error
+      {
+        return -3;
+      }
+      output->areas.push_back(areas_af);
+    }
+  }
+  if(json.has<jsonxx::Array>("interfaces"))
+  {
+    jsonxx::Array interfaces_array = json.get<jsonxx::Array>("interfaces");
+    for(int af = 0; af < interfaces_array.size(); af++)
+    {
+      SOspfInterface interfaces_af;
+      if(fromJson(&interfaces_af, interfaces_array.get<jsonxx::Object>(af).json()) != 0)
+      {
+        return -4;
+      }
+      output->interfaces.push_back(interfaces_af);
     }
   }
   return 0;

@@ -117,6 +117,69 @@ typedef struct Simple {
 } Simple;
 
 
+//=============================================================
+// OSPF
+//=============================================================
+typedef struct SOspfInterface {
+    struct in_addr localIp;                    //!< Ip address
+    struct in_addr netmask;                    //!< Network mask
+    struct in_addr area;                       //!< Area
+    uint16_t cost;                             //!< Cost
+    uint8_t priority;                          //!< Priority
+    //OspfInterfaceState state;                  //!< State
+    uint16_t helloInterval;                    //!< Hello Interval
+    uint16_t deadInterval;                     //!< Dead Interval
+    uint16_t mtu;                              //!< MTU
+    //OspfInterfaceSubnetType subnetType;        //!< Type of subnetwork
+
+    //Constructor / Destructor
+    SOspfInterface() {
+        localIp.s_addr = 0;
+        netmask.s_addr = 0;
+        area.s_addr = 0;
+        cost = 0;
+        priority = 0;
+        //state = OSPF_INTERFACE_STATE_DOWN;
+        helloInterval = 0;
+        deadInterval = 0;
+        mtu = 0;
+        //subnetType = OSPF_INTERFACE_SUBNET_TYPE_BROADCAST;
+    }
+    //~SOspfInterface() {}
+} OspfInterface;
+
+
+typedef struct SOspfNeighbor {
+    struct in_addr routerId;               //!< Neighbor's Router ID
+    struct in_addr ipAddress;              //!< Neighbor's IP address
+    //OspfNeighborState state;               //!< Current neighbor relationship state
+    struct in_addr designatedRouter;       //!< Current designated router selected by the neighbor
+    struct in_addr backupDesignatedRouter; //!< Current backup designated router selected by the neighbor
+
+    //Constructor / Destructor
+    SOspfNeighbor() {
+        routerId.s_addr = 0;
+        ipAddress.s_addr = 0;
+        //state = OSPF_NEIGHBOR_STATE_DOWN;
+        designatedRouter.s_addr = 0;
+        backupDesignatedRouter.s_addr = 0;
+    }
+    //~SNeighbor() {}
+} OspfNeighbor;
+
+typedef struct SOspf {
+    struct in_addr routerId;                //!< router identifier <key>
+    bool enabled;                           //!< enabled?
+    std::vector<struct in_addr> areas;      //!< areas
+    std::vector<OspfInterface> interfaces;  //!< interfaces
+
+    //Constructor / Destructor
+    SOspf() {
+        routerId.s_addr = 0;
+        enabled = false;
+    }
+    //~Ospf() {}
+} Ospf;
 
 
 #endif /* SIMPLE_STRUCT */

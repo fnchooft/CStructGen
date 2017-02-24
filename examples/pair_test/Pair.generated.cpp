@@ -1,4 +1,4 @@
-/* 
+/*
 ---- WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING  ----
 ---- ANY MANUAL CHANGES IN THIS FILE WILL DISAPPEAR IF YOU REGENERATE ----
 --------------------------------------------------------------------------
@@ -234,7 +234,7 @@ std::ostream & operator<<(std::ostream & out, const SMapTest & smaptest) {
     out << "amap:" << " [ ";
     for (
          std::map<bool,SPairSecond >::const_iterator it=smaptest.amap.begin();
-         it != smaptest.amap.end(); 
+         it != smaptest.amap.end();
          ++it
 	     )
     {
@@ -292,7 +292,7 @@ std::string toJsonString(SMapTest *input) {
   jsonxx::Array jsonm_amap;
   for (
        std::map<bool,SPairSecond >::iterator it=input->amap.begin();
-       it != input->amap.end(); 
+       it != input->amap.end();
        ++it
       )
   {

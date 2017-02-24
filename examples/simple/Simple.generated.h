@@ -1,4 +1,4 @@
-/* 
+/*
 ---- WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING  ----
 ---- ANY MANUAL CHANGES IN THIS FILE WILL DISAPPEAR IF YOU REGENERATE ----
 --------------------------------------------------------------------------
@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------
  Package: @PACKAGE_NAME@
  Version: @PACKAGE_VERSION@
- Sha1sum: 97f57514f88072ab81db560f0ddd8979af53ec6d  Simple.h
+ Sha1sum: b99c102ba284cc6d3b2a5174969f6a6dcef73dc8  Simple.h
 --------------------------------------------------------------------------
  Make sure to update the originating Simple.h-file
 --------------------------------------------------------------------------
@@ -69,6 +69,51 @@ bool operator!=(Simple lhs, Simple rhs);
 // Generated toJsonString / fromJsonString definition for struct: Simple
 std::string toJsonString(Simple *input);
 int32_t fromJson(Simple *output, std::string jsondata);
+// Generated stream-operators for: SOspfInterface
+std::ostream & operator<<(std::ostream & out, const SOspfInterface & sospfinterface);
+std::string toString(const SOspfInterface & sospfinterface);
+// struct: SOspfInterface compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare definitions for struct: SOspfInterface
+bool operator< (SOspfInterface lhs, SOspfInterface rhs);
+bool operator<=(SOspfInterface lhs, SOspfInterface rhs);
+bool operator> (SOspfInterface lhs, SOspfInterface rhs);
+bool operator>=(SOspfInterface lhs, SOspfInterface rhs);
+bool operator==(SOspfInterface lhs, SOspfInterface rhs);
+bool operator!=(SOspfInterface lhs, SOspfInterface rhs);
+// Generated toJsonString / fromJsonString definition for struct: SOspfInterface
+std::string toJsonString(SOspfInterface *input);
+int32_t fromJson(SOspfInterface *output, std::string jsondata);
+// Generated stream-operators for: SOspfNeighbor
+std::ostream & operator<<(std::ostream & out, const SOspfNeighbor & sospfneighbor);
+std::string toString(const SOspfNeighbor & sospfneighbor);
+// struct: SOspfNeighbor compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare definitions for struct: SOspfNeighbor
+bool operator< (SOspfNeighbor lhs, SOspfNeighbor rhs);
+bool operator<=(SOspfNeighbor lhs, SOspfNeighbor rhs);
+bool operator> (SOspfNeighbor lhs, SOspfNeighbor rhs);
+bool operator>=(SOspfNeighbor lhs, SOspfNeighbor rhs);
+bool operator==(SOspfNeighbor lhs, SOspfNeighbor rhs);
+bool operator!=(SOspfNeighbor lhs, SOspfNeighbor rhs);
+// Generated toJsonString / fromJsonString definition for struct: SOspfNeighbor
+std::string toJsonString(SOspfNeighbor *input);
+int32_t fromJson(SOspfNeighbor *output, std::string jsondata);
+// Generated stream-operators for: SOspf
+std::ostream & operator<<(std::ostream & out, const SOspf & sospf);
+std::string toString(const SOspf & sospf);
+// struct: SOspf compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare definitions for struct: SOspf
+bool operator< (SOspf lhs, SOspf rhs);
+bool operator<=(SOspf lhs, SOspf rhs);
+bool operator> (SOspf lhs, SOspf rhs);
+bool operator>=(SOspf lhs, SOspf rhs);
+bool operator==(SOspf lhs, SOspf rhs);
+bool operator!=(SOspf lhs, SOspf rhs);
+// Generated toJsonString / fromJsonString definition for struct: SOspf
+std::string toJsonString(SOspf *input);
+int32_t fromJson(SOspf *output, std::string jsondata);
 #endif // ___cplusplus
 
 
