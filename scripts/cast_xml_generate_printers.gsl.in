@@ -679,7 +679,7 @@
 .    mapped_type = typeobject->Typedef(name = 'mapped_type')
 .- // key-type: $(key_type.generator_type?'unknown') key_type.id: $(key_type.id)
 .- // map-type: $(mapped_type.generator_type?'unknown') mapped_type.id: $(mapped_type.id)
->  std::cout << "fromJson: $(a.name:)...." << std::endl;
+.- >  std::cout << "fromJson: $(a.name:)...." << std::endl;
 >  if(json.has<jsonxx::Array>("$(a.name:)"))
 >  {
 >    jsonxx::Array $(a.name:)_map_array = json.get<jsonxx::Array>("$(a.name:)");
