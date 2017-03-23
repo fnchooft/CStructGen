@@ -46,3 +46,14 @@ TEST(SVectorEnumTest, compareAB){
   EXPECT_EQ(c,b);
 }
 
+TEST(SGmplsTest, compareAB){
+  SGmplsTest a = SGmplsTest();
+  SGmplsTest b = SGmplsTest();
+  EXPECT_EQ(a,b);
+  SGmplsTest c = SGmplsTest();
+  std::cout << "JSON-b: " << toJsonString(&b) << std::endl;
+  EXPECT_EQ(0,fromJson(&c, toJsonString(&b)));
+  std::cout << "JSON-c: " << toJsonString(&c) << std::endl;
+  EXPECT_EQ(c,b);
+}
+

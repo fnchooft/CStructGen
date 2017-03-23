@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------
  Package: @PACKAGE_NAME@
  Version: @PACKAGE_VERSION@
- Sha1sum: a4993fa22b782719af0e4e636840452a250bcb4c  Pair.hpp
+ Sha1sum: 6e24380b524dc013196603a01df401b2d7ca2769  Pair.hpp
 --------------------------------------------------------------------------
  Make sure to update the originating Pair.hpp-file
 --------------------------------------------------------------------------
@@ -315,7 +315,6 @@ int32_t fromJson(SMapTest *output, std::string jsondata) {
   {
     return -2048;
   }
-  std::cout << "fromJson: amap...." << std::endl;
   if(json.has<jsonxx::Array>("amap"))
   {
     jsonxx::Array amap_map_array = json.get<jsonxx::Array>("amap");
@@ -426,6 +425,73 @@ int32_t fromJson(SVectorEnumTest *output, std::string jsondata) {
       }
       output->types.push_back(types_af);
     }
+  }
+  return 0;
+}
+
+// Generated default printers for struct: SGmplsTest
+std::ostream & operator<<(std::ostream & out, const SGmplsTest & sgmplstest) {
+    out << "type:"       << " "  << sgmplstest.type               << "";
+    return out;
+}
+
+
+std::string toString(const SGmplsTest & sgmplstest) {
+    std::stringstream out;
+    std::string ret = "";
+    out << sgmplstest;
+    ret = out.str();
+    return ret;
+}
+
+
+// struct: SGmplsTest compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare implementation for struct: SGmplsTest
+bool operator<(SGmplsTest lhs, SGmplsTest rhs) {
+    if (lhs.type       < rhs.type)       return true;
+    if (lhs.type       > rhs.type)       return false;
+    return false;
+}
+bool operator<=(SGmplsTest lhs, SGmplsTest rhs) {
+    if ((lhs < rhs) || (lhs == rhs)){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool operator>(SGmplsTest lhs, SGmplsTest rhs) {
+    return !(lhs <= rhs);
+}
+bool operator>=(SGmplsTest lhs, SGmplsTest rhs) {
+    return !(lhs < rhs);
+}
+bool operator==(SGmplsTest lhs, SGmplsTest rhs){
+    if (lhs.type       != rhs.type)       return false;
+    return true;
+}
+bool operator!=(SGmplsTest lhs, SGmplsTest rhs) {
+    return !(lhs == rhs);
+}
+
+
+// Generated toJsonString / fromJsonString implementation for struct: SGmplsTest
+std::string toJsonString(SGmplsTest *input) {
+  jsonxx::Object jsono;
+  jsono << "type" << (unsigned int)input->type;
+  return jsono.json();
+}
+
+
+int32_t fromJson(SGmplsTest *output, std::string jsondata) {
+  jsonxx::Object json;
+  if(!json.parse(jsondata))
+  {
+    return -2048;
+  }
+  if(json.has<jsonxx::Number>("type"))
+  {
+    output->type = (unsigned int)json.get<jsonxx::Number>("type");
   }
   return 0;
 }

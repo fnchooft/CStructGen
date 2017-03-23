@@ -6,7 +6,7 @@
 --------------------------------------------------------------------------
  Package: @PACKAGE_NAME@
  Version: @PACKAGE_VERSION@
- Sha1sum: a4993fa22b782719af0e4e636840452a250bcb4c  Pair.hpp
+ Sha1sum: 6e24380b524dc013196603a01df401b2d7ca2769  Pair.hpp
 --------------------------------------------------------------------------
  Make sure to update the originating Pair.hpp-file
 --------------------------------------------------------------------------
@@ -99,6 +99,21 @@ bool operator!=(SVectorEnumTest lhs, SVectorEnumTest rhs);
 // Generated toJsonString / fromJsonString definition for struct: SVectorEnumTest
 std::string toJsonString(SVectorEnumTest *input);
 int32_t fromJson(SVectorEnumTest *output, std::string jsondata);
+// Generated stream-operators for: SGmplsTest
+std::ostream & operator<<(std::ostream & out, const SGmplsTest & sgmplstest);
+std::string toString(const SGmplsTest & sgmplstest);
+// struct: SGmplsTest compare-functions due to union existance...
+// Found Struct->settings.... 0
+// Generated default compare definitions for struct: SGmplsTest
+bool operator< (SGmplsTest lhs, SGmplsTest rhs);
+bool operator<=(SGmplsTest lhs, SGmplsTest rhs);
+bool operator> (SGmplsTest lhs, SGmplsTest rhs);
+bool operator>=(SGmplsTest lhs, SGmplsTest rhs);
+bool operator==(SGmplsTest lhs, SGmplsTest rhs);
+bool operator!=(SGmplsTest lhs, SGmplsTest rhs);
+// Generated toJsonString / fromJsonString definition for struct: SGmplsTest
+std::string toJsonString(SGmplsTest *input);
+int32_t fromJson(SGmplsTest *output, std::string jsondata);
 #endif // ___cplusplus
 
 

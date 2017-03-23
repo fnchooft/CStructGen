@@ -1050,7 +1050,6 @@ int32_t fromJson(Simple *output, std::string jsondata) {
       output->vc.push_back(vc_af);
     }
   }
-  std::cout << "fromJson: map_uint8_t_string_map...." << std::endl;
   if(json.has<jsonxx::Array>("map_uint8_t_string_map"))
   {
     jsonxx::Array map_uint8_t_string_map_map_array = json.get<jsonxx::Array>("map_uint8_t_string_map");
@@ -1070,7 +1069,6 @@ int32_t fromJson(Simple *output, std::string jsondata) {
       output->map_uint8_t_string_map[map_key] = map_val;
     }
   }
-  std::cout << "fromJson: map_uint8_t_add_drop_map...." << std::endl;
   if(json.has<jsonxx::Array>("map_uint8_t_add_drop_map"))
   {
     jsonxx::Array map_uint8_t_add_drop_map_map_array = json.get<jsonxx::Array>("map_uint8_t_add_drop_map");

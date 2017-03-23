@@ -1154,6 +1154,16 @@
 .      t.json_type_cast  = type_mapping_object.jsonxx_type_cast
 .      t.json_type       = type_mapping_object.jsonxx_type
 .      t.default_value   = type_mapping_object.default
+.    elsif t.parent_type = 'Typedef'
+.      typedef_type = root->GCC_XML->Typedef(id = t.type)?
+.      if defined(typedef_type) & defined(typedef_type.json_type_cast)
+.-        echo "FOUND: $(typedef_type.id)....."
+.        t.generator_type     = typedef_type.name
+.        t.json_type_cast     = typedef_type.json_type_cast
+.        t.json_type          = typedef_type.json_type
+.        t.default_value      = typedef_type.default_value
+.        t.from_json_function = typedef_type.from_json_function?
+.      endif
 .    elsif t.parent_type = 'Enumeration'
 .      et = root->GCC_XML->Enumeration(id = t.type)
 .      t.generator_type     = et.name

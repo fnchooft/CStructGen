@@ -35,6 +35,25 @@ typedef struct SVectorEnumTest {
 } VectorEnumTest;
 
 
+typedef uint32_t LSPProtectionType;
+typedef LSPProtectionType* LSPProtectionTypePtr;
+const LSPProtectionType GMPLS_LSP_PROTN_UNPROTECTED = 0;
+/// LSP state - Secondary LSP
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_SECLSP  =  0x0001;
+/// LSP state - Protecting LSP
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_PROTECTING = 0x0002;
+/// LSP state - Notification only
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_NOTIFICATION = 0x0004;
+/// vOperational
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_OPERATIONAL = 0x4000;
+/// LSP state - Restoration
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_RESTORATION = 0x8000;
+/// LSP state - Restoration Protecting
+const LSPProtectionType GMPLS_LSP_PROTN_STATE_RESTORATION_PROTECTING = 0x10000;
+
+typedef struct SGmplsTest {
+  LSPProtectionType type;
+} GmplsTest;
 
 
 #endif /* SIMPLE_STRUCT */
